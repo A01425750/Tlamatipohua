@@ -1,0 +1,56 @@
+﻿Title: 6n.2.1 Grado de presión sobre el recurso hídrico de las zonas centro y norte del país
+
+Description: Es la proporción del agua renovable que representan los usos consuntivos, estimados a partir del agua concesionada o asignada, en las siguientes regiones hidrológico-administrativas: I. Península de Baja California, II. Noroeste, III. Pacífico Norte, IV. Balsas, VI. Río Bravo, VII. Cuencas Centrales del Norte, VIII. Lerma Santiago Pacífico, XIII Aguas del Valle de México.
+
+Modified: 2024-11-13
+
+Publisher: Instituto Nacional de Estadística y Geografía, INEGI
+
+Mbox: contacto.ods@agenda2030.mx
+
+License:http://ods.inegi.org.mxdocs/doctos/system/terminos_uso_SIODS_es.pdf
+
+ContactPoint: Juan José Díaz Nigenda
+Subgerente del Sistema Nacional de Información del Agua
+Insurgentes Sur # 2416. Piso 4. Colonia Copilco El Bajo, 04340. Coyoacán, Ciudad de México
+55 51744000, ext. 2112 y 4458 , jose.diaz@conagua.gob.mx
+sina@conagua.gob.mx
+
+Temporal: 2012-2023
+
+Spatial: Estados Unidos Mexicanos
+
+AccrualPeriodicity: Anual
+
+Distribution:http://ods.inegi.org.mx/docs/files/csv/zip/6n.2.1_es.zip
+
+Goal: 6. Garantizar la disponibilidad y la gestión sostenible del agua y el saneamiento para todos 
+
+Target:  Meta 6n.2 Gestión integral de los recursos hídricos a todos los niveles
+
+Type of indicator: Nacional
+
+Algorithm: 6n.2.1_ES.gif
+
+Description of the indicator: Para obtener el grado de presión, se considera el cociente de la suma de los valores del volumen de agua concesionada o asignada para usos consuntivos (VUC) y volumen de agua renovable (VAREN) en las regiones hidrológico-administrativas I. Península de Baja California, II. Noroeste, III. Pacífico Norte, IV. Balsas, VI. Río Bravo, VII. Cuencas Centrales del Norte, VIII. Lerma-Santiago-Pacífico, y XIII. Aguas del Valle de México.
+
+Unit of measure: Porcentaje
+
+Geographic coverage: Nacional
+
+Opportunity: 10 meses a partir del inicio de año.
+
+Source of statistical information used to calculate the indicator: Comisión Nacional del Agua. Gerencia de Planificación Hídrica. Sistema Nacional de Información del Agua (SINA), a partir de la información integrada en el Sistema Nacional de Información del Agua (SINA) del Registro Público de Derechos del Agua (REPDA) de la Subdirección General de Administración del Agua y publicaciones de las disponibilidades de agua superficial  y subterránea de la Subdirección General Técnica, en el Diario Oficial de la Federación el 16-jul-2016 (Agua superficial) y 04-ene-2018 (Agua Subterránea), así como del 17-sep-2020 de aguas subterráneas y 21-sep-2020 de aguas superficiales.  https://sinav30.conagua.gob.mx:8080/
+
+Date of next update of indicator: 30 de noviembre de 2025
+
+Unit of the State responsible for calculating the indicator: Comisión Nacional del Agua. Gerencia de Planificación Hídrica. Sistema Nacional de Información del Agua (SINA). 
+
+Importance and purpose of the indicator: Para aprovechar eficientemente el agua y contribuir al desarrollo sostenible de los sectores productivos, se propone este indicador para evaluar el impacto de las extracciones de agua que se destinan a los usos consuntivos, a través de una proporción del  agua renovable de las cuencas y acuíferos  en las siguientes regiones hidrológico-administrativas: I. Península de Baja California, II. Noroeste, III. Pacífico Norte, IV. Balsas, VI. Río Bravo, VII. Cuencas Centrales del Norte, VIII. Lerma Santiago Pacífico, XIII Aguas del Valle de México del país. Los usos consuntivos son estimados a partir del agua concesionada o asignada que se integran en el Registro Público de Derechos de Agua (REPDA).
+Este indicador se vincula con el indicador que se encuentra dentro del Catálogo Nacional de Indicadores de INEGI. Adicionalmente, este indicador se considera como meta para el Bienestar del Objetivo 3 del Promarnat y se vincula con los ODS con el indicador 6.4.2, aunque en su cálculo, no se descuenta el caudal ecológico al caudal de agua renovable.
+Adicionalmente, el indicador se vincula con el indicador 2.1 del Programa Nacional Hídrico 2020-2024.
+
+National and/or international reference: Programa Nacional Hídrico 2020-2024; Programa Sectorial de Medio Ambiente y Recursos Naturales 2020-2024; Catálogo Nacional de Indicadores 
+
+Observations: Este indicador solo muestra el resultado de agrupar las regiones hidrológico-administrativas que conforman regiones centro y norte del país, por lo que es una desagregación del indicador del Catálogo Nacional de Indicadores del Sistema Nacional de Información Estadística y Geográfica.
+

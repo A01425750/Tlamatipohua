@@ -1,0 +1,64 @@
+﻿Title: 6.4.2 Nivel de estrés hídrico: extracción de agua dulce como proporción de los recursos disponibles de agua dulce.
+
+Description: Es la proporción entre el total de agua dulce extraída por todos los sectores principales y los recursos renovables totales de agua dulce, luego de considerar los requisitos ambientales relativos al agua.
+
+Modified: 2024-11-13
+
+Publisher: Instituto Nacional de Estadística y Geografía, INEGI
+
+Mbox: contacto.ods@agenda2030.mx
+
+License:http://ods.inegi.org.mxdocs/doctos/system/terminos_uso_SIODS_es.pdf
+
+ContactPoint: Gerencia de Planificación Hídrica
+Subgerencia del Sistema Nacional de Información del Agua
+Insurgentes Sur # 2416. Piso 4; Colonia Copilco El Bajo, 04340. Coyoacán, Ciudad de México
++52 55 5174 4000, ext. 2112 y 4458
+sina@conagua.gob.mx
+Gerencia de Cooperación Internacional
+Dirección de Área de Evaluación de Programas y Proyectos
+Insurgentes Sur # 2416. Piso 9; Colonia Copilco El Bajo, 04340. Coyoacán, Ciudad de México
++52 55 5174 4000, ext. 1313
+internacional@conagua.gob.mx
+
+Temporal: 2015-2023
+
+Spatial: Estados Unidos Mexicanos
+
+AccrualPeriodicity: Anual
+
+Distribution:http://ods.inegi.org.mx/docs/files/csv/zip/6.4.2_es.zip
+
+Goal: 6. Garantizar la disponibilidad y la gestión sostenible del agua y el saneamiento para todos 
+
+Target:  Meta 6.4. De aquí a 2030, aumentar considerablemente el uso eficiente de los recursos hídricos en todos los sectores y asegurar la sostenibilidad de la extracción y el abastecimiento de agua dulce para hacer frente a la escasez de agua y reducir considerablemente el número de personas que sufren falta de agua
+
+Type of indicator: Global
+
+Algorithm: 6.4.2_ES.gif
+
+Description of the indicator: El valor nacional de este indicador se calcula sobre la base de tres componentes:
+1. Recursos renovables totales de agua dulce (TRWR): expresados como la suma de (a) los  recursos hídricos renovables internos (IRWR) y (b) los recursos hídricos renovables externos (ERWR).  Se consideran en este apartado el escurrimiento natural medio superficial, las entradas y salidas de agua superficial de y hacia otros países, y la recarga de agua subterránea. 
+2. La extracción total de agua dulce (TFWW), es el volumen de agua dulce extraída de su fuente (ríos, lagos, acuíferos) para la agricultura, las industrias, y los servicios. Se toman en cuenta los volúmenes concesionados de agua registrados en el Registro Público de Derechos de Agua (Repda) e integrados en el Sistema Nacional de Información del Agua (SINA) con corte al 31 de diciembre de cada año.
+3. Requisitos de caudales ambientales (EFR) se definen como la cantidad y duración de los caudales de agua dulce y de los niveles necesarios para sostener los ecosistemas acuáticos; en este caso se consideran, el caudal ecológico en los sistemas de cuencas y la descarga natural comprometida en acuíferos. 
+Los datos son obtenidos de las publicaciones de las disponibilidades de aguas superficiales y aguas subterráneas en el Diario Oficial de la Federación, a partir de los registros administrativos de la Subdirección General Técnica de la Conagua, así como de los registros del Sistema Nacional de Información del Agua.
+
+Unit of measure: Porcentaje
+
+Geographic coverage: Nacional
+
+Opportunity: 1 año
+
+Source of statistical information used to calculate the indicator: Secretaría de Medio Ambiente y Recursos Naturales (SEMARNAT). Comisión Nacional del Agua (CONAGUA). Gerencia de Planificación Hídrica. Sistema Nacional de Información del Agua (SINA), con información del Registro Público de Derechos del Agua (Repda) y publicaciones de las disponibilidades de agua superficial  y subterránea de la Subdirección General Técnica, en el Diario Oficial de la Federación el 16-jul-2016 (Agua superficial) y 04-ene-2018 (Agua Subterránea), así como del 17-sep-2020 de aguas subterráneas y 21-sep-2020 de aguas superficiales.
+
+Date of next update of indicator: 31 de octubre de 2025
+
+Unit of the State responsible for calculating the indicator: Secretaría de Medio Ambiente y Recursos Naturales (SEMARNAT). Comisión Nacional del Agua (CONAGUA). Gerencia de Planificación Hídrica. Sistema Nacional de Información
+del Agua (SINA). 
+
+Importance and purpose of the indicator: Este indicador proporciona una estimación de la presión, por parte de todos los sectores, sobre los recursos renovables de agua dulce del país. Un nivel bajo de estrés hídrico indica una situación donde la extracción combinada por todos los sectores es marginal en relación con los recursos, y por lo tanto tiene poco impacto potencial sobre la sostenibilidad de los recursos o sobre la potencial competencia entre los usuarios. Un nivel alto de estrés hídrico indica una situación donde la extracción combinada por todos los sectores representa una proporción considerable de los recursos renovables totales de agua dulce, con impactos potencialmente mayores sobre la sostenibilidad de los recursos y situaciones potenciales de conflictos y competencia entre los usuarios. 
+
+National and/or international reference: Comisión Nacional del Agua (Conagua). Programa Nacional Hídrico 2020-2024 
+
+Observations: Para el indicador ODS 6.4.2, internacionalmente se propone clasificar el nivel de estrés hídrico en tres categorías principales (niveles): bajo, alto y muy alto. No se han definido los umbrales para el indicador ya que podrían ser específicos del país, para reflejar las diferencias en el clima y los objetivos nacionales de gestión del agua. O también, alternativamente, se pueden proponer umbrales uniformes utilizando la literatura existente y teniendo en cuenta los requisitos ambientales del agua. Algunos de los valores de las variables involucradas en este indicador provienen de las publicación de las disponibilidades de agua superficial y agua subterránea que realiza la Conagua. Al interior de México, se ha implementado el indicador "Grado de Presión sobre los Recursos Hídricos", pero este indicador no descuenta los requerimientos ambientales del total de agua renovable, por lo que ambos indicadores se complementan.
+
