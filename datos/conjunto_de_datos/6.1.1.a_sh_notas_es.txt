@@ -1,0 +1,3 @@
+﻿"Nota: Para el cálculo del indicador se toma la información generada por la Encuesta Nacional de Ingreso y Gasto en los Hogares (ENIGH) de los años 2014, 2016, 2018, 2020 y 2022 del Instituto Nacional de Estadística y Geografía (INEGI). En este año 2023, se hizo una revisión del nombre de las variables. Este indicador se ha incorporado al Catálogo Nacional de Indicadores del Sistema Nacional de Información Estadística y Geográfica (SNIEG) de México.  Sistema Nacional de Información del Agua (SINA)."
+"Fuente: Secretaría de Medio Ambiente y Recursos Naturales (SEMARNAT). Comisión Nacional del Agua (CONAGUA). Gerencia de Planificación Hídrica.  Sistema Nacional de Información
+del Agua (SINA). "

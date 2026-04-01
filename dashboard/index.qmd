@@ -1,0 +1,11 @@
+---
+title: "¿Cuándo nos vamos a quedar sin agua?"
+author: "Tlamatipohua"
+format: dashboard
+theme: 
+    light: flatly
+    dark: darkly
+---
+
+
+Disponibilidad de agua superficial per cápita (m³/persona/año) en México, 2010-2020
