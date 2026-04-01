@@ -7,5 +7,39 @@ theme:
     dark: darkly
 ---
 
+<!-- como configurar yaml para que index sea scroleable hacia abajo, agregar animacion conforme aparecen graficas, investigar y despues preguntar a IA (copilot gh) -->
+
+<!-- inveestigar como configurar agente para que llene automaticamente ai-log.md de forma transparente, o simplmente cada quien es responsable de poner / decirle al agente que lo ponga -->
+
+# Primera visualización
 
 Disponibilidad de agua superficial per cápita (m³/persona/año) en México, 2010-2020
+
+Visualización clara para todo público y que con elementos visuales proporcione información sobre el significado del indicador
+
+ejemplos:
+
+* garrafones
+
+decidir qué se quiere resaltar en visualización: el lienzo de fondo  contiene una visualización buena del conjunto de datos, se resalta con preatemptivefeatures el dato que responde a la pregunta / plantea el problema
+
+escoger visualización que se adapte mejor a lo que se quiere mostrar: distribución tempoeral, espacial o ambas=
+
+# Segunda visualización
+
+explorar correlación con indicdores de otros ODS, por ejemplo género en México
+
+# Tercera visualización
+
+visibilizar brechas de información por desacuerdos técnicos entre instituciones, por ejemplo CONAGUA vs INEGI, o entre estados
+
+incluir formas novedosas de cerrar esta brecha?: SCALL, ciencia ciudadana
+
+# Cuarta visualización
+
+casos de éxito: mapa de captación de lluvia / ciencia ciudadana?
+
+calculadora de huella hídrica
+
+escenarios de proyección
+
