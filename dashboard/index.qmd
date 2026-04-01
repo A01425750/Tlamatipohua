@@ -11,6 +11,20 @@ theme:
 
 <!-- inveestigar como configurar agente para que llene automaticamente ai-log.md de forma transparente, o simplmente cada quien es responsable de poner / decirle al agente que lo ponga -->
 
+indicadores ODS 6 que no reporta México:
+
+https://sdgs.un.org/goals/goal6#targets_and_indicators
+
+https://agenda2030.mx/ODSGoalSelected.html?ti=T&cveArb=ODS0060&goal=0&lang=es#/ind
+
+
+
+indicadores no desagregados por estado (INEGI ninguno por municipio?)
+
+¿cómo desagregar por municipio o cuenca?
+
+¿qué otros indicadores hay sobre el agua? cómo se calcula "día cero"? hay alguna métrica que ayude a responder a la pregunta de "¿cuándo nos vamos a quedar sin agua?"?
+
 # Primera visualización
 
 Disponibilidad de agua superficial per cápita (m³/persona/año) en México, 2010-2020
@@ -23,7 +37,7 @@ ejemplos:
 
 decidir qué se quiere resaltar en visualización: el lienzo de fondo  contiene una visualización buena del conjunto de datos, se resalta con preatemptivefeatures el dato que responde a la pregunta / plantea el problema
 
-escoger visualización que se adapte mejor a lo que se quiere mostrar: distribución tempoeral, espacial o ambas=
+escoger visualización que se adapte mejor a lo que se quiere mostrar: distribución temporal, espacial o ambas
 
 # Segunda visualización
 
@@ -31,9 +45,11 @@ explorar correlación con indicdores de otros ODS, por ejemplo género en Méxic
 
 # Tercera visualización
 
-visibilizar brechas de información por desacuerdos técnicos entre instituciones, por ejemplo CONAGUA vs INEGI, o entre estados
+visibilizar brechas de información por desacuerdos técnicos entre instituciones, por ejemplo CONAGUA vs INEGI, o entre estados, desagregación a nivel estatal o municipal
 
 incluir formas novedosas de cerrar esta brecha?: SCALL, ciencia ciudadana
+
+desagregar por cuencas, no solo RHA?: SIH, SMN, hidroenergía, CONAGUA reportes, etc. buscar
 
 # Cuarta visualización
 
@@ -41,5 +57,6 @@ casos de éxito: mapa de captación de lluvia / ciencia ciudadana?
 
 calculadora de huella hídrica
 
-escenarios de proyección
+escenarios de proyección: qué pasaría si?, slider entre diferentes escenarios para que persona usuaria pueda visualizar diferentes escenarios futuros dependiendo de diferentes variables (crecimiento poblacional, cambio climático, etc)
 
+¿a qué cuenca perteneces? 
