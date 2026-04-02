@@ -26,4 +26,16 @@
 - **Resultado**: Se identificó que en el bloque `else` se reasignaba `repda` en cada vuelta del ciclo. Se corrigió creando un dataframe temporal por año (`repda_year`) y asignando su serie a `repda[year]`. La ejecución final mostró columnas `Estado`, `2020`, `2021`, `2022` y `2023`.
 - **Decisión**: Conservar el dataframe base con la columna llave (`Estado`) y anexar columnas anuales para evitar pérdida de datos por sobrescritura.
 
+- **Fecha | Herramienta | Tarea**: 2026-04-02 | GitHub Copilot (GPT-5.3-Codex) | Corregir 404 de `rha2023.json` en Quarto Preview.
+- **Tarea**: Evitar que Plotly intente cargar `../datos/rha2023.json` desde el navegador durante `quarto preview`, lo que causaba solicitudes a `/datos/rha2023.json` con 404.
+- **Prompt**: apply change and document in ai-log.md
+- **Resultado**: Se actualizó `dashboard/index.qmd` para cargar el GeoJSON con Python (`json.load`) y pasar un diccionario a `px.choropleth` en ambos mapas RHA. Con esto, la lectura del archivo ocurre en tiempo de render del kernel y ya no depende de una ruta HTTP relativa en el cliente.
+- **Decisión**: Usar objetos GeoJSON cargados en Python para recursos locales en dashboards Quarto, en lugar de rutas de archivo como string que se resuelven en el navegador.
+
+- **Fecha | Herramienta | Tarea**: 2026-04-02 | GitHub Copilot (GPT-5.3-Codex) | Reducir reinicios de sesión por render lento en Quarto Preview.
+- **Tarea**: Evitar que celdas pesadas (lectura de múltiples archivos Excel) se ejecuten completas en cada refresco de `quarto preview`, lo que estaba alargando la ejecución de la celda 2/7 hasta provocar reinicio de sesión.
+- **Prompt**: it lasted so long that the session restarted automatically
+- **Resultado**: Se habilitó caché de ejecución en `dashboard/index.qmd` agregando `execute: cache: true` en el encabezado YAML. Con ello, Quarto reutiliza resultados de celdas no modificadas y reduce drásticamente los tiempos de re-render en preview.
+- **Decisión**: Mantener caché activa para notebooks/dashboards con carga repetida de datos históricos, especialmente cuando se trabaja con `quarto preview` en modo watch.
+
 ### No usamos IA para hacer lo siguiente:
