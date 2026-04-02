@@ -49,7 +49,7 @@ Geographic coverage: Nacional
 
 Opportunity: 1 año
 
-Source of statistical information used to calculate the indicator: Secretaría de Medio Ambiente y Recursos Naturales (SEMARNAT). Comisión Nacional del Agua (CONAGUA). Gerencia de Planificación Hídrica. Sistema Nacional de Información del Agua (SINA), con información del Registro Público de Derechos del Agua (Repda) y publicaciones de las disponibilidades de agua superficial  y subterránea de la Subdirección General Técnica, en el Diario Oficial de la Federación el 16-jul-2016 (Agua superficial) y 04-ene-2018 (Agua Subterránea), así como del 17-sep-2020 de aguas subterráneas y 21-sep-2020 de aguas superficiales.
+Source of statistical information used to calculate the indicator: Secretaría de Medio Ambiente y Recursos Naturales (SEMARNAT). Comisión Nacional del Agua (CONAGUA). Gerencia de Planificación Hídrica. Sistema Nacional de Información del Agua (SINA), con información del Registro Público de Derechos del Agua (Repda) y publicaciones de las disponibilidades de agua superficial  y subterránea de la Subdirección General Técnica, en el Diario Oficial de la Federación el 16-jul-2016 (Agua superficial) y 04-ene-2018 (Agua Subterránea), así como del  21-sep-2020 de aguas superficiales.
 
 Date of next update of indicator: 31 de octubre de 2025
 
