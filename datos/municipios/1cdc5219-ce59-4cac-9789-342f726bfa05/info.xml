@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<info version="1.1">
+  <general>
+    <createDate>2023-09-14T00:30:50.44Z</createDate>
+    <changeDate>2024-04-01T19:06:15.284Z</changeDate>
+    <schema>iso19139</schema>
+    <isTemplate>n</isTemplate>
+    <localId>313</localId>
+    <format>full</format>
+    <rating>0</rating>
+    <popularity>154</popularity>
+    <uuid>1cdc5219-ce59-4cac-9789-342f726bfa05</uuid>
+    <siteId>26441241-956c-4cbf-af3e-792400c07ec7</siteId>
+    <siteName>Catálogo de metadatos SINA 3.0</siteName>
+  </general>
+  <categories>
+    <category name="datasets" />
+  </categories>
+  <privileges>
+    <group name="all">
+      <operation name="view" />
+      <operation name="download" />
+      <operation name="dynamic" />
+    </group>
+  </privileges>
+  <public>
+    <file name="Cuencas_Zona_pago.jpg" changeDate="2023-09-14T00:30:50.668Z" />
+    <file name="cuencas.jpg" changeDate="2023-09-14T00:30:50.676Z" />
+    <file name="image.png" changeDate="2023-09-14T00:30:50.68Z" />
+    <file name="m00_municipios.png" changeDate="2023-09-14T00:34:29.576Z" />
+  </public>
+  <private />
+</info>
+

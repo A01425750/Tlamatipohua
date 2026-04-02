@@ -7,70 +7,6 @@ theme:
     dark: darkly
 ---
 
-<!-- como configurar yaml para que index sea scroleable hacia abajo, agregar animacion conforme aparecen graficas, investigar y despues preguntar a IA (copilot gh) -->
-
-<!-- inveestigar como configurar agente para que llene automaticamente ai-log.md de forma transparente, o simplmente cada quien es responsable de poner / decirle al agente que lo ponga -->
-
-indicadores ODS 6 que no reporta México:
-
-https://sdgs.un.org/goals/goal6#targets_and_indicators
-
-https://agenda2030.mx/ODSGoalSelected.html?ti=T&cveArb=ODS0060&goal=0&lang=es#/ind
-
-
-
-indicadores no desagregados por estado (INEGI ninguno por municipio?)
-
- 6.3.1
-Proporción de aguas residuales tratadas de manera adecuada  G 
- 
-6.3.2.
-Proporción de cuerpos de agua con buena calidad de agua  G  
-
-CONAGUA sí reporta, buscar (bioenergía)
-
- 6.4.1
-Cambio en la eficiencia del uso del agua a lo largo del tiempo  G 
- 
-6.4.2
-Nivel de estrés hídrico: extracción de agua dulce como proporción de los recursos disponibles de agua dulce.  G  
-
- 6.5.1.
-Grado de implementación de la gestión integrada de los recursos hídricos  G 
- 
-6.5.2.
-Proporción de la superficie de cuencas transfronterizas sujetas a arreglos operacionales para la cooperación en materia de aguas  
-
- 6.6.1.a
-Cambio en el área de lagos y ríos permanentes (%)  G 
- 
-6.6.1.b
-Cambio en el área de lagos y ríos estacionales (%)  G 
- 
-6.6.1.c
-Cambio en el área de manglares (%)  G 
- 
-6.6.1.d
-Superficie del embalse como porcentaje de la superficie terrestre total (%)  G 
- 
-6.6.1.e
-Área de humedales como porcentaje de la superficie terrestre total (%)  G
-
-
-
-Gestión integral de los recursos hídricos a todos los niveles
-6n.2.1
-Grado de presión sobre el recurso hídrico de las zonas centro y norte del país  N 
- 
-
-¿cómo desagregar por municipio o cuenca?
-
-¿qué otros indicadores hay sobre el agua? cómo se calcula "día cero"? hay alguna métrica que ayude a responder a la pregunta de "¿cuándo nos vamos a quedar sin agua?"?
-
-6.n.1 no es lo mismo que 6.1.1? tiene otras metas? comparar objetivos cuantitativamente: poner líneas punteadas en gráficas
-
-qué diferencias hay entre el indicador nacional y el global o estatal reportado en los indicadores globales? hay diferencias entre cómo se calculan los indicadores?
-
 # Primera visualización
 
 Disponibilidad de agua superficial per cápita (m³/persona/año) en México, 2010-2020
@@ -104,10 +40,6 @@ disponiblidad hídrica?
 consumo de agua per cápita
 
 de dónde a dónde va el agua? justicia hídrica?
-
-Para el indicador ODS 6.4.2, internacionalmente se propone clasificar el nivel de estrés hídrico en tres categorías principales (niveles): bajo, alto y muy alto. No se han definido los umbrales para el indicador ya que podrían ser específicos del país, para reflejar las diferencias en el clima y los objetivos nacionales de gestión del agua. O también, alternativamente, se pueden proponer umbrales uniformes utilizando la literatura existente y teniendo en cuenta los requisitos ambientales del agua. Algunos de los valores de las variables involucradas en este indicador provienen de las publicación de las disponibilidades de agua superficial y agua subterránea que realiza la Conagua. Al interior de México, se ha implementado el indicador "Grado de Presión sobre los Recursos Hídricos", pero este indicador no descuenta los requerimientos ambientales del total de agua renovable, por lo que ambos indicadores se complementan.
-
-
 
 # Segunda visualización
 
