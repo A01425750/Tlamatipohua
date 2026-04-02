@@ -5,6 +5,7 @@ format: dashboard
 theme: 
     light: flatly
     dark: darkly
+output-dir: docs
 ---
 
 ```{python}

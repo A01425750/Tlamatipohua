@@ -1,0 +1,174 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: \"¿?\"\n",
+        "author: \"Tlamatipohua\"\n",
+        "format: dashboard\n",
+        "theme: \n",
+        "    light: flatly\n",
+        "    dark: darkly\n",
+        "output-dir: docs\n",
+        "---"
+      ],
+      "id": "4496673e"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import pandas as pd\n",
+        "import numpy as np\n",
+        "import plotly.express as px"
+      ],
+      "id": "20d8b64a",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# Primera visualización"
+      ],
+      "id": "f8b301ee"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "anos = np.arange(2003,2022+1)\n",
+        "for ano in anos:\n",
+        "    f = f\"datos/Grado_de_Presion_{ano}.xlsx\"\n",
+        "    if ano == 2003:\n",
+        "        gp = pd.read_excel(f,usecols=[\"Región Hidrológico-Administrativa\",\"Grado de Presión (%)\"])\n",
+        "        gp.columns = [\"RHA\",ano]\n",
+        "    else:\n",
+        "        gp_ano = pd.read_excel(f,usecols=[\"Grado de Presión (%)\"])\n",
+        "        gp_ano.columns = [ano]\n",
+        "        gp[ano] = gp_ano[ano]\n",
+        "gp[\"RHA\"] = gp[\"RHA\"].str.replace(r\"^\\s*[IVXLCDM]+\\s*[-.]?\\s*\", \"\", regex=True)\n",
+        "name_mapping = {\n",
+        "    \"Península de Baja California\": \"Península De Baja California\",\n",
+        "    'Cuencas Centrales del Norte': 'Cuencas Centrales Del Norte',\n",
+        "    \"Península de Yucatán\": \"Península De Yucatán\",\n",
+        "    'Aguas del Valle de México': 'Valle de México'\n",
+        "}\n",
+        "gp['RHA'] = gp['RHA'].replace(name_mapping)\n",
+        "gp_largo = pd.melt(gp,id_vars=[\"RHA\"],var_name=\"Año\",value_name=\"Grado de presión (%)\")\n",
+        "gp_largo[\"Año\"] = gp_largo[\"Año\"].astype(int)\n",
+        "geojson = \"datos/rha2023.json\"\n",
+        "fig = px.choropleth(gp_largo,geojson=geojson,locations=\"RHA\",featureidkey=\"properties.rha\",color=\"Grado de presión (%)\",animation_frame=\"Año\",color_continuous_scale=\"Viridis\")\n",
+        "fig.update_geos(fitbounds=\"locations\",visible=False)"
+      ],
+      "id": "42f1b623",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "px.line(gp_largo,x=\"Año\",y=\"Grado de presión (%)\",color=\"RHA\")"
+      ],
+      "id": "977564d9",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "anos = np.arange(2005,2023+1)\n",
+        "for ano in anos:\n",
+        "    f = f\"datos/Agua_Renovable_RHA_{ano}.xlsx\"\n",
+        "    if ano == 2005:\n",
+        "        arpcrha = pd.read_excel(f,usecols=[\"RHA\",\"Agua Renovable per cápita (m³/habitante/año)\"])\n",
+        "        arpcrha.columns = [\"RHA\",ano]\n",
+        "    else:\n",
+        "        arpcrh_ano = pd.read_excel(f,usecols=[\"Agua Renovable per cápita (m³/habitante/año)\"])\n",
+        "        arpcrh_ano.columns = [ano]\n",
+        "        arpcrha[ano] = arpcrh_ano[ano]\n",
+        "name_mapping = {\n",
+        "    \"Península de Baja California\": \"Península De Baja California\",\n",
+        "    'Cuencas Centrales del Norte': 'Cuencas Centrales Del Norte',\n",
+        "    \"Península de Yucatán\": \"Península De Yucatán\",\n",
+        "    'Aguas del Valle de México': 'Valle de México'\n",
+        "}\n",
+        "arpcrha['RHA'] = arpcrha['RHA'].replace(name_mapping)\n",
+        "arpcrha_largo = pd.melt(arpcrha,id_vars=[\"RHA\"],var_name=\"Año\",value_name=\"Agua Renovable per cápita (m³/habitante/año)\")\n",
+        "arpcrha_largo[\"Año\"] = arpcrha_largo[\"Año\"].astype(int)\n",
+        "geojson = \"datos/rha2023.json\"\n",
+        "fig = px.choropleth(arpcrha_largo,geojson=geojson,locations=\"RHA\",featureidkey=\"properties.rha\",color=\"Agua Renovable per cápita (m³/habitante/año)\",animation_frame=\"Año\",color_continuous_scale=\"Viridis\")\n",
+        "fig.update_geos(fitbounds=\"locations\",visible=False)"
+      ],
+      "id": "38aad7ad",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "px.line(arpcrha_largo,x=\"Año\",y=\"Agua Renovable per cápita (m³/habitante/año)\",color=\"RHA\")"
+      ],
+      "id": "5755c616",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "anos = np.arange(2017,2021+1)\n",
+        "for ano in anos:\n",
+        "    f = f\"datos/agua_renovable_estatal{ano}.xlsx\"\n",
+        "    if ano == 2017:\n",
+        "        arpcedo = pd.read_excel(f,usecols=[\"Entidad Federativa\",\"Agua Renovable per cápita (m³/habitante/año)\"])\n",
+        "        arpcedo.columns = [\"Estado\",ano]\n",
+        "    else:\n",
+        "        arpcedo_ano = pd.read_excel(f,usecols=[\"Agua Renovable per cápita (m³/habitante/año)\"])\n",
+        "        arpcedo_ano.columns = [ano]\n",
+        "        arpcedo[ano] = arpcedo_ano[ano]\n",
+        "\n",
+        "name_mapping = {\n",
+        "    'Coahuila de Zaragoza': 'Coahuila',\n",
+        "    'Veracruz de Ignacio de la Llave': 'Veracruz',\n",
+        "}\n",
+        "\n",
+        "arpcedo['Estado'] = arpcedo['Estado'].replace(name_mapping)\n",
+        "arpcedo_largo = pd.melt(arpcedo,id_vars=[\"Estado\"],var_name=\"Año\",value_name=\"Agua Renovable per cápita (m³/habitante/año)\")\n",
+        "arpcedo_largo[\"Año\"] = arpcedo_largo[\"Año\"].astype(int)\n",
+        "geojson = \"https://raw.githubusercontent.com/angelnmara/geojson/master/mexicoHigh.json\"\n",
+        "fig = px.choropleth(arpcedo_largo,geojson=geojson,locations=\"Estado\",featureidkey=\"properties.name\",color=\"Agua Renovable per cápita (m³/habitante/año)\",animation_frame=\"Año\",color_continuous_scale=\"Viridis\")\n",
+        "fig.update_geos(fitbounds=\"locations\",visible=False)"
+      ],
+      "id": "282ce6ed",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "px.line(arpcedo_largo,x=\"Año\",y=\"Agua Renovable per cápita (m³/habitante/año)\",color=\"Estado\")"
+      ],
+      "id": "dfdb4760",
+      "execution_count": null,
+      "outputs": []
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3 (ipykernel)",
+      "path": "/home/acb/Tlamatipohua/.venv/share/jupyter/kernels/python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}
