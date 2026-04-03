@@ -14,91 +14,49 @@ import numpy as np
 import plotly.express as px
 ```
 
-# Primera visualización
 
 ```{python}
-anos = np.arange(2003,2022+1)
-for ano in anos:
-    f = f"datos/Grado_de_Presion_{ano}.xlsx"
-    if ano == 2003:
-        gp = pd.read_excel(f,usecols=["Región Hidrológico-Administrativa","Grado de Presión (%)"])
-        gp.columns = ["RHA",ano]
-    else:
-        gp_ano = pd.read_excel(f,usecols=["Grado de Presión (%)"])
-        gp_ano.columns = [ano]
-        gp[ano] = gp_ano[ano]
-gp["RHA"] = gp["RHA"].str.replace(r"^\s*[IVXLCDM]+\s*[-.]?\s*", "", regex=True)
-name_mapping = {
-    "Península de Baja California": "Península De Baja California",
-    'Cuencas Centrales del Norte': 'Cuencas Centrales Del Norte',
-    "Península de Yucatán": "Península De Yucatán",
-    'Aguas del Valle de México': 'Valle de México'
-}
-gp['RHA'] = gp['RHA'].replace(name_mapping)
-gp_largo = pd.melt(gp,id_vars=["RHA"],var_name="Año",value_name="Grado de presión (%)")
-gp_largo["Año"] = gp_largo["Año"].astype(int)
-geojson = "datos/rha2023.json"
-fig = px.choropleth(gp_largo,geojson=geojson,locations="RHA",featureidkey="properties.rha",color="Grado de presión (%)",animation_frame="Año",color_continuous_scale="Viridis")
-fig.update_geos(fitbounds="locations",visible=False)
-```
+f = "datos/Poblacion_01.xlsx"
+poblacion = pd.read_excel(f,skiprows=6,nrows=32,usecols=["Entidad federativa","Total"])
+f = "datos/agua_renovable_estatal2021.xlsx"
+arpcedo_2021 = pd.read_excel(f)
+arpcedo_2021["poblacion2020_hab"] = poblacion["Total"]
+arpcedo_2021["arpc_m3/hab"] = arpcedo_2021["Agua Renovable (hm³/año)"] * 1e6 / arpcedo_2021["poblacion2020_hab"]
+f = "datos/repda_estatal2021.xlsx"
+repda_2021 = pd.read_excel(f)
+numeric_cols = [col for col in repda_2021.columns if col != "Estado"]
+repda_2021[numeric_cols] = repda_2021[numeric_cols].replace(",", "", regex=True)
+repda_2021[numeric_cols] = repda_2021[numeric_cols].replace(r"[^\d.\-]", "", regex=True)
+repda_2021[numeric_cols] = repda_2021[numeric_cols].apply(pd.to_numeric, errors="coerce").astype(float)
+repda_2021["consuntivo_hm3"] = repda_2021["Total por estado"] - repda_2021["Conservación ecológica (N)"] - repda_2021["Eléctricidad ó Hidroeléctrica (J)"]
+repda_2021["poblacion_hab"] = arpcedo_2021["Población (Millones de habitantes)"] * 1e6
+repda_2021["consuntivo_l"] = repda_2021["consuntivo_hm3"] * 1e9
+repda_2021["cpc_l/hab"] = repda_2021["consuntivo_l"] / repda_2021["poblacion_hab"]
+repda_2021["arpc_l/hab"] = arpcedo_2021["arpc_m3/hab"] * 1e3
+repda_2021_plot = repda_2021.melt(
+    id_vars="Estado",
+    value_vars=["cpc_l/hab", "arpc_l/hab"],
+    var_name="Indicador",
+    value_name="Valor"
+ )
 
-```{python}
-px.line(gp_largo,x="Año",y="Grado de presión (%)",color="RHA")
-```
+estados = repda_2021["Estado"].tolist()
 
-```{python}
-anos = np.arange(2005,2023+1)
-for ano in anos:
-    f = f"datos/Agua_Renovable_RHA_{ano}.xlsx"
-    if ano == 2005:
-        arpcrha = pd.read_excel(f,usecols=["RHA","Agua Renovable per cápita (m³/habitante/año)"])
-        arpcrha.columns = ["RHA",ano]
-    else:
-        arpcrh_ano = pd.read_excel(f,usecols=["Agua Renovable per cápita (m³/habitante/año)"])
-        arpcrh_ano.columns = [ano]
-        arpcrha[ano] = arpcrh_ano[ano]
-name_mapping = {
-    "Península de Baja California": "Península De Baja California",
-    'Cuencas Centrales del Norte': 'Cuencas Centrales Del Norte',
-    "Península de Yucatán": "Península De Yucatán",
-    'Aguas del Valle de México': 'Valle de México'
-}
-arpcrha['RHA'] = arpcrha['RHA'].replace(name_mapping)
-arpcrha_largo = pd.melt(arpcrha,id_vars=["RHA"],var_name="Año",value_name="Agua Renovable per cápita (m³/habitante/año)")
-arpcrha_largo["Año"] = arpcrha_largo["Año"].astype(int)
-geojson = "datos/rha2023.json"
-fig = px.choropleth(arpcrha_largo,geojson=geojson,locations="RHA",featureidkey="properties.rha",color="Agua Renovable per cápita (m³/habitante/año)",animation_frame="Año",color_continuous_scale="Viridis")
-fig.update_geos(fitbounds="locations",visible=False)
-```
-```{python}
-px.line(arpcrha_largo,x="Año",y="Agua Renovable per cápita (m³/habitante/año)",color="RHA")
-```
+fig = px.bar(
+    repda_2021_plot,
+    y="Estado",
+    x="Valor",
+    color="Indicador",
+    barmode="group",
+    orientation="h",
+    category_orders={"Estado": estados}
+ )
 
-```{python}
-anos = np.arange(2017,2021+1)
-for ano in anos:
-    f = f"datos/agua_renovable_estatal{ano}.xlsx"
-    if ano == 2017:
-        arpcedo = pd.read_excel(f,usecols=["Entidad Federativa","Agua Renovable per cápita (m³/habitante/año)"])
-        arpcedo.columns = ["Estado",ano]
-    else:
-        arpcedo_ano = pd.read_excel(f,usecols=["Agua Renovable per cápita (m³/habitante/año)"])
-        arpcedo_ano.columns = [ano]
-        arpcedo[ano] = arpcedo_ano[ano]
-
-name_mapping = {
-    'Coahuila de Zaragoza': 'Coahuila',
-    'Veracruz de Ignacio de la Llave': 'Veracruz',
-}
-
-arpcedo['Estado'] = arpcedo['Estado'].replace(name_mapping)
-arpcedo_largo = pd.melt(arpcedo,id_vars=["Estado"],var_name="Año",value_name="Agua Renovable per cápita (m³/habitante/año)")
-arpcedo_largo["Año"] = arpcedo_largo["Año"].astype(int)
-geojson = "https://raw.githubusercontent.com/angelnmara/geojson/master/mexicoHigh.json"
-fig = px.choropleth(arpcedo_largo,geojson=geojson,locations="Estado",featureidkey="properties.name",color="Agua Renovable per cápita (m³/habitante/año)",animation_frame="Año",color_continuous_scale="Viridis")
-fig.update_geos(fitbounds="locations",visible=False)
-```
-
-```{python}
-px.line(arpcedo_largo,x="Año",y="Agua Renovable per cápita (m³/habitante/año)",color="Estado")
+fig.update_layout(
+    xaxis_title="Litros por habitante",
+    #yaxis_title="Estado",
+    #legend_title_text="Serie",
+    height=max(700, 28 * len(estados)),
+    #margin={"l": 220, "r": 30, "t": 40, "b": 40}
+ )
 ```
