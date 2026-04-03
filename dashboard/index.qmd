@@ -5,6 +5,8 @@ format: dashboard
 theme: 
     light: flatly
     dark: darkly
+bibliography: refs.bib
+csl: ieee-access.csl
 ---
 
 ```{python}
@@ -13,6 +15,7 @@ import numpy as np
 import plotly.express as px
 ```
 
+@comision_nacional_del_agua_conagua_agua_2021, @comision_nacional_del_agua_conagua_repda_2021, @instituto_nacional_de_estadistica_y_geografia_inegi_poblacion_2020
 
 ```{python}
 f = "../datos/Poblacion_01.xlsx"
