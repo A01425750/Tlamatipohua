@@ -1,12 +1,11 @@
 ---
-title: "¿?"
-author: "Tlamatipohua"
-format: dashboard
-theme: 
-    light: flatly
-    dark: darkly
+format: html
 bibliography: refs.bib
 csl: ieee-access.csl
+execute:
+    echo: false
+jupyter: python3
+lang: es
 ---
 
 ```{python}
@@ -15,7 +14,13 @@ import numpy as np
 import plotly.express as px
 ```
 
-@comision_nacional_del_agua_conagua_agua_2021, @comision_nacional_del_agua_conagua_repda_2021, @instituto_nacional_de_estadistica_y_geografia_inegi_poblacion_2020
+:::: {.columns}
+
+::: {.column width="20%"}
+¿Por qué en estados como Aguascalientes y Guanajuato el consumo de agua es mayor que el agua disponible? @comision_nacional_del_agua_conagua_agua_2021, @comision_nacional_del_agua_conagua_repda_2021, @instituto_nacional_de_estadistica_y_geografia_inegi_poblacion_2020
+:::
+
+::: {.column width="80%"}
 
 ```{python}
 f = "../datos/Poblacion_01.xlsx"
@@ -30,35 +35,141 @@ numeric_cols = [col for col in repda_2021.columns if col != "Estado"]
 repda_2021[numeric_cols] = repda_2021[numeric_cols].replace(",", "", regex=True)
 repda_2021[numeric_cols] = repda_2021[numeric_cols].replace(r"[^\d.\-]", "", regex=True)
 repda_2021[numeric_cols] = repda_2021[numeric_cols].apply(pd.to_numeric, errors="coerce").astype(float)
+name_mapping = {
+    'Coahuila de Zaragoza': 'Coahuila',
+    'Michoacán de Ocampo': 'Michoacán',
+    'Veracruz de Ignacio de la Llave': 'Veracruz',
+    'México': 'Estado de México'
+}
+repda_2021['Estado'] = repda_2021['Estado'].replace(name_mapping)
 repda_2021["consuntivo_hm3"] = repda_2021["Total por estado"] - repda_2021["Conservación ecológica (N)"] - repda_2021["Eléctricidad ó Hidroeléctrica (J)"]
 repda_2021["poblacion_hab"] = arpcedo_2021["Población (Millones de habitantes)"] * 1e6
 repda_2021["consuntivo_l"] = repda_2021["consuntivo_hm3"] * 1e9
-repda_2021["cpc_l/hab"] = repda_2021["consuntivo_l"] / repda_2021["poblacion_hab"]
-repda_2021["arpc_l/hab"] = arpcedo_2021["arpc_m3/hab"] * 1e3
+repda_2021["cpc_Ml/hab"] = repda_2021["consuntivo_l"] / (repda_2021["poblacion_hab"] * 1e6)
+repda_2021["arpc_Ml/hab"] = arpcedo_2021["arpc_m3/hab"] * 1e3 / 1e6
 repda_2021_plot = repda_2021.melt(
     id_vars="Estado",
-    value_vars=["cpc_l/hab", "arpc_l/hab"],
+    value_vars=["cpc_Ml/hab", "arpc_Ml/hab"],
     var_name="Indicador",
-    value_name="Valor"
+    value_name="Millones de litros por habitante"
  )
+repda_2021_plot["Indicador"] = repda_2021_plot["Indicador"].replace({
+    "cpc_Ml/hab": "Consumo",
+    "arpc_Ml/hab": "Agua renovable disponible"
+})
 
 estados = repda_2021["Estado"].tolist()
 
 fig = px.bar(
     repda_2021_plot,
     y="Estado",
-    x="Valor",
+    x="Millones de litros por habitante",
     color="Indicador",
     barmode="group",
     orientation="h",
-    category_orders={"Estado": estados}
+    category_orders={
+        "Estado": estados,
+        "Indicador": ["Agua renovable disponible", "Consumo"]
+    },
+    color_discrete_map={
+        "Consumo": "#636EFA",
+        "Agua renovable disponible": "#EF553B"
+    }
  )
 
 fig.update_layout(
-    xaxis_title="Litros por habitante",
-    #yaxis_title="Estado",
-    #legend_title_text="Serie",
+    xaxis_title="Millones de litros por habitante",
+    yaxis_title=None,
+    legend_title_text=None,
+    legend_traceorder="reversed",
     height=max(700, 28 * len(estados)),
-    #margin={"l": 220, "r": 30, "t": 40, "b": 40}
  )
 ```
+
+:::
+
+::::
+
+
+
+
+
+:::: {.columns}
+
+::: {.column width="80%"}
+```{python}
+f = "../datos/Poblacion_01.xlsx"
+poblacion = pd.read_excel(f,skiprows=6,nrows=32,usecols=["Entidad federativa","Total"])
+f = "../datos/agua_renovable_estatal2021.xlsx"
+arpcedo_2021 = pd.read_excel(f)
+arpcedo_2021["poblacion2020_hab"] = poblacion["Total"]
+arpcedo_2021["arpc_m3/hab"] = arpcedo_2021["Agua Renovable (hm³/año)"] * 1e6 / arpcedo_2021["poblacion2020_hab"]
+f = "../datos/repda_estatal2021.xlsx"
+repda_2021 = pd.read_excel(f)
+numeric_cols = [col for col in repda_2021.columns if col != "Estado"]
+repda_2021[numeric_cols] = repda_2021[numeric_cols].replace(",", "", regex=True)
+repda_2021[numeric_cols] = repda_2021[numeric_cols].replace(r"[^\d.\-]", "", regex=True)
+repda_2021[numeric_cols] = repda_2021[numeric_cols].apply(pd.to_numeric, errors="coerce").astype(float)
+name_mapping = {
+    'Coahuila de Zaragoza': 'Coahuila',
+    'Michoacán de Ocampo': 'Michoacán',
+    'Veracruz de Ignacio de la Llave': 'Veracruz',
+    'México': 'Estado de México'
+}
+repda_2021['Estado'] = repda_2021['Estado'].replace(name_mapping)
+repda_2021["consuntivo_hm3"] = repda_2021["Total por estado"] - repda_2021["Conservación ecológica (N)"] - repda_2021["Eléctricidad ó Hidroeléctrica (J)"]
+repda_2021["poblacion_hab"] = arpcedo_2021["Población (Millones de habitantes)"] * 1e6
+repda_2021["consuntivo_l"] = repda_2021["consuntivo_hm3"] * 1e9
+repda_2021["cpc_Ml/hab"] = repda_2021["consuntivo_l"] / (repda_2021["poblacion_hab"] * 1e6)
+repda_2021["arpc_Ml/hab"] = arpcedo_2021["arpc_m3/hab"] * 1e3 / 1e6
+repda_2021_plot = repda_2021.melt(
+    id_vars="Estado",
+    value_vars=["cpc_Ml/hab", "arpc_Ml/hab"],
+    var_name="Indicador",
+    value_name="Millones de litros por habitante"
+ )
+repda_2021_plot["Indicador"] = repda_2021_plot["Indicador"].replace({
+    "cpc_Ml/hab": "Consumo",
+    "arpc_Ml/hab": "Agua renovable disponible"
+})
+
+estados = repda_2021["Estado"].tolist()
+
+fig = px.bar(
+    repda_2021_plot,
+    y="Estado",
+    x="Millones de litros por habitante",
+    color="Indicador",
+    barmode="group",
+    orientation="h",
+    category_orders={
+        "Estado": estados,
+        "Indicador": ["Agua renovable disponible", "Consumo"]
+    },
+    color_discrete_map={
+        "Consumo": "#636EFA",
+        "Agua renovable disponible": "#EF553B"
+    }
+ )
+
+fig.update_layout(
+    xaxis_title="Millones de litros por habitante",
+    yaxis_title=None,
+    legend_title_text=None,
+    legend_traceorder="reversed",
+    height=max(700, 28 * len(estados)),
+ )
+```
+:::
+
+::: {.column width="20%"}
+
+Mientras que en Chiapas el agua renovable disponible es mucho mayor que el consumo
+
+:::
+
+::::
+
+Grado de presión en regiones hidrológico-administrativas
+
+Pero, ¿quién consume el agua? 

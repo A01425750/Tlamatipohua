@@ -57,6 +57,24 @@ Calcular la huella hídrica de la persona usuaria para explorar diferentes escen
 - **Resultado**: Nos recomendó links de instituciones mexicanas que llevan registro de datos que nos podrían ayudar a realizar esto.
 - **Decisión**: Elegimos puntualmente aquella que de manera general nos ayudarán a alcanzar nuestros objetivos. 
 
+### 2026-04-03 | GitHub Copilot (GPT-5.3-Codex) | Ajustar títulos y etiquetas de la gráfica horizontal de REPDA.
+- **Tarea**: Ocultar el título del eje categórico (`Estado`), quitar el título de la leyenda y renombrar las series de leyenda a texto legible.
+- **Prompt**: remove the y-axis title "Estado" so it does not appear on the chart. remove the default legend title so the legend does not have title. instead of cpc_Ml/hab and arpc_Ml/hab, write "Consumo" and "Agua renovable disponible" on the legend. document this change in ai-log.md
+- **Resultado**: En `dashboard/index.qmd` se transformaron los valores de `Indicador` para mostrar `Consumo` y `Agua renovable disponible` en la leyenda. Además, se actualizó `fig.update_layout(...)` con `yaxis_title=None` y `legend_title_text=None` para eliminar ambos títulos en la visualización.
+- **Decisión**: Mantener nombres de series orientados a lectura pública y evitar títulos redundantes en gráficos con leyendas autoexplicativas.
+
+### 2026-04-03 | GitHub Copilot (GPT-5.3-Codex) | Sincronizar orden de leyenda y barras en gráfica horizontal de REPDA.
+- **Tarea**: Alinear el orden visual de las barras con el orden de la leyenda para que `Consumo` (azul) aparezca primero y por encima de `Agua renovable disponible` (rojo).
+- **Prompt**: make the order of the legend and the brs match: if Consumo (blue) goes first, put the blue bars above the red bars
+- **Resultado**: En `dashboard/index.qmd` se definió explícitamente el orden de `Indicador` con `category_orders={"Indicador": ["Consumo", "Agua renovable disponible"]}`, se fijó `legend_traceorder="normal"` y se estableció `color_discrete_map` para mantener colores consistentes (`Consumo` azul, `Agua renovable disponible` rojo).
+- **Decisión**: Fijar siempre orden y paleta de categorías en gráficas comparativas para evitar ambigüedad entre leyenda y posición de trazos.
+
+### 2026-04-03 | GitHub Copilot (GPT-5.3-Codex) | Corregir prioridad visual de barras manteniendo orden de leyenda.
+- **Tarea**: Ajustar el gráfico porque las barras rojas seguían apareciendo por encima de las azules, aunque la leyenda ya mostraba `Consumo` primero.
+- **Prompt**: red bars are still above blue bars and on the legend, Consumo in blue is above Agua renovable disponible in red
+- **Resultado**: Se invirtió el orden de trazado en `category_orders` a `['Agua renovable disponible', 'Consumo']` para que `Consumo` se dibuje después y quede visualmente arriba. Al mismo tiempo, se configuró `legend_traceorder='reversed'` para conservar en la leyenda el orden visible `Consumo` (azul) arriba de `Agua renovable disponible` (rojo).
+- **Decisión**: Cuando hay conflicto entre orden de dibujo y orden de leyenda en barras agrupadas horizontales, separar ambos controles (orden de trazado y orden de leyenda) para lograr consistencia visual.
+
 
 
 
