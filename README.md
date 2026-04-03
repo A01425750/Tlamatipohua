@@ -16,6 +16,9 @@ Dudas
 
 ¿qué parte de la historia necesita más claridad?
 
+
+cuánta agua hay disponible, cuánta se consume, quién es responsable, de dónde viene
+
 Referencias
 
 https://sinav30.conagua.gob.mx:8080/Estadistico/#/grado

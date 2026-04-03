@@ -38,4 +38,16 @@
 - **Resultado**: Se habilitó caché de ejecución en `dashboard/index.qmd` agregando `execute: cache: true` en el encabezado YAML. Con ello, Quarto reutiliza resultados de celdas no modificadas y reduce drásticamente los tiempos de re-render en preview.
 - **Decisión**: Mantener caché activa para notebooks/dashboards con carga repetida de datos históricos, especialmente cuando se trabaja con `quarto preview` en modo watch.
 
+- **Fecha | Herramienta | Tarea**: 2026-04-02 | GitHub Copilot (GPT-5.3-Codex) | Convertir columnas de `repda_2021` a tipo float.
+- **Tarea**: Asegurar que las columnas numéricas de `repda_2021` (excepto `Estado`) queden como flotantes al cargar el archivo Excel.
+- **Prompt**: convert columns from repda_2021 to float
+- **Resultado**: Se actualizó la celda de carga para identificar columnas numéricas (`numeric_cols`), limpiar comas y caracteres no numéricos, y convertir con `pd.to_numeric(..., errors="coerce").astype(float)`. La celda se ejecutó correctamente y las columnas objetivo quedaron en formato float.
+- **Decisión**: Reutilizar este patrón de limpieza + conversión para dataframes provenientes de Excel cuando puedan contener separadores de miles u otros símbolos.
+
+- **Fecha | Herramienta | Tarea**: 2026-04-02 | GitHub Copilot (GPT-5.3-Codex) | Mostrar todas las etiquetas de `Estado` en la gráfica de barras horizontal.
+- **Tarea**: Ajustar el eje categórico de la gráfica de `repda_2021` para que se visualicen todos los estados sin omitir etiquetas.
+- **Prompt**: not all the "Estados" are shown. adjust x-axis (y-axis in horizontañ) so all the labels from "Estado" are displayed
+- **Resultado**: Se actualizó la celda de visualización para forzar ticks categóricos completos (`tickmode="array"`, `tickvals`, `ticktext`), aumentar altura dinámica de la figura y ampliar márgenes del eje de etiquetas. Tras ejecutar la celda, se mostraron todas las etiquetas de `Estado`.
+- **Decisión**: Para gráficas horizontales con muchas categorías, fijar ticks explícitos y escalar altura/márgenes para evitar ocultamiento o recorte de etiquetas.
+
 ### No usamos IA para hacer lo siguiente:
