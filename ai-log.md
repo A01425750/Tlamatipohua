@@ -115,4 +115,10 @@ Calcular la huella hídrica de la persona usuaria para explorar diferentes escen
 
 
 
+### 2026-04-04 | GitHub Copilot (GPT-5.3-Codex) | Corregir 404 de `/rha2023.json` en flujo Render to docs.
+- **Tarea**: Resolver de forma simple el error de preview donde el navegador solicitaba `/rha2023.json` y devolvía 404 durante `uv run quarto preview dashboard/index.qmd`.
+- **Prompt**: fix this as simply as possible
+- **Resultado**: Se actualizó `dashboard/index.qmd` para que en `resources` se incluya `rha2023.json` (archivo local del proyecto Quarto) en lugar de `../datos/rha2023.json`. Después se ejecutó `uv run quarto render dashboard/index.qmd` y se verificó que el sitio generado en `docs/` contiene tanto `index.html` como `rha2023.json`.
+- **Decisión**: Para despliegue en GitHub Pages con salida en `docs`, declarar en `resources` los archivos estáticos locales que deben copiarse al directorio publicado y evitar rutas fuera del proyecto en tiempo de cliente.
+
 ### No usamos IA para hacer lo siguiente:
