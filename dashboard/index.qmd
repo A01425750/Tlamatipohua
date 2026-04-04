@@ -1,9 +1,8 @@
 ---
-format: html
 bibliography: refs.bib
 csl: ieee-access.csl
 resources:
-    - ../datos/rha2023.json
+    - rha2023.json
 execute:
     echo: false
     cache: true
