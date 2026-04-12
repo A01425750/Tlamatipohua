@@ -1,0 +1,86 @@
+Identifier: MEX-INEGI.ESD3.03-ENIGH-2024-NS
+
+Title: Encuesta Nacional de Ingresos y Gastos de los Hogares 2024
+
+Description: INEGI. Encuesta Nacional de Ingresos y Gastos de los Hogares 2024. SNIEG. Información de Interés Nacional
+
+El objetivo de la ENIGH es proporcionar un panorama estadístico del comportamiento de los ingresos y gastos de los hogares en cuanto a su monto, procedencia y distribución; adicionalmente ofrece información sobre las características ocupacionales y sociodemográficas de los integrantes del hogar, así como las características de la infraestructura de la vivienda y el equipamiento del hogar.
+
+Desde 1984, cuando el INEGI comenzó a levantar la encuesta, hasta el día de hoy, se han venido desarrollando tanto nuevas metodologías, emitido recomendaciones internacionales y documentado buenas prácticas para la generación de información de ingresos y gastos de los hogares por medio de encuestas.
+En este periodo se han realizado adiciones en la temática de la encuesta, actualizaciones metodológicas e innovaciones en los procesos, para obtener resultados que reflejen la realidad, tomando en cuenta las recomendaciones internacionales y los requerimientos de información de los diferentes usuarios. Cuando la adopción de las recomendaciones y buenas prácticas implicaban un rompimiento en la comparabilidad de los resultados, se prefirió mantener la comparabilidad histórica.
+
+A partir de 2008 el INEGI decidió publicar los resultados de la ENIGH, cuyas variables han sido construidas y presentadas conforme a las recomendaciones de la ONU, específicamente, las emitidas en la 17a Conferencia Internacional de Estadísticos del Trabajo y en el Reporte del Grupo de Canberra. Esta nueva construcción, es la fuente de información para la medición multidimensional de la pobreza.
+
+Ahora bien, además de mencionar y analizar las recomendaciones internacionales que se pusieron en práctica en la ENIGH 2024, en el presente documento también se relatan los antecedentes de la ENIGH, cómo surgió y los cambios significativos que ha tenido desde entonces; se mencionan los objetivos de la encuesta y los instrumentos de captación que utiliza; asimismo, como eje principal, está la descripción del ingreso y del gasto, sus fuentes, su correlación e implicaciones, esto, como principales indicadores del bienestar del hogar; en otro capítulo se listan los principales usuarios de la información de la encuesta; y por último, se presentan los esquemas de los temas, categorías y variables empleados en la ENIGH 2024.
+
+Cobertura geográfica. Nacional y a nivel de entidad federativa ámbito urbano y rural.
+
+Unidad de muestreo. La vivienda.
+
+Unidad de observación. El hogar.
+
+Unidad de análisis. El hogar, la vivienda y los integrantes del hogar.
+
+Esquema de muestreo. Probabilístico, a su vez el diseño es estratificado, bietápico y por conglomerados, donde la unidad última de selección es la vivienda y la unidad de observación es el hogar; en consecuencia, los resultados obtenidos de la encuesta se generalizan a toda la población.
+
+Marco muestral. El marco de muestreo utilizado es el marco de propósitos múltiples del INEGI, está constituido con la información demográfica y cartográfica obtenida a partir del levantamiento del Censo de Población y Vivienda 2020. La selección se realiza en dos etapas:
+- En la primera etapa, se eligen las unidades primarias de muestreo (UPM).
+- En la segunda etapa, se seleccionan las viviendas objeto de entrevista de cada encuesta.
+
+Tamaño efectivo de la muestra. 105 718 viviendas particulares.
+
+Periodo de levantamiento. El operativo de campo de la encuesta se llevó a cabo del 21 de agosto al 28 de noviembre de 2024. Este periodo se divide en diez decenas (incluida una de recuperación), en cada una de ellas la información se recolecta durante siete días consecutivos.
+
+Población objetivo. La constituyen los hogares de nacionales o extranjeros, que residen habitualmente en viviendas particulares dentro del territorio nacional.
+
+Método de recolección. La información se captó mediante seis cuestionarios, que se detallan en la sección Recolección de datos, aunque el número de cuestionarios utilizados por hogar dependió del número de integrantes del mismo y sus características ocupacionales. La entrevista se realizó cara a cara, por lo que un entrevistador debió visitar la vivienda los siete días de la decena y contactar con uno de los informantes adecuados.
+
+Cobertura temática: 
+
+Características de la vivienda. 
+Residentes e identificación de hogares en la vivienda. 
+Características sociodemográficas de los residentes de la vivienda. 
+Equipamiento del hogar, servicios. 
+Condición de actividad y características ocupacionales de los integrantes del hogar de 12 y más años. 
+Ingreso corriente total (monetario y no monetario) de los hogares. 
+Percepciones financieras y de capital de los hogares y sus integrantes. 
+Gasto corriente monetario de los hogares. 
+Erogaciones financieras y de capital de los hogares. 
+
+Los diferentes conceptos de la ENIGH están regidos por recomendaciones acordadas en convenciones internacionales,  por ejemplo: 
+
+Las resoluciones e informes de las 18 Conferencias Internacionales sobre estadísticas del trabajo, de la Organización Internacional del Trabajo (OIT). 
+
+El reporte final y recomendaciones del Grupo de Canberra, grupo de expertos en las "Estadísticas de Ingreso de los Hogares". 
+
+Manual de Encuestas sobre Hogares. Departamento de Asuntos Económicos y Sociales Internacionales, Oficina de Estadística. Naciones Unidas, Nueva York, 1987. 
+
+Asimismo están articuladas con el Sistema de Cuentas Nacionales y con las Encuestas de Hogar que levanta el INEGI. 
+
+Tamaño de la muestra: A nivel nacional son 105,718 viviendas particulares. 
+
+Carga de trabajo: De acuerdo a la minuciosidad en el registro de la información en este proyecto se ha definido para cada entrevistador una carga de seis entrevistas en viviendas particulares por decena. El número de entrevistas puede disminuir o aumentar de acuerdo con varios factores: no respuesta, recuperación de la no respuesta u hogares adicionales.  
+
+Modified: 2025-07-30
+
+Publisher: Instituto Nacional de Estadística y Geografía, INEGI
+
+Mbox: atencion.usuarios@inegi.org.mx
+
+License: https://www.inegi.org.mx/inegi/terminos.html
+
+DataDictionary: https://www.inegi.org.mx/rnm/index.php/catalog/1116/data-dictionary
+
+Keyword: "alimentación", "consumo", "encuesta", "entretenimiento", "gasto", "hogar", "ingreso", "ocupación", "población", "pobreza", "remuneración", "trabajo", "vivienda"
+
+ContactPoint: Mtro. J. Armando Aguiar Rodríguez, 800 111 4634
+
+Temporal: 2024-08-21-2024-11-28
+
+Spatial: Estados Unidos Mexicanos
+
+AccrualPeriodicity: Bienalmente
+
+Distribution: https://www.inegi.org.mx/programas/enigh/nc/2024/
+            
+

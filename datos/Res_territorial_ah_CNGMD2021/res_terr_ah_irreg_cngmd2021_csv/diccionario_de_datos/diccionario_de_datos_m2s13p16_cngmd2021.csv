@@ -1,0 +1,9 @@
+﻿COLUMNA,DESCRIPCION,ORIGEN,TIPO_DATO,LONGITUD,CODIGO_VALIDO
+ubicageo_c,Clasificación de las entidades federativas y de éstas a sus municipios,SECC XIII. 16,Numérico,5,0 al 99999
+reserter_a,Clasificación de áreas planeadas como reservas territoriales,SECC XIII. 16,Numérico,1,1 al 1
+rensnn1,¿Existencia de reservar territoriales?,SECC XIII. 16,Numérico,2,0 al 98
+rensnn2,¿Existencia de un registro o relación de reservas territoriales?,SECC XIII. 16,Numérico,2,0 al 98
+rensnn3,¿Estuvieron comprendidas cartográficamente en algún instrumento de planeación vigente?,SECC XIII. 16,Numérico,2,0 al 98
+inplan1,Instrumento de planeación - Plan,SECC XIII. 16,Carácter,3,"1, NA, NSS, ND, NP, NULL"
+inplan2,Instrumento de planeación - Programa,SECC XIII. 16,Carácter,3,"1, NA, NSS, ND, NP, NULL"
+inplan3,Instrumento de planeación - Otro,SECC XIII. 16,Carácter,3,"1, NA, NSS, ND, NP, NULL"

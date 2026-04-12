@@ -1,0 +1,5 @@
+﻿COLUMNA,DESCRIPCION,ORIGEN,TIPO_DATO,LONGITUD,CODIGO_VALIDO
+ubicageo_c,Clasificación de las entidades federativas y de éstas a sus municipios,SECC XIII. 20,Numérico,5,0 al 99999
+ahirregu_a,Clasificación de asentamientos humanos irregulares,SECC XIII. 20,Numérico,1,1 al 1
+rensnn1,¿Existencia de asentamientos humanos irregulares?,SECC XIII. 20,Numérico,2,0 al 98
+rensnn2,¿Existencia de registro o relación asentamientos humanos irregulares?,SECC XIII. 20,Numérico,2,0 al 98

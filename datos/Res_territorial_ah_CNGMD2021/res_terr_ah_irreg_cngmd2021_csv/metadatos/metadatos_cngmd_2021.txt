@@ -1,0 +1,64 @@
+﻿
+Identifier: MEX-INEGI.40.202.03-CNGMD-2021
+
+Title: Censo Nacional de Gobiernos Municipales y Demarcaciones Territoriales de la Ciudad de México 2021
+
+Description: INEGI. Censo Nacional de Gobiernos Municipales y Demarcaciones Territoriales de la Ciudad de México 2021. SNIEG. Información de Interés Nacional.
+
+Tiene como objetivo generar información estadística y geográfica sobre la gestión y desempeño de las instituciones que integran a la Administración Pública de cada municipio y demarcación territorial de la Ciudad de México, específicamente en las funciones de gobierno, seguridad pública, justicia cívica, agua potable, saneamiento, residuos sólidos urbanos y medio ambiente, con la finalidad de que esta se vincule con el quehacer gubernamental dentro del proceso de diseño, implementación, monitoreo y evaluación de las políticas públicas de alcance nacional en los referidos temas.
+
+El CNGMD 2021 presenta datos e información sobre:
+
+1. La integración del ayuntamiento de cada municipio, así como de las comisiones y las actividades realizadas por el mismo. 
+
+2. La integración de cada alcaldía de la Ciudad de México, así como de las comisiones y las actividades realizadas por la misma.
+
+3. La estructura organizacional, de los recursos humanos, presupuestales y materiales de la Administración Pública de cada municipio y demarcación territorial de la Ciudad de México, así como del ejercicio de las funciones de gobierno realizado por las instituciones que la integran. 
+
+4. Los servicios públicos prestados por el municipio o demarcación territorial de la Ciudad de México, según la forma de administración del servicio y sus principales características.
+
+5. La infraestructura de la institución encargada de la función de seguridad pública de cada municipio, así como de los recursos humanos, presupuestales y materiales de los que dispone para el ejercicio de dicha función.
+
+6. Los incidentes de emergencia registrados en los sistemas telefónicos, incluyendo el tipo de llamadas, tipo de incidentes registrados y otros elementos para la recepción de emergencias y/o denuncias, así como información sobre la existencia y recursos de los centros de atención de llamadas de emergencia.
+
+7. Las academias o institutos de formación policial municipal, así como de su infraestructura, instructores y cadetes. 
+
+8. Las puestas a disposición de personas ante el Juez Cívico u Oficial Calificador y ante el Ministerio Público, realizadas por la institución encargada de la función de seguridad pública de cada municipio.
+
+9. Los operativos policiales, patrullajes, inspecciones, remisiones de vehículos y custodias, llevadas a cabo por la institución encargada de la función de seguridad pública de cada municipio. 
+
+10. Los servicios de atención a víctimas y localización de personas desaparecidas, prestados por la institución encargada de la función de seguridad pública de cada municipio.
+
+11. La facultad en materia de tránsito y vialidad que tiene la institución encargada de la función de seguridad pública de cada municipio, así como de las infracciones de tránsito registradas en las boletas de infracción levantadas y en las imágenes detectadas por los sistemas de foto multa o foto infracción. 
+
+12. Los enfrentamientos en los que participaron elementos de la institución encargada de la función de seguridad pública de cada municipio, así como del personal y civiles armados fallecidos, lesionados y detenidos como resultado de dichos enfrentamientos.
+
+13. Las características de los objetos robados y recuperados por la institución encargada de la función de seguridad pública de cada municipio.
+
+14. La implementación del Modelo Homologado de Justicia Cívica en cada municipio, de la infraestructura y de los recursos humanos de los juzgados cívicos con los que cuenta, así como de los elementos básicos del ejercicio de la función realizada por estos.
+
+15. La gestión, administración, características técnicas y ambientales de la prestación de los servicios municipales de agua potable y saneamiento desde la perspectiva de las estadísticas ambientales, para satisfacer la demanda de información básica sobre un recurso insustituible y estratégico para la población, los ecosistemas y el desarrollo sustentable del país.
+
+16. La producción, manejo, recolección y disposición de los residuos con características domiciliarias generados en las casas habitación y en cualquier otra actividad dentro de establecimientos o en la vía pública, cuya responsabilidad en términos de su manejo recae en la administración municipal, asimismo, generar datos sobre la georreferenciación de los prestadores de los servicios, estaciones de transferencia, plantas de tratamiento y los sitios de disposición final de residuos sólidos.
+
+Modified: 2022-07-01
+
+Publisher: Instituto Nacional de Estadística y Geografía, INEGI
+
+Mbox: atencion.usuarios@inegi.org.mx 
+
+License: http://www.inegi.org.mx/inegi/terminos.html
+
+DataDictionary: https://www.inegi.org.mx/rnm/index.php/catalog/756/data-dictionary
+
+Keyword: "ayuntamiento", "alcaldías", "trámites y servicios", "protección civil", "catastro municipal", "control interno", "participación ciudadana", "marco regulatorio", "asociación interinstitucional", "servicios públicos", "contrataciones públicas", "planeación y gestión territorial", "faltas cívicas", "academias o institutos de formación policial", "operativos", "puestas a disposición", "presuntos delitos", "presuntas infracciones", "celdas para ejecutar arrestos", "procedimientos administrativos", "agua potable y saneamiento", "residuos sólidos urbanos"
+
+ContactPoint: Mtro. J. Armando Aguiar Rodríguez, 800 111 4634
+
+Temporal: 2020-01-01-2020-12-31
+
+Spatial: Estados Unidos Mexicanos
+
+AccrualPeriodicity: Bienalmente
+
+Distribution: https://www.inegi.org.mx/programas/cngmd/2021/

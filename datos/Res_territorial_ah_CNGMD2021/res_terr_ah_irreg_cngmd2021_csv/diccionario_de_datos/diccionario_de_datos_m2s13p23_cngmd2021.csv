@@ -1,0 +1,5 @@
+﻿COLUMNA,DESCRIPCION,ORIGEN,TIPO_DATO,LONGITUD,CODIGO_VALIDO
+ubicageo_c,Clasificación de las entidades federativas y de éstas a sus municipios,SECC XIII. 23,Numérico,5,0 al 99999
+servpub_a,Clasificación de los servicios públicos urbanos a los asentamientos humanos irregulares,SECC XIII. 23,Numérico,1,1 al 6
+rensnn1,¿Se dotó a los asentamientos humanos irregulares de servicios públicos urbanos?,SECC XIII. 23,Numérico,2,0 al 98
+totalca1,Cantidad total de polígonos beneficiados con la municipalización,SECC XIII. 23,Carácter,20,"0-999999999999999, NA, NSS, ND, NP, NULL"

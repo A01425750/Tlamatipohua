@@ -1,0 +1,8 @@
+﻿COLUMNA,DESCRIPCION,ORIGEN,TIPO_DATO,LONGITUD,CODIGO_VALIDO
+ubicageo_c,Clasificación de las entidades federativas y de éstas a sus municipios,SECC XIII. 21,Numérico,5,0 al 99999
+ahirregu_a,Clasificación de asentamientos humanos irregulares,SECC XIII. 21,Numérico,1,1 al 1
+totalca1,Cantidad total de asentamientos humanos irregulares,SECC XIII. 21,Carácter,20,"0-999999999999999, NA, NSS, ND, NP, NULL"
+totalca2,Cantidad total de polígonos de asentamientos humanos irregulares,SECC XIII. 21,Carácter,20,"0-999999999999999, NA, NSS, ND, NP, NULL"
+totalca3,Cantidad total de superficie en hectáreas de asentamientos humanos irregulares,SECC XIII. 21,Carácter,20,"0-999999999999999, NA, NSS, ND, NP, NULL"
+totalca4,Cantidad total de lotes o terrenos de asentamientos humanos irregulares,SECC XIII. 21,Carácter,20,"0-999999999999999, NA, NSS, ND, NP, NULL"
+totalca5,Cantidad total de población de asentamientos humanos irregulares,SECC XIII. 21,Carácter,20,"0-999999999999999, NA, NSS, ND, NP, NULL"

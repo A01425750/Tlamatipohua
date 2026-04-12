@@ -1,0 +1,12 @@
+﻿COLUMNA,DESCRIPCION,ORIGEN,TIPO_DATO,LONGITUD,CODIGO_VALIDO
+ubicageo_c,Clasificación de las entidades federativas y de éstas a sus municipios,SECC XIII. 22,Numérico,5,0 al 99999
+accahirr_a,Clasificación de las acciones de atención a asentamientos humanos irregulares,SECC XIII. 22,Numérico,1,1 al 5
+rensnn1,¿Realizó acción?,SECC XIII. 22,Numérico,2,0 al 98
+ngobie1,Nivel de gobierno que participó en la ejecución de la acción - Gobierno municipal o de la demarcación territorial,SECC XIII. 22,Carácter,3,"1, NA, NSS, ND, NP, NULL"
+ngobie2,Nivel de gobierno que participó en la ejecución de la acción - Gobierno estatal,SECC XIII. 22,Carácter,3,"1, NA, NSS, ND, NP, NULL"
+ngobie3,Nivel de gobierno que participó en la ejecución de la acción - Gobierno federal,SECC XIII. 22,Carácter,3,"1, NA, NSS, ND, NP, NULL"
+ngobie4,Nivel de gobierno que participó en la ejecución de la acción - No se sabe,SECC XIII. 22,Carácter,3,"1, NA, NSS, ND, NP, NULL"
+totalca1,Cantidad total de polígonos según la acción en atención a los asentamientos humanos irregulares,SECC XIII. 22,Carácter,20,"0-999999999999999, NA, NSS, ND, NP, NULL"
+totalca2,Cantidad total de manzanas según la acción en atención a los asentamientos humanos irregulares,SECC XIII. 22,Carácter,20,"0-999999999999999, NA, NSS, ND, NP, NULL"
+totalpo1,Porcentaje según la acción en atención a los asentamientos humanos irregulares,SECC XIII. 22,Carácter,20,"0-100, NA, NSS, ND, NP, NULL"
+ffinanci_a,Clasificación de la fuente de financiamiento según la acción en atención a los asentamientos humanos irregulares,SECC XIII. 22,Numérico,2,0 al 98

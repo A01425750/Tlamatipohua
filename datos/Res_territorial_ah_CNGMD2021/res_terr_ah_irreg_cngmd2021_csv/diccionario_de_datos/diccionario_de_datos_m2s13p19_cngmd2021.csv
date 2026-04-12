@@ -1,0 +1,6 @@
+﻿COLUMNA,DESCRIPCION,ORIGEN,TIPO_DATO,LONGITUD,CODIGO_VALIDO
+ubicageo_c,Clasificación de las entidades federativas y de éstas a sus municipios,SECC XIII. 19,Numérico,5,0 al 99999
+destinop_a,Clasificación del destino potencial de las reservas territoriales,SECC XIII. 19,Numérico,1,1 al 8
+rensnn1,¿Existieron reservas territoriales según destino potencial?,SECC XIII. 19,Numérico,2,0 al 98
+totalca1,Cantidad total de polígonos de reservas territoriales propiedad del municipio,SECC XIII. 19,Carácter,20,"0-999999999999999, NA, NSS, ND, NP, NULL"
+totalca2,Cantidad total de superficie en hectáreas de reservas territoriales propiedad del municipio,SECC XIII. 19,Carácter,20,"0-999999999999999, NA, NSS, ND, NP, NULL"

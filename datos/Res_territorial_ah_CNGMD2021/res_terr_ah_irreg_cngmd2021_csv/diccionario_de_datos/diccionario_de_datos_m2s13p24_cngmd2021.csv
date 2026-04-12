@@ -1,0 +1,4 @@
+﻿COLUMNA,DESCRIPCION,ORIGEN,TIPO_DATO,LONGITUD,CODIGO_VALIDO
+ubicageo_c,Clasificación de las entidades federativas y de éstas a sus municipios,SECC XIII. 24,Numérico,5,0 al 99999
+prevahi_a,Clasificación de las acciones para prevenir el surgimiento de asentamientos humanos irregulares,SECC XIII. 24,Numérico,2,1 al 11
+rensnn1,¿Realizó acciones para prevenir el surgimiento de asentamientos humanos irregulares?,SECC XIII. 24,Numérico,2,0 al 98

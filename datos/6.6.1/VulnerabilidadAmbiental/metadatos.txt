@@ -1,0 +1,16 @@
+Vulnerabilidad ambiental por municipio
+Datos de probabilidad de ocurrencia a la sequía por municipio estimada con indicadores ambientales (vulnerabilidad ambiental).
+
+Categoría: Medio ambiente
+
+Formatos: CSV
+
+Institución: Comisión Nacional del Agua (CONAGUA)
+
+Campo	Valor
+Última actualización de los datos	26 de marzo de 2026
+Última actualización de los metadatos	26 de marzo de 2026
+Creado	26 de marzo de 2026
+Formato	CSV
+Licencia	Creative Commons Attribution 4.0
+Mostrar más

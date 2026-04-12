@@ -1,0 +1,149 @@
+nombre_campo,longitud,tipo,nemónico,catálogo,rango_claves,no_especificado
+Identificador de la vivienda,10,C,folioviv,,[0100001901-3260593818],
+Identificador del hogar,1,C,foliohog,,[1-5],
+Huéspedes que pagan por dormir,1,N,huespedes,,[0-9],
+Huéspedes que pagan por comer,1,N,huesp_come,,[0-9],
+Número de trabajadores domésticos,1,N,num_trab_d,,[0-9],
+Trabajadores domésticos que comen,1,N,trab_come,,[0-9],
+Preocupación comida se acabe,1,C,acc_alim1,si_no,[1-2],
+Sin comida,1,C,acc_alim2,si_no,[1-2],
+Poca variedad de alimentos,1,C,acc_alim3,si_no,[1-2],
+Adulto poca variedad de alimentos,1,C,acc_alim4,si_no,[1-2],
+Dejó algún alimento,1,C,acc_alim5,si_no,[1-2],
+Comió menos,1,C,acc_alim6,si_no,[1-2],
+Sintió hambre y no comió,1,C,acc_alim7,si_no,[1-2],
+Una o menos comidas,1,C,acc_alim8,si_no,[1-2],
+Mendigar por comida,1,C,acc_alim9,si_no,[1-2],
+Menor con alimentos no sanos,1,C,acc_alim10,si_no,[1-2],
+Menor con poca variedad de alimentos,1,C,acc_alim11,si_no,[1-2],
+Menor comió menos,1,C,acc_alim12,si_no,[1-2],
+Disminuyó comida para menor,1,C,acc_alim13,si_no,[1-2],
+Menor sintió hambre y no comió,1,C,acc_alim14,si_no,[1-2],
+Menor se acostó con hambre,1,C,acc_alim15,si_no,[1-2],
+Menor con una o menos comidas,1,C,acc_alim16,si_no,[1-2],
+Número de días que comieron cereales,1,N,alim17_1,,[0-9],
+Número de días que comieron tubérculos,1,N,alim17_2,,[0-9],
+Número de días que comieron verduras,1,N,alim17_3,,[0-9],
+Número de días que comieron frutas,1,N,alim17_4,,[0-9],
+Número de días que comieron carne,1,N,alim17_5,,[0-9],
+Número de días que comieron huevo,1,N,alim17_6,,[0-9],
+Número de días que comieron pescado,1,N,alim17_7,,[0-9],
+Número de días que comieron leguminosas,1,N,alim17_8,,[0-9],
+Número de días que comieron lácteos,1,N,alim17_9,,[0-9],
+Número de días que comieron aceites,1,N,alim17_10,,[0-9],
+Número de días que comieron azúcar,1,N,alim17_11,,[0-9],
+Número de días que comieron otros alimentos,1,N,alim17_12,,[0-9],
+Relación con el consumo regular,1,C,acc_alim18,acc_alim18,[1-3],
+Línea telefónica fija,1,C,telefono,si_no,[1-2],
+Teléfono celular,1,C,celular,si_no,[1-2],
+Dispone de conexión a internet,1,C,conex_inte,si_no,[1-2],
+Televisión de paga,1,C,tv_paga,si_no,[1-2],
+Dispone de servicios de películas,1,C,peliculas,si_no,[1-2],
+Número de automóviles del hogar,2,N,num_auto,,[0-99],-1
+Año del último automóvil adquirido,2,C,anio_auto,,[00-99],&
+Número de camionetas del hogar,2,N,num_van,,[0-99],
+Año de la última camioneta adquirida,2,C,anio_van,,[00-99],&
+Número de pickups del hogar,2,N,num_pick,,[0-99],
+Año de la última pickup adquirida,2,C,anio_pick,,[00-99],&
+Número de motos del hogar,2,N,num_moto,,[0-99],
+Año de la última moto adquirida,2,C,anio_moto,,[00-99],&
+Número de bicicletas del hogar,2,N,num_bici,,[0-99],-1
+Año de la última bicicleta adquirida,2,C,anio_bici,,[00-99],&
+Número de triciclos del hogar,2,N,num_trici,,[0-99],
+Año del último triciclo adquirido,2,C,anio_trici,,[00-99],&
+Número de carretas del hogar,2,N,num_carre,,[0-99],
+Año de la última carreta adquirida,2,C,anio_carre,,[00-99],&
+Número de canoas del hogar,2,N,num_canoa,,[0-99],
+Año de la última canoa adquirida,2,C,anio_canoa,,[00-99],&
+Número de otros vehículos del hogar,2,N,num_otro,,[0-99],
+Año del último vehículo adquirido,2,C,anio_otro,,[00-99],&
+Número de estéreos del hogar,2,N,num_ester,,[0-99],-1
+Año del último estéreo adquirido,2,C,anio_ester,,[00-99],&
+Número de radios del hogar,2,N,num_radio,,[0-99],-1
+Año de la última radio adquirida,2,C,anio_radio,,[00-99],&
+Número de televisores analógicos del hogar,2,N,num_tva,,[0-99],-1
+Año del último televisor analógico adquirido,2,C,anio_tva,,[00-99],&
+Número de televisores digitales del hogar,2,N,num_tvd,,[0-99],-1
+Año del último televisor digital adquirido,2,C,anio_tvd,,[00-99],&
+Número de dvds del hogar,2,N,num_dvd,,[0-99],-1
+Año del último dvd adquirido,2,C,anio_dvd,,[00-99],&
+Número de licuadoras del hogar,2,N,num_licua,,[0-99],-1
+Año de la última licuadora adquirida,2,C,anio_licua,,[00-99],&
+Número de tostadores del hogar,2,N,num_tosta,,[0-99],-1
+Año del último tostador adquirido,2,C,anio_tosta,,[00-99],&
+Número de hornos de microondas del hogar,2,N,num_micro,,[0-99],-1
+Año del último horno adquirido,2,C,anio_micro,,[00-99],&
+Número de refrigeradores del hogar,2,N,num_refri,,[0-99],-1
+Año del último refrigerador adquirido,2,C,anio_refri,,[00-99],&
+Número de estufas del hogar,2,N,num_estuf,,[0-99],-1
+Año de la última estufa adquirida,2,C,anio_estuf,,[00-99],&
+Número de lavadoras del hogar,2,N,num_lavad,,[0-99],-1
+Año de la última lavadora adquirida,2,C,anio_lavad,,[00-99],&
+Número de planchas del hogar,2,N,num_planc,,[0-99],-1
+Año de la última plancha adquirida,2,C,anio_planc,,[00-99],&
+Número de máquinas de coser del hogar,2,N,num_maqui,,[0-99],-1
+Año de la última máquina de coser adquirida,2,C,anio_maqui,,[00-99],&
+Número de ventiladores del hogar,2,N,num_venti,,[0-99],-1
+Año del último ventilador adquirido,2,C,anio_venti,,[00-99],&
+Número de aspiradoras del hogar,2,N,num_aspir,,[0-99],-1
+Año de la última aspiradora adquirida,2,C,anio_aspir,,[00-99],&
+Número de computadoras del hogar,2,N,num_compu,,[0-99],-1
+Año de la última computadora adquirida,2,C,anio_compu,,[00-99],&
+Número de laptops adquiridas,2,N,num_lap,,[0-99],-1
+Año de la última laptop adquirida,2,C,anio_lap,,[00-99],&
+Número de tablets adquiridas,2,N,num_table,,[0-99],-1
+Año de la última tablet adquirida,2,C,anio_table,,[00-99],&
+Número de impresoras del hogar,2,N,num_impre,,[0-99],-1
+Año de la última impresora adquirida,2,C,anio_impre,,[00-99],&
+Número de videojuegos del hogar,2,N,num_juego,,[0-99],-1
+Año del último videojuego adquirido,2,C,anio_juego,,[00-99],&
+Horas en llegar al hospital,2,N,tsalud1_h,,[0-99],
+Minutos en llegar al hospital,2,N,tsalud1_m,,[0-59],
+Afectación por cambio climático,1,C,camb_clim,si_no,[1-2],
+Afectación por sequía,1,C,f_sequia,fenomeno,[1],
+Afectación por inundación,1,C,f_inunda,fenomeno,[2],
+Afectación por helada,1,C,f_helada,fenomeno,[3],
+Afectación por incendio,1,C,f_incendio,fenomeno,[4],
+Afectación por huracán o ciclón,1,C,f_huracan,fenomeno,[5],
+Afectación por deslizamiento de tierras,1,C,f_desliza,fenomeno,[6],
+Afectación por otro fenómeno climático,1,C,f_otro,fenomeno,[7],
+Daños a la vivienda por fenómeno climático,1,C,af_viv,si_no,[1-2],
+Perdida de empleo por fenómeno climático,1,C,af_empleo,si_no,[1-2],
+ Daño en su negocio por fenómeno climático,1,C,af_negocio,si_no,[1-2],
+Afectación a cultivos por fenómeno climático,1,C,af_cultivo,si_no,[1-2],
+Perdida de animales de trabajo por fenómeno climático,1,C,af_trabajo,si_no,[1-2],
+Afectaciones graves a su salud por fenómeno climático,1,C,af_salud,si_no,[1-2],
+Otro tipo de afectación por fenómeno climático,1,C,af_otro,si_no,[1-2],
+Cada mes,1,C,habito_1,habito,[1],
+Cada 15 días,1,C,habito_2,habito,[2],
+Cada 8 días,1,C,habito_3,habito,[3],
+Cada tercer día,1,C,habito_4,habito,[4],
+Diariamente,1,C,habito_5,habito,[5],
+Otros,1,C,habito_6,habito,[6],
+Consumo,1,C,consumo,si_no,[1-2],
+Número de renglón de vivienda,2,C,nr_viv,,01-99],
+Tarjeta,1,C,tarjeta,si_no,[1-2],
+Pagos con tarjetas,1,C,pagotarjet,si_no,[1-2],
+Regalos con tarjeta,1,C,regalotar,si_no,[1-2],
+Regalos a otras personas,1,C,regalodado,si_no,[1-2],
+Autoconsumo,1,C,autocons,si_no,[1-2],
+Regalos recibidos,1,C,regalos,si_no,[1-2],
+Remuneraciones,1,C,remunera,si_no,[1-2],
+Transferencias,1,C,transferen,si_no,[1-2],
+Gasto en parto,1,C,parto_g,si_no,[1-2],
+Negocio del hogar,1,C,negcua,si_no,[1-2],
+Estimación de gastos en alimentos,9,N,est_alim,,[0-999999999],
+Estimación en gastos de transporte,9,N,est_trans,,[0-999999999],
+Beneficiario Liconsa,1,C,bene_licon,si_no,[1-2],
+Otorgamiento condicionado,1,C,cond_licon,si_no,[1-2],
+Litros de leche Liconsa,1,C,lts_licon,lts_licon,[1-7],
+Otra cantidad de litros,2,N,otros_lts,,[1-99],
+Tienda Diconsa en la localidad,1,C,diconsa,si_no_nosabe,"[1-2,9]",
+Frecuencia de compra en Diconsa,1,C,frec_dicon,frec_dicon,[1-3],
+Venta condicionada,1,C,cond_dicon,si_no,[1-2],
+Gasto semanal en Diconsa,1,C,pago_dicon,pago_dicon,"[1-5, 7]",
+Otro monto de gasto,3,N,otro_pago,,[1-999],
+Entidad federativa,2,C,entidad,entidad,[01-32],
+Estrato de diseño muestral,3,C,est_dis,,[001-681],
+Unidad Primaria de Muestreo,7,C,upm,,[0000001-0010593],
+Factor de expansión,5,N,factor,,[4-7127],

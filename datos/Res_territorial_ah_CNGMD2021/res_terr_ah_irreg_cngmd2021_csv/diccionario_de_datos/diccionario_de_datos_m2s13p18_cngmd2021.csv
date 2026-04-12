@@ -1,0 +1,4 @@
+﻿COLUMNA,DESCRIPCION,ORIGEN,TIPO_DATO,LONGITUD,CODIGO_VALIDO
+ubicageo_c,Clasificación de las entidades federativas y de éstas a sus municipios,SECC XIII. 18,Numérico,5,0 al 99999
+tipprop_a,Clasificación de tipo de propiedad,SECC XIII. 18,Numérico,2,10 al 30
+totalca1,Cantidad de superficie en hectáreas de las áreas planeadas como reservas territoriales,SECC XIII. 18,Carácter,20,"0-999999999999999, NA, NSS, ND, NP, NULL"

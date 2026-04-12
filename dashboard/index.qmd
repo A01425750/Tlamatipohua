@@ -3,6 +3,7 @@ title: "Tlamatipohua — Deuda Líquida"
 format:
   html:
     theme: none
+    css: styles.css
     toc: false
     page-layout: custom
 jupyter: python3
