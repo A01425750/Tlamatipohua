@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<info version="1.1">
+  <general>
+    <createDate>2023-05-04T20:22:44.985Z</createDate>
+    <changeDate>2024-04-04T20:09:15.749Z</changeDate>
+    <schema>iso19139</schema>
+    <isTemplate>n</isTemplate>
+    <localId>289</localId>
+    <format>full</format>
+    <rating>0</rating>
+    <popularity>718</popularity>
+    <uuid>c9d72f33-5caf-4641-8620-155da91ba82c</uuid>
+    <siteId>26441241-956c-4cbf-af3e-792400c07ec7</siteId>
+    <siteName>Catálogo de metadatos SINA 3.0</siteName>
+  </general>
+  <categories>
+    <category name="datasets" />
+  </categories>
+  <privileges>
+    <group name="all">
+      <operation name="view" />
+      <operation name="download" />
+      <operation name="dynamic" />
+    </group>
+  </privileges>
+  <public>
+    <file name="ACUIFEROS.jpg" changeDate="2023-05-04T20:26:37.528Z" />
+    <file name="Acuiferos_disponibilidad.jpg" changeDate="2023-10-24T18:07:37.956Z" />
+  </public>
+  <private />
+</info>
+
