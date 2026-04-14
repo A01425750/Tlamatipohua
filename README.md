@@ -72,6 +72,8 @@ La deuda hídrica se paga con el futuro. Analizaremos datos históricos de preci
 - CONAGUA (RENAMECA 2024)
 Una cuenca con agua contaminada es, en términos prácticos, una cuenca vacía. Incluimos la Red Nacional de Medición de Calidad del Agua para matizar los datos de disponibilidad. Un país como México con estrés hídrico no puede permitirse la degradación de sus masas de agua. Visualizar la calidad nos permite identificar "zonas críticas" donde la deuda no es solo por falta de volumen, sino por una gestión fallida que ha invalidado el recurso para el consumo humano y ecosistémico, elevando el costo de saneamiento para las generaciones futuras.
 
+NOTA IMPORTANTE: En esta primera entrega nuestras gráficas detalladas e interactivas se encuetran en /scripts/Graficas.ipynb, aún nos falta incluirlas en el tablero. 
+
 ---------------------------------------------------
 LINK HACKODS 2026:
 - https://hackods.github.io
