@@ -54,6 +54,7 @@ Queremos identificar fenómenos relacionados con la disminución de precipitacio
 
   - Comisión Nacional del Agua. (2024). Resultados de la Red Nacional de Medición de Calidad del Agua (RENAMECA). Gobierno de México. https://www.gob.mx/conagua/es/articulos/resultados-de-la-red-nacional-de-medicion-de-calidad-del-agua-renameca?idiom=es
   - Centro de Investigación Científica y de Educación Superior de Ensenada. (s.f.). Base de Datos Climatológica Nacional (Sistema CLICOM). https://cucapa-clicom.cicese.mx
+  - Gobierno de México. (s. f.). Objetivo 6: Agua limpia y saneamiento. Agenda 2030 - México. Recuperado el 14 de abril de 2026, de https://agenda2030.mx/ODSGoalSelected.html?ti=T&cveArb=ODS0060&goal=0&lang=es#/ind
 
 Buscamos identificar zonas críticas que necesitan atención y acción. Visibilizar el impacto de fugas. y calcular la deuda hídrica de la persona usuaria para explorar diferentes escenarios futuros de estrés hídrico.
 
