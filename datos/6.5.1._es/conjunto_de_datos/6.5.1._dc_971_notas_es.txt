@@ -1,0 +1,6 @@
+﻿"Nota: A partir de los registros administrativos de la Gerencia de Planificación Hídrica de la CONAGUA. El mecanismo de aplicación y la encuesta en 2020 fue diferente al del
+2018, lo que explica la variación en los resultados. Para el valor del año 2023, se consideró la metodología planteada en el metadato internacional. De acuerdo al
+metadato internacional, el grado de implementación de la Gestión Integrada de los Recursos Hídricos (GIRH) en México se encuentra en un nivel Medio Bajo, que corresponde
+a que “los elementos de la GIRH generalmente están institucionalizados y su implementación está en marcha”. "
+"Fuente: Secretaría de Medio Ambiente y Recursos Naturales (SEMARNAT). Comisión Nacional del Agua (CONAGUA). Gerencia de Planificación Hídrica. Sistema Nacional de Información
+del Agua (SINA). Sistema Nacional de Información del Agua (SINA). "

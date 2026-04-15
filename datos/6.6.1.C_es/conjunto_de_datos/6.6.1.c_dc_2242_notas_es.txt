@@ -1,0 +1,7 @@
+﻿"Nota: Los valores reportados en cada uno de los años, corresponde al promedio en el periodo: 2005: 2000-2005; 2010: 2005-2010; 2015:2010-2015; 2020: 2015-2020. Los subindicadores
+reportados corresponden a los que se indican en la publicación "Supplementary Information - Statistical Annex: Global and regional data for Sustainable Development
+Goal indicators", consultado en:  
+ https://unstats.un.org/sdgs/files/report/2024/E_2024_54_Statistical_Annex_I_and_II.pdf. "
+"Fuente: Secretaría de Medio Ambiente y Recursos Naturales (SEMARNAT). Comisión Nacional del Agua (CONAGUA). Gerencia de Planificación Hídrica. Sistema Nacional de Información
+del Agua (SINA).   
+ https://sinav30.conagua.gob.mx:8080/ "

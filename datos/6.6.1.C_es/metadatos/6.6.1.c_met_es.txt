@@ -1,0 +1,80 @@
+﻿Title: 6.6.1.c Cambio en el área de manglares (%)
+
+Description: Es el cambio de extensión espacial de los ecosistemas relacionados con el agua (humedales, manglares, embalses de presas, lagos y ríos permanentes y lagos y ríos estacionales) expresado como un porcentaje o una proporción del valor base.
+
+Modified: 2024-11-14
+
+Publisher: Instituto Nacional de Estadística y Geografía, INEGI
+
+Mbox: contacto.ods@agenda2030.mx
+
+License:http://ods.inegi.org.mxdocs/doctos/system/terminos_uso_SIODS_es.pdf
+
+ContactPoint: Gerencia de Planificación Hídrica
+Subgerencia del Sistema Nacional de Información del Agua
+Insurgentes Sur # 2416. Piso 4; Colonia Copilco El Bajo, 04340. Coyoacán, Ciudad de México
++52 55 5174 4000, ext. 2112 y 4458
+sina@conagua.gob.mx
+Gerencia de Cooperación Internacional
+Dirección de Área de Evaluación de Programas y Proyectos
+Insurgentes Sur # 2416. Piso 9; Colonia Copilco El Bajo, 04340. Coyoacán, Ciudad de México
++52 55 5174 4000, ext. 1313
+internacional@conagua.gob.mx
+
+Temporal: 2005-2020
+
+Spatial: Estados Unidos Mexicanos
+
+AccrualPeriodicity: Quinquenal
+
+Distribution:http://ods.inegi.org.mx/docs/files/csv/zip/6.6.1.c_es.zip
+
+Goal: 6. Garantizar la disponibilidad y la gestión sostenible del agua y el saneamiento para todos 
+
+Target:  Meta 6.6. De aquí a 2020, proteger y restablecer los ecosistemas relacionados con el agua, incluidos los bosques, las montañas, los humedales, los ríos, los acuíferos y los lagos
+
+Type of indicator: Global
+
+Algorithm: 6_6_1_c_ES.gif
+
+Description of the indicator: Para calcular el indicador, se propuso la siguiente metodología, la cual se puede resumir en 7 pasos:
+1. Generar la capa de cuerpos de agua superficiales mediante JRC Global Surface Water Mapping Layers.
+2. Procesar máscaras de coberturas de agua por ecosistema.
+3. Calcular las coberturas mensuales de 20 años por 12 meses.
+4. Calcular estadísticas anuales y quinquenales (valores mínimos, máximos, promedio), así como el índice de estacionalidad para quinquenios.
+5. Clasificar cuerpos de agua por tipo de ecosistema (presas, manglares, humedales, lagos y ríos estacionales y permanentes).
+6. Agregar estadísticas por regiones para determinar el valor nacional.
+7. Calcular cambios de cobertura respecto a la línea base (cambio relativo y absoluto).
+Es conveniente resaltar algunos criterios que se toman en cuenta para la evaluación del indicador: a) La unidad mínima de mapeo son los cuerpos de agua en su extensión máxima, siendo descartados aquellos con un ancho menor a 90 metros; b) El año hidrológico empieza en mayo de un año y termina en abril del año siguiente; c) No se distinguen épocas de lluvia o de seca explícitamente, aunque las estadísticas de coberturas máxima y mínima bien podrían estar asociadas a éstas épocas del año; d) El período de análisis abarca un total de 20 años hidrológicos, del mes de mayo de 2000 al de abril de 2020; e) El cálculo de los cambios de cobertura se realiza por quinquenios, tomando como línea base el área promedio del periodo 2000-2020, por lo que el indicador se reporta para los cuatro quinquenios; f) El cálculo del indicador se basa únicamente en la cobertura de los cuerpos de agua superficiales observados por satélite, por lo que no se incluyen los cuerpos de agua subterráneos; g) Dado que el insumo no incluye la cobertura de agua ocluida por la vegetación, se adicionan las coberturas proporcionadas por capas de referencia asumiendo que están cubiertas por agua; h) La estacionalidad se considera a nivel de cuerpo de agua y no a nivel de píxel como se sugiere en el metadato del indicador.
+Según el metadato internacional, para el cálculo del indicador es necesario contar con datos de las áreas superficiales, aguas subterráneas y calidad de los cuerpos de agua en diferente temporalidad. Para tal fin, en este primer acercamiento del indicador, se calcularon las áreas absolutas (km2) de los cuerpos de agua superficiales en diferentes ecosistemas, al igual que las diferencias de área por quinquenio, y por último el porcentaje de cambio; esto permite obtener una visión de la evolución de los ecosistemas a nivel país a lo largo del tiempo. A partir de esta metodología, se reportan los siguientes subindicadores:
+6.6.1.a. Cambio en el área de lagos y ríos permanentes (&#37;).
+6.6.1.b. Cambio en el área de lagos y ríos estacionales (&#37;).
+6.6.1.c. Cambio en el área de manglares (&#37;).
+6.6.1.d. Superficie del embalse como porcentaje de la superficie terrestre total (&#37;).
+6.6.1.e. Área de humedales como porcentaje de la superficie terrestre total (&#37;)
+
+Unit of measure: Porcentaje
+
+Geographic coverage: Nacional
+
+Opportunity: 5 años
+
+Source of statistical information used to calculate the indicator: Secretaría de Medio Ambiente y Recursos Naturales (SEMARNAT). Comisión Nacional del Agua (CONAGUA). Gerencia de Planificación Hídrica. Sistema Nacional de Información del Agua (SINA).
+
+Date of next update of indicator: 31 de diciembre de 2026
+
+Unit of the State responsible for calculating the indicator: Secretaría de Medio Ambiente y Recursos Naturales (SEMARNAT). Comisión Nacional del Agua (CONAGUA). Gerencia de Planificación Hídrica. Sistema Nacional de Información
+del Agua (SINA). 
+
+Importance and purpose of the indicator: El cambio relativo es útil para comprender la magnitud del cambio en relación con la escala del fenómeno que se está observando, proporciona información útil sobre cómo cambian las variables a lo largo del tiempo. El indicador 6.6.1 de los ODS rastrea en qué medida los diferentes tipos de ecosistemas relacionados con el agua están cambiando a lo largo del tiempo. El indicador evalúa varias componentes y captura datos sobre diferentes tipos de ecosistemas de agua dulce y para medir la extensión del cambio, el indicador considera cambios en el área espacial, la calidad del agua y los cambios en la cantidad de agua.
+Para el caso de México, el indicador solo evalúa los cambios de superficie de los diferentes ecosistemas relacionados con el agua. El indicador utiliza observaciones de la Tierra por satélite para monitorear diferentes tipos de ecosistemas de agua dulce. Las imágenes satelitales pueden representarse como datos numéricos, que a su vez se agregan en estadísticas significativas de cambios en los ecosistemas atribuidos a áreas administrativas como los límites nacionales, subnacionales (por ejemplo, regiones y entidades federatuvas) y de cuencas.
+
+National and/or international reference: Programa de Naciones Unidades para el Medio Ambiente (PNUMA). 
+ Los subindicadores reportados corresponden a los que se indican en la publicación "Supplementary Information - Statistical Annex: Global and regional data for Sustainable
+Development Goal indicators", consultado en:  
+ https://unstats.un.org/sdgs/files/report/2024/E_2024_54_Statistical_Annex_I_and_II.pdf 
+
+Observations: Para definir la metodología y los resultados de este indicador se contó con el apoyo del Centro de Investigación en Ciencias de Información Geoespacial, A.C. del Consejo Nacional de Humanidades, Ciencias y Tecnologías del Gobierno de México.
+En el caso de los manglares y humedales, previamente clasificados, pertenecen únicamente a cuerpos de agua visibles por el satélite, por lo tanto, los cuerpos de agua cubiertos por vegetación no aparecen en las estadísticas anuales y por quinquenio. De acuerdo al metadato internacional del indicador, los humedales y manglares deben considerar los que tienen cobertura en vegetación, por lo que se realiza una compensación de estas áreas de vegetación utilizando las capas de referencia de manglares y humedales. Esta compensación sólo se puede hacer para los datos estadísticos quinquenales debido a que las capas de referencia de los insumos mencionados pertenecen a estos periodos de estudio. Para realizar la compensación de área de vegetación a las estadísticas anuales, se necesita contar con capas de referencia por año.
+Los valores reportados en cada uno de los años, corresponde al promedio en el periodo: 2005: 2000-2005; 2010: 2005-2010; 2015:2010-2015; 2020: 2015-2020.
+

@@ -1,0 +1,9 @@
+﻿"Nota: Para el cálculo del indicador se utilizan los registros administrativos del Registro Público de Derechos del Agua (Repda) de la Subdirección General de Administración
+del Agua y de las disponibilidades de agua superficial  y subterránea de la Subdirección General Técnica, publicados en el Diario Oficial de la Federación (16-jul-2016
+para aguas superficiales, 04-ene-2018 para aguas subterráneas, 17-sep-2020 para aguas subterráneas y 21-sep-2020 para aguas superficiales), mismas que son integradas
+en el Sistema Nacional de Información del Agua (SINA).  
+ Se hizo una revisión de las series de datos de las variables, por lo que hace un ajuste en el valor del indicador.  
+ Este indicador del marco nacional de los ODS se vincula con el indicador clave "Grado de presión sobre los recursos hídricos" del Catálogo Nacional de Indicadores del
+Sistema Nacional de Información Estadística y Geográfica (SNIEG). "
+"Fuente: Comisión Nacional del Agua. Gerencia de Planificación Hídrica. Sistema Nacional de Información del Agua (SINA).    
+ https://sinav30.conagua.gob.mx:8080/  "

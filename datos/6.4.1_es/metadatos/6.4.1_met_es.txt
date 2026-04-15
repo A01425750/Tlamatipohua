@@ -1,0 +1,61 @@
+﻿Title: 6.4.1 Cambio en la eficiencia del uso del agua a lo largo del tiempo
+
+Description: Es el cambio en la eficiencia del uso del agua con el tiempo (CWUE), medida como la proporción entre el valor agregado y el volumen de agua usada. Internacionalmente, se consideran los sectores económicos: agricultura, silvicultura y pesca (CIIU A); explotación de minas y canteras, industrias manufactureras, construcción y energía (CIIU B, C, D y F); todos los sectores de servicios (CIIU 36-39 y CIIU 45-99), que incluyen: industrias de captación, tratamiento y suministro de agua (CIIU 36). Para el caso de México, se considera la información del Sistema de Cuentas Ambientales y Económicas (SCAE) de INEGI.
+
+Modified: 2025-01-28
+
+Publisher: Instituto Nacional de Estadística y Geografía, INEGI
+
+Mbox: contacto.ods@agenda2030.mx
+
+License:http://ods.inegi.org.mxdocs/doctos/system/terminos_uso_SIODS_es.pdf
+
+ContactPoint: Gerencia de Planificación Hídrica
+Subgerencia del Sistema Nacional de Información del Agua
+Insurgentes Sur # 2416. Piso 4; Colonia Copilco El Bajo, 04340. Coyoacán, Ciudad de México
++52 55 5174 4000, ext. 2112 y 4458
+sina@conagua.gob.mx
+Gerencia de Cooperación Internacional
+Dirección de Área de Evaluación de Programas y Proyectos
+Insurgentes Sur # 2416. Piso 9; Colonia Copilco El Bajo, 04340. Coyoacán, Ciudad de México
++52 55 5174 4000, ext. 1313
+internacional@conagua.gob.mx
+
+Temporal: 2014-2023
+
+Spatial: Estados Unidos Mexicanos
+
+AccrualPeriodicity: Anual
+
+Distribution:http://ods.inegi.org.mx/docs/files/csv/zip/6.4.1_es.zip
+
+Goal: 6. Garantizar la disponibilidad y la gestión sostenible del agua y el saneamiento para todos 
+
+Target:  Meta 6.4. De aquí a 2030, aumentar considerablemente el uso eficiente de los recursos hídricos en todos los sectores y asegurar la sostenibilidad de la extracción y el abastecimiento de agua dulce para hacer frente a la escasez de agua y reducir considerablemente el número de personas que sufren falta de agua
+
+Type of indicator: Global
+
+Algorithm: 6.4.1_ES.gif
+
+Description of the indicator: El indicador se calcula como la suma de los tres sectores económicos (agricultura, silvicultura y pesca; minas, industrias manufactureras, construcción y energía;  todos los sectores de servicios, que incluyen: industrias de captación, tratamiento y suministro de agua), sobre el total del volumen de agua usada. Para el caso de México, se utiliza la información del Sistema de Cuentas Ambientales y Económicas (SCAE) del Instituto Nacional de Estadística y Geografía, el cual utiliza la clasificación SCIAN de las actividades económicas.
+
+Unit of measure: Porcentaje
+
+Geographic coverage: Nacional
+
+Opportunity: 1 año
+
+Source of statistical information used to calculate the indicator: Secretaría de Medio Ambiente y Recursos Naturales (SEMARNAT). Comisión Nacional del Agua (CONAGUA). Gerencia de Planificación Hídrica. Sistema Nacional de Información del Agua (SINA) a partir de la información del Sistema de Cuentas Ambientales y Económicas del Instituto Nacional de Estadística y Geografía (INEGI).
+
+Date of next update of indicator: 15 de enero de 2026
+
+Unit of the State responsible for calculating the indicator: Secretaría de Medio Ambiente y Recursos Naturales (SEMARNAT). Comisión Nacional del Agua (CONAGUA). Gerencia de Planificación Hídrica. Sistema Nacional de Información
+del Agua (SINA). 
+
+Importance and purpose of the indicator: Este indicador estima la dependencia del crecimiento económico sobre la explotación de sus recursos hídricos. Un valor del indicador que muestra un crecimiento inferior a la economía indica un problema potencial de sostenibilidad a mediano o largo plazos para el crecimiento económico mismo. Este indicador se centra en la economía, por lo que se estima calculando los indicadores individuales de cada sector económico principal, para luego consolidarlos en una única cifra.
+La principal base lógica para la interpretación del indicador debería ser la comparación con el crecimiento económico del país: el indicador debe seguir, como mínimo, la misma tendencia del crecimiento económico para que sea aceptable. Si la eficiencia en el uso del agua crece más que el valor añadido de la economía, se puede decir que el indicador va por una dirección correcta, mientras que es necesario prestar más atención en situaciones donde ocurre lo contrario.
+
+National and/or international reference: Comisión Nacional del Agua (Conagua). Programa Nacional Hídrico 2020-2024 
+
+Observations: El indicador tiene dos componentes principales: el volumen de usos de agua y el económico. Para el caso de la información económica, el Sistema de Cuentas Ambientales y Económicas (SCAE) de INEGI proporciona la informacion del valor agregado bruto con una base al 2013, por lo que para este indicador se realiza un ajuste tomando como base el año 2015. El volumen de agua usada que se considera en el cálculo del indicador puede no coincidir con los volúmenes reportados de usos consuntivos en el Sistema Nacional de Información del Agua de la CONAGUA.
+

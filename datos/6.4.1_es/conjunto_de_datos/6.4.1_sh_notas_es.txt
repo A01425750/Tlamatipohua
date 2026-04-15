@@ -1,0 +1,5 @@
+﻿"Nota: Para el cálculo del indicador, se utiliza la información del Sistema de Cuentas Ambientales y Económicas de México (SCAE) que genera el INEGI con año base 2013; para
+el caso del valor agregado bruto se actualiza a precios del año 2015. El pasado diciembre de 2022, se hizo una consulta a la información del SCAE, misma que llevó a una actualización en el valor del indicador y en su serie histórica. Se incluyen las variables para el cálculo de la eficiencia en el uso del agua. "
+"NA No aplicable"
+"Fuente: Secretaría de Medio Ambiente y Recursos Naturales (SEMARNAT). Comisión Nacional del Agua (CONAGUA). Gerencia de Planificación Hídrica.  Sistema Nacional de Información
+del Agua (SINA). "

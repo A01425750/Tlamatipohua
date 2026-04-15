@@ -1,0 +1,64 @@
+﻿Title: 6.5.1. Grado de implementación de la gestión integrada de los recursos hídricos
+
+Description: Este indicador mide las etapas de desarrollo e implementación de la Gestión Integrada de los Recursos Hídricos (GIRH), en una escala de 0 a 100. La puntuación del indicador se calcula a partir de una encuesta de país propuesta por PNUMA que incluye 33 preguntas.
+
+Modified: 2023-12-14
+
+Publisher: Instituto Nacional de Estadística y Geografía, INEGI
+
+Mbox: contacto.ods@agenda2030.mx
+
+License:http://ods.inegi.org.mxdocs/doctos/system/terminos_uso_SIODS_es.pdf
+
+ContactPoint: Gerencia de Planificación Hídrica
+Subgerencia del Sistema Nacional de Información del Agua
+Insurgentes Sur # 2416. Piso 4; Colonia Copilco El Bajo, 04340. Coyoacán, Ciudad de México
++52 55 5174 4000, ext. 2112 y 4458
+sina@conagua.gob.mx
+Gerencia de Cooperación Internacional
+Dirección de Área de Evaluación de Programas y Proyectos
+Insurgentes Sur # 2416. Piso 9; Colonia Copilco El Bajo, 04340. Coyoacán, Ciudad de México
++52 55 5174 4000, ext. 1313
+internacional@conagua.gob.mx
+
+Temporal: 2018-2023
+
+Spatial: Estados Unidos Mexicanos
+
+AccrualPeriodicity: Anual irregular
+
+Distribution:http://ods.inegi.org.mx/docs/files/csv/zip/6.5.1._es.zip
+
+Goal: 6. Garantizar la disponibilidad y la gestión sostenible del agua y el saneamiento para todos 
+
+Target:  Meta 6.5. De aquí a 2030, implementar la gestión integrada de los recursos hídricos a todos los niveles, incluso mediante la cooperación transfronteriza, según proceda
+
+Type of indicator: Global
+
+Algorithm: 6.5.1._ES.gif
+
+Description of the indicator: Para obtener el valor del indicador se realizó una encuesta de 33 preguntas desarrollada por PNUMA para su aplicación a escala mundial, pero adaptada para México. La encuesta consta de cuatro secciones: 
+1. Entorno propicio: Políticas, leyes y planes para respaldar la implementación de la GIRH.
+2. Instituciones y participación: El abanico de funciones de las instituciones políticas, sociales, económicas y administrativas y de otros grupos de interesados que contribuyen a la implementación.
+3. Instrumentos de gestión: Los recursos y actividades que permiten que los encargados de la toma de decisiones y los usuarios escojan una línea de actuación de forma racional y con conocimiento de causa. 
+4. Financiación: Presupuestación y financiación que se habilita y se emplea para el desarrollo y la gestión de recursos hídricos (al margen del suministro de agua potable y el saneamiento) de diversas fuentes.
+Para el caso particular de México, en el año 2020 se integró la información de la encuesta de 68 participantes; para el año 2023, participaron 40 personas, entre usuarios del agua, presidentes de los consejos de cuenca, secretarios de las comisiones estatales de agua y funcionarios.
+La encuesta se realizó mediante un cuestionario en línea (elaborado en la CONAGUA), permitiendo mostrar los resultados de manera inmediata y generando los gráficos correspondientes.
+
+Unit of measure: Adimensional
+
+Geographic coverage: Nacional
+
+Opportunity: 3 años
+
+Source of statistical information used to calculate the indicator: Secretaría de Medio Ambiente y Recursos Naturales (SEMARNAT). Comisión Nacional del Agua (CONAGUA). Gerencia de Planificación Hídrica. Sistema Nacional de Información del Agua (SINA), a partir de los registros administrativos de la Gerencia de Planificación Hídrica de la CONAGUA.
+
+Date of next update of indicator: 30 de noviembre de 2026
+
+Unit of the State responsible for calculating the indicator: Secretaría de Medio Ambiente y Recursos Naturales (SEMARNAT). Comisión Nacional del Agua (CONAGUA). Gerencia de Planificación Hídrica. Sistema Nacional de Información
+del Agua (SINA). 
+
+Importance and purpose of the indicator: Este indicador es importante para evaluar la implementación de la Gestión integrada de los recursos hídricos al nivel nacional pero también al nivel regional. Se pueden identificar las oportunidades para mejorar la GIRH. Este instrumento se diseñó también como una herramienta de diagnóstico útil y sencilla con la que los países puedan determinar cuáles son los puntos fuertes y débiles de los distintos aspectos de la implementación de la GIRH. La encuesta cuantifica la implementación en avances graduales, lo que permite que los países definan con precisión los obstáculos y los elementos facilitadores de cara a impulsar la gestión integrada de los recursos hídricos. Una vez contestada la encuesta y analizados los resultados, puede servir de insumo para la planificación y las labores que tienen como objetivo hacer realidad la meta 6.5.
+
+Observations: La encuesta fue dirigida a los actores relevantes identificados en los 3 niveles que se evaluaron: nacional, regional y transfronterizo. La encuesta fue realizada mediante un cuestionario en línea al cual tuvieron acceso cada uno de los participantes.  De esta manera se logra captar las diferentes perspectivas desde el punto de vista del ámbito de competencia de cada participante.
+
