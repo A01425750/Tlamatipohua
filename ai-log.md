@@ -350,4 +350,38 @@ Objetivo: Dejar de ser un espectador de la crisis. Identificar tu impacto y conv
 - **Resultado**: Se localizaron y eliminaron dos cierres `:::` sobrantes entre la sección de inequidad y el separador previo a `#dia-cero`. El archivo quedó sin errores de sintaxis tras validación.
 - **Decisión**: Mantener revisión estructural de fenced divs como parte del checklist previo a `quarto preview`/`quarto render` para evitar artefactos en salida y warnings de build.
 
-### No usamos IA para hacer lo siguiente:
+
+### 2026-04-14 | Gemini Thinking | Integrar Gráficas en Secciones en Quarto.
+- **Tarea**: Realizar una figura con subgráficas en Quarto.
+- **Prompt**: Quiero meter en una sola celda estas 2 gráficas: # Brecha de servicios
+
+df_serv = pd.read_csv("../datos/Res_territorial_ah_CNGMD2021/res_terr_ah_irreg_cngmd2021_csv/conjunto_de_datos/m2s13p23_cngmd2021.csv")
+service_names = {1: 'Agua potable', 2: 'Drenaje', 3: 'Elect', 4: 'Alumbrado', 5: 'Pavimento', 6: 'Basura'}
+df_serv['Servicio'] = df_serv['servpub_a'].map(service_names)
+df_serv['Existencia'] = df_serv['rensnn1'].apply(lambda x: 1 if x == 1 else 0)
+
+stats = df_serv.groupby('Servicio')['Existencia'].sum().reset_index()
+total_mun = df_serv['ubicageo_c'].nunique()
+stats['Falta'] = total_mun - stats['Existencia']
+
+fig_gap = go.Figure()
+fig_gap.add_trace(go.Bar(name='Con Servicio', x=stats['Servicio'], y=stats['Existencia'], marker_color='#00C8B4'))
+fig_gap.add_trace(go.Bar(name='Sin Servicio', x=stats['Servicio'], y=stats['Falta'], marker_color='#FF3B3B'))
+
+fig_gap.update_layout(barmode='stack', title='<b>Brecha de Servicios en Asentamientos Irregulares</b>',
+xaxis_title='Servicio', yaxis_title='Municipios', template='plotly_white')
+fig_gap.show() y # Acciones de Respuesta Municipal
+
+df_actions = pd.read_csv("../datos/Res_territorial_ah_CNGMD2021/res_terr_ah_irreg_cngmd2021_csv/conjunto_de_datos/m2s13p22_cngmd2021.csv")
+act_names = {1: 'Regularización', 2: 'Dotación Servicios', 3: 'Reubicación', 4: 'Prevención', 5: 'Otros'}
+df_actions['Accion'] = df_actions['accahirr_a'].map(act_names)
+df_actions['Realizada'] = df_actions['rensnn1'].apply(lambda x: 1 if x == 1 else 0)
+
+act_stats = df_actions.groupby('Accion')['Realizada'].sum().reset_index()
+
+fig_act = px.pie(act_stats, values='Realizada', names='Accion', hole=0.4,
+title='<b>Acciones Municipales ante la Informalidad</b>',
+color_discrete_sequence=px.colors.qualitative.Pastel)
+- **Resultado**: Se hizo una recomendación de sintáxis para lograrlo.
+- **Decisión**: Se incluyeron los cambios en index.qmd
+
