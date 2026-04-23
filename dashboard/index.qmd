@@ -1,7 +1,7 @@
 ---
 title: "Tlamatipohua — Deuda Líquida"
 format:
-  html:
+  dashboard:
     theme: none
     css: styles.css
     toc: false
@@ -26,7 +26,6 @@ import plotly.express as px
 ::: {.topbar-nav}
 [Inicio](#gancho)
 [Estrés](#estres)
-[Calculadora](#calculadora)
 [Inequidad](#brecha)
 [Día Cero](#dia-cero)
 [Acción](#resolucion)
@@ -39,8 +38,9 @@ import plotly.express as px
 ::: {.hero-tag}
 🌊 ODS 6 · Agua Limpia y Saneamiento
 :::
-# ¿Qué tan profunda es la [deuda líquida]{.hero-emphasis} que tu rutina diaria contrae con el futuro y la desigualdad hídrica de México? {.hero-title}
-
+:::{.hero-title}
+¿Qué tan profunda es la [deuda líquida]{.hero-emphasis} que tu rutina diaria contrae con el futuro y la desigualdad hídrica de México? 
+:::
 ::: {.hero-sub}
 El agua no es un recurso infinito — es un préstamo ecológico que rara vez devolvemos. Cada ducha, cada café, cada kilo de carne tiene un precio invisible.
 :::
@@ -86,10 +86,11 @@ del 2020 al 2023 (Gobierno de México, 2023)
 ::: {.page-wrapper}
 
 ::: {.section-header}
-::: {}
+::: {.title}
 [Panorama Nacional]{.section-label}
 
-[Indicadores clave del Indicador 6.4.2 (CONAGUA/SEMARNAT/SINA). Los acuíferos se recargan más lento de lo que los vaciamos.]{.section-desc}
+[Indicadores clave del Indicador 6.4.2 (CONAGUA/SEMARNAT/SINA). Los acuíferos se recargan más lento de lo que los vaciamos.
+¿Te has preguntado cuánta agua se extrae en el país? ¿y qué fines se le da a esa agua?]{.section-desc}
 :::
 :::
 
@@ -160,6 +161,39 @@ import plotly.graph_objects as go
 import plotly.express as px
 import re
 import os
+
+
+# 1. Carga Datos
+files_agua = [
+    "../datos/AguaRenovable/EntidadFederativa/Agua_Renovable_EntidadFederativa_2017.xlsx",
+    "../datos/AguaRenovable/EntidadFederativa/Agua_Renovable_EntidadFederativa_2018.xlsx",
+    "../datos/AguaRenovable/EntidadFederativa/Agua_Renovable_EntidadFederativa_2019.xlsx",
+    "../datos/AguaRenovable/EntidadFederativa/Agua_Renovable_EntidadFederativa_2020.xlsx",
+    "../datos/AguaRenovable/EntidadFederativa/Agua_Renovable_EntidadFederativa_2021.xlsx"
+]
+
+all_data_agua = []
+for f in files_agua:
+    if os.path.exists(f):
+        df_temp = pd.read_excel(f, engine='openpyxl')
+        all_data_agua.append(df_temp)
+
+master_agua = pd.concat(all_data_agua, ignore_index=True)
+df_2021 = master_agua[master_agua['Año'] == 2021]
+
+# grafica para llamar la atencion principal
+fig0 = px.scatter(df_2021, x='Población (Millones de habitantes)', y='Agua Renovable (hm³/año)',
+                 size='Agua Renovable per cápita (m³/habitante/año)', color='Entidad Federativa',
+                 title='<b>Población vs. Recursos (2021)</b>')
+fig0.update_layout(height=500, margin=dict(l=10, r=10, t=50, b=10), showlegend=False)
+fig0.show()
+```
+
+
+
+
+```{python}
+
 
 # Rutas 
 files = [
@@ -595,22 +629,7 @@ Disponibilidad Natural y Agua Renovable (2017–2021)
 #| layout-ncol: 2
 #| warning: false
 
-# 1. Carga Datos
-files_agua = [
-    "../datos/AguaRenovable/EntidadFederativa/Agua_Renovable_EntidadFederativa_2017.xlsx",
-    "../datos/AguaRenovable/EntidadFederativa/Agua_Renovable_EntidadFederativa_2018.xlsx",
-    "../datos/AguaRenovable/EntidadFederativa/Agua_Renovable_EntidadFederativa_2019.xlsx",
-    "../datos/AguaRenovable/EntidadFederativa/Agua_Renovable_EntidadFederativa_2020.xlsx",
-    "../datos/AguaRenovable/EntidadFederativa/Agua_Renovable_EntidadFederativa_2021.xlsx"
-]
 
-all_data_agua = []
-for f in files_agua:
-    if os.path.exists(f):
-        df_temp = pd.read_excel(f, engine='openpyxl')
-        all_data_agua.append(df_temp)
-
-master_agua = pd.concat(all_data_agua, ignore_index=True)
 
 # Limpieza de columnas numéricas
 cols_num = ['Agua Renovable (hm³/año)', 'Población (Millones de habitantes)', 'Agua Renovable per cápita (m³/habitante/año)']
