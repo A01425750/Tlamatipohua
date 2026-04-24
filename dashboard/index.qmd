@@ -1295,11 +1295,11 @@ fig_agro = px.bar(
 )
 
 # 3. CONFIGURACIÓN DE LAYOUT CONSOLIDADA
-fig_agro.update_traces(
-    marker_line_color='rgb(8,48,107)',
-    marker_line_width=0.5, 
-    opacity=0.9
-)
+#fig_agro.update_traces(
+  # marker_line_color='rgb(8,48,107)',
+  ##  marker_line_width=0.5, 
+  #  opacity=0.9
+#)
 
 fig_agro.update_layout(
     template='plotly_white',
