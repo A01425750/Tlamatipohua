@@ -48,6 +48,10 @@ body {
   padding: 0 24px;
 }
 
+.legend .scrollbox {
+  clip-path: none !important;
+}
+
 /* ─── TOPBAR ─────────────────────────────────────── */
 .topbar {
   background: var(--white);
