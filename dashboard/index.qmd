@@ -101,76 +101,7 @@ del 2020 al 2023 (Gobierno de México, 2023)
 :::
 
 
-::: {.section-divider}
-:::
 
-
-::: {.section .section-alt}
-::: {.page-wrapper}
-
-::: {.section-header}
-::: {}
-[Panorama Nacional]{.section-label}
-
-[Indicadores clave del Indicador 6.4.2 (CONAGUA/SEMARNAT/SINA). Los acuíferos se recargan más lento de lo que los vaciamos.]{.section-desc}
-:::
-:::
-
-::: {.kpi-grid}
-
-::: {.card .card-accent}
-::: {.card-title}
-Extracción Total 2023
-:::
-::: {.card-value}
-90,629
-:::
-::: {.card-unit}
-millones de m³ extraídos (SINA, SEMARNAT, CONAGUA, 2023)
-:::
-[↑ +5.8% vs 2015]{.card-trend .up}
-:::
-
-::: {.card .card-accent}
-::: {.card-title}
-Recursos renovables totales de agua dulce
-:::
-::: {.card-value}
-472,195
-:::
-::: {.card-unit}
-millones de m³ disponibles (SINA, SEMARNAT, CONAGUA, 2023)
-:::
-[↑ +5.68% vs 2015]{.card-trend .up}
-:::
-
-::: {.card .card-accent}
-::: {.card-title}
-Concesionada / Asignada
-:::
-::: {.card-value}
-68.1 km³
-:::
-::: {.card-unit}
-comprometida legalmente (SINA, 2023)
-:::
-[↑ +0.7413% vs 2013]{.card-trend .up}
-:::
-
-::: {.card .card-accent}
-::: {.card-title}
-Volumen de agua renovable 
-:::
-::: {.card-value}
-121.9 km³
-:::
-::: {.card-unit}
-Indicador 6n.2.1 (SINA, 2023)
-:::
-[↓ -0.234% vs 2013]{.card-trend .up}
-:::
-
-:::
 
 
 <br>
@@ -185,7 +116,7 @@ Indicador 6n.2.1 (SINA, 2023)
 [En México, la crisis hídrica no se explica únicamente por la falta de agua a nivel nacional, sino por una profunda desconexión entre la geografía del recurso y la distribución de la población.]{.resolution-copy}
 
 ::: {.quote-block .quote-block--left}
-**La paradoja del sur:** Mientras que las zonas del sur del país (Chiapas, Oaxaca y Tabasco) concentran la mayor abundancia de agua renovable per cápita, los polos de mayor densidad del centro y norte —como el Valle de México— operan con una disponibilidad por habitante críticamente baja.
+**Zona sur:** Mientras que las zonas del sur del país (Chiapas, Oaxaca y Tabasco) concentran la mayor abundancia de agua renovable per cápita, los polos de mayor densidad del centro y norte —como el Valle de México— operan con una disponibilidad por habitante críticamente baja.
 :::
 
 [Esta presión poblacional obliga a los gobiernos a administrar la urgencia: más de la mitad de las acciones municipales (**53.9%**) son reactivas, intentando llevar servicios a zonas sin planeación. Mientras tanto, soluciones de fondo como la **regularización (6.78%)** o la **reubicación (9.49%)** ocupan un espacio mínimo en la agenda.]{.resolution-copy}
@@ -358,6 +289,75 @@ fig_deuda
 Fuente: REPDA 2023; INEGI, Censo de Población y Vivienda 2010 y 2020
 :::
 
+::: {.section-divider}
+:::
+
+
+::: {.section .section-alt}
+::: {.page-wrapper}
+
+::: {.section-header}
+::: {}
+[Panorama Nacional]{.section-label}
+
+:::
+:::
+
+::: {.kpi-grid}
+
+::: {.card .card-accent}
+::: {.card-title}
+Extracción Total 2023
+:::
+::: {.card-value}
+90,629
+:::
+::: {.card-unit}
+millones de m³ extraídos (SINA, SEMARNAT, CONAGUA, 2023)
+:::
+[↑ +5.8% vs 2015]{.card-trend .up}
+:::
+
+::: {.card .card-accent}
+::: {.card-title}
+Recursos renovables totales de agua dulce
+:::
+::: {.card-value}
+472,195
+:::
+::: {.card-unit}
+millones de m³ disponibles (SINA, SEMARNAT, CONAGUA, 2023)
+:::
+[↑ +5.68% vs 2015]{.card-trend .up}
+:::
+
+::: {.card .card-accent}
+::: {.card-title}
+Concesionada / Asignada
+:::
+::: {.card-value}
+68.1 km³
+:::
+::: {.card-unit}
+comprometida legalmente (SINA, 2023)
+:::
+[↑ +0.7413% vs 2013]{.card-trend .up}
+:::
+
+::: {.card .card-accent}
+::: {.card-title}
+Volumen de agua renovable 
+:::
+::: {.card-value}
+121.9 km³
+:::
+::: {.card-unit}
+Indicador 6n.2.1 (SINA, 2023)
+:::
+[↓ -0.234% vs 2013]{.card-trend .up}
+:::
+
+:::
 
 ::: {.card .card-spacious}
 ::: {.card-title .card-title--large}
@@ -1502,7 +1502,7 @@ Fuente: CONAGUA, Estadísticas del Agua en México 2021
 
 [Mientras los sectores industriales y agrícolas cuentan con marcos legales para asegurar su abastecimiento, millones de personas quedan atrapadas en la zona desatendida de la infraestructura urbana.]{.resolution-copy}
 
-[En esta sección, analizamos la inequidad de acceso a través de la lupa de los asentamientos irregulares. Estas zonas representan el punto más crítico de la deuda social hídrica por tres razones fundamentales:]{.resolution-copy}
+[En esta sección, analizamos la inequidad de acceso a través de la lupa de los asentamientos irregulares. Estas zonas representan el punto más crítico de la deuda social hídrica por dos razones fundamentales:]{.resolution-copy}
 
 ::: {.quote-block .quote-block--left}
 **Exclusión de la Red:** La irregularidad en la tenencia de la tierra suele traducirse en la incapacidad legal de los organismos operadores para instalar tomas de agua formales.
@@ -1510,10 +1510,6 @@ Fuente: CONAGUA, Estadísticas del Agua en México 2021
 
 ::: {.quote-block .quote-block--left}
 **El Costo de la Precariedad:** Irónicamente, quienes viven en estos asentamientos suelen pagar el agua más cara del país, al depender de servicios de pipas privadas cuyo costo por litro supera con creces la tarifa doméstica subsidiada.
-:::
-
-::: {.quote-block .quote-block--left}
-**Vulnerabilidad Sistémica:** Como muestran las visualizaciones a continuación, la concentración de población en estos asentamientos en estados como el Estado de México o Veracruz no es solo un reto de vivienda, sino un mapa de riesgo sanitario y social.
 :::
 
 :::
@@ -1647,7 +1643,7 @@ Fuente: INEGI, Encuesta Nacional de Ingresos y Gastos de los Hogares (ENIGH) 202
 :::
 
 ::: {.quote-block .quote-block--left}
-**La Paradoja del Territorio:** México vive una realidad partida. Mientras el sur cuenta con una disponibilidad robusta, el motor económico del centro y norte del país opera con balances rojos, extrayendo sistemáticamente más de lo que la naturaleza puede devolver.
+**Territorio:** México vive una realidad partida. Mientras el sur cuenta con una disponibilidad robusta, el poder económico del centro y norte del paíse opera con balances rojos, extrayendo sistemáticamente más de lo que la naturaleza puede devolver.
 :::
 
 :::
@@ -1799,12 +1795,6 @@ Objetivo: Dejar de ser espectador de la crisis.
 :::
 [Identifica tu impacto y convierte tu 'huella de sed' en una huella de cambio. En el México de hoy, cada gota que visualizamos es una gota que podemos salvar.]{.outro-copy}
 
-::: {.badge-row}
-[🌊 ODS 6 — Agua Limpia y Saneamiento]{.badge}
-[📊 Datos abiertos: INEGI / CONAGUA/ IMTA/ CLICOM/ Gobierno de México ]{.badge}
-[🇲🇽 HackODS UNAM - Tlamatipohua]{.badge}
-
-:::
 :::
 
 
@@ -2032,11 +2022,13 @@ La variable `tsalud1_h/m` de la ENIGH 2024 mide horas de cuidados no remunerados
 
 
 ::: {.footer}
-Tlamatipohua · Dashboard ODS 6 — Deuda Líquida · HackODS UNAM 2026
-Indicadores 6.5.2, 6.4.2, 6.4.1, 6.6.1, 6.5.1, 6.3.2
+Tlamatipohua
+[🌊 ODS 6 — Agua Limpia y Saneamiento]{.badge}
+[📊 Datos abiertos: INEGI / CONAGUA/ Gobierno de México ]{.badge}
+[🇲🇽 HackODS UNAM]{.badge}
 :::
 
-:::
+
 :::
 :::
 :::
