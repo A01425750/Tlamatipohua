@@ -1811,7 +1811,7 @@ Objetivo: Dejar de ser espectador de la crisis.
 ::: {.section-divider}
 :::
 
-::: {#sobrelosdatos .section .section-alt}
+::: {#datos .section .section-alt}
 ::: {.page-wrapper}
 
 ::: {.section-header}
