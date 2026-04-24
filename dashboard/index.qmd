@@ -173,7 +173,6 @@ Indicador 6n.2.1 (SINA, 2023)
 :::
 
 
-<br>
 
 ::: {#disponibilidad .section .section-alt}
 
@@ -334,7 +333,8 @@ _ = fig_deuda.update_layout(
     height=450,
     margin=dict(l=10, r=10, t=20, b=10),
     legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
-    xaxis=dict(title='Año')
+    xaxis=dict(title='Año'),
+    showlegend=False
 )
 
 _ = fig_deuda.update_yaxes(
@@ -417,6 +417,7 @@ fig_abundancia.update_layout(
     coloraxis_showscale=False,
     xaxis_title="m³/habitante/año",
     yaxis_title="",
+    showlegend=False,
     hovermode='y unified'
 )
 
@@ -485,14 +486,7 @@ fig_gap.update_layout(
     xaxis_title='',
     yaxis_title='Cantidad de Municipios',
     hovermode='x unified',
-    legend=dict(
-        orientation="h", 
-        yanchor="bottom", 
-        y=1.02, 
-        xanchor="right", 
-        x=1, 
-        title=""
-    )
+    showlegend=False
 )
 
 
@@ -542,7 +536,8 @@ fig_act = px.pie(
 # 3. CONFIGURACIÓN ÚNICA DE LAYOUT
 fig_act.update_traces(
     textinfo='percent+label',
-    hoverinfo='label+value+percent'
+    hoverinfo='label+value+percent',
+    showlegend=False
 )
 
 ```
@@ -617,7 +612,8 @@ fig_ranking.update_layout(
     xaxis_title="m³ / habitante / año",
     yaxis_title="",
     yaxis={'categoryorder':'total ascending'},
-    hovermode='y unified'
+    hovermode='y unified',
+    showlegend=False
 )
 
 # Renderizado único
@@ -728,7 +724,8 @@ fig_sector = px.pie(
 # 3. CONFIGURACIÓN DE LAYOUT CONSOLIDADA
 fig_sector.update_traces(
     textinfo='percent+label',
-    hoverinfo='label+value+percent'
+    hoverinfo='label+value+percent',
+    showlegend=False
 )
 
 
@@ -798,6 +795,8 @@ fig_estatal.update_xaxes(
     tickangle=-45
 )
 
+fig_estatal.update_layout(showlegend=False)
+
 
 ```
 Fuente: CONAGUA, Registro Público de Derechos de Agua (REPDA) 2023
@@ -854,6 +853,7 @@ fig_pop.update_layout(
     height=600,
     margin=dict(l=10, r=10, t=20, b=10),
     coloraxis_showscale=False,
+    showlegend=False,
     hovermode='y unified',
     xaxis=dict(
         type='log', 
@@ -958,7 +958,8 @@ fig_radar = px.line_polar(
 # Añadimos relleno y configuramos el tooltip
 fig_radar.update_traces(
     fill='toself',
-    hovertemplate="%{theta}: %{customdata[0]:,.0f} hm³<extra>Zona %{data.name}</extra>"
+    hovertemplate="%{theta}: %{customdata[0]:,.0f} hm³<extra>Zona %{data.name}</extra>",
+    showlegend=False
 )
 
 # 5. CONFIGURACIÓN DE EJES Y LAYOUT
@@ -1040,7 +1041,8 @@ fig_rha.add_hline(
 )
 
 # 4. CONFIGURACIÓN DE LAYOUT
-
+fig_rha.update_layout(
+showlegend=False)
 ```
 Fuente: CONAGUA, Estadísticas del Agua en México; elaboración propia con datos EDA
 :::
@@ -1118,7 +1120,8 @@ fig_stress = px.line(
 fig_stress.update_traces(
     line=dict(color="#F03BF3", width=4),
     marker=dict(size=8),
-    name='Nivel de Estrés (%)'
+    name='Nivel de Estrés (%)',
+    showlegend=False
 )
 
 ```
@@ -1185,7 +1188,8 @@ fig_merge = px.line(
 fig_merge.update_traces(
     fill='tozeroy', 
     line=dict(width=3),
-    marker=dict(size=8)
+    marker=dict(size=8),
+    showlegend=False
 )
 
 ```
@@ -1244,18 +1248,12 @@ fig_visible = go.Figure(
     layout=go.Layout(
         template='plotly_white',
         barmode='group', 
+        showlegend=False,
         height=450, 
         margin=dict(l=10, r=10, t=20, b=10),
         hovermode='x unified',
         xaxis=dict(title=''),
-        yaxis=dict(title="Volumen (hm³)"),
-        legend=dict(
-            orientation="h", 
-            yanchor="bottom", 
-            y=1.02, 
-            xanchor="right", 
-            x=1
-        )
+        yaxis=dict(title="Volumen (hm³)")
     )
 )
 
@@ -1311,6 +1309,7 @@ fig_agro.update_traces(
 
 fig_agro.update_layout(
     template='plotly_white',
+    showlegend=False,
     height=800, 
     
     # AJUSTE DE LA LEYENDA (Barra de colores)
@@ -1410,8 +1409,8 @@ fig_scatter = px.scatter(
 fig_scatter.update_layout(
     template='plotly_white',
     height=550,
-    margin=dict(l=10, r=10, t=20, b=10),
     showlegend=False,
+    margin=dict(l=10, r=10, t=20, b=10),
     hovermode='closest'
 )
 
@@ -1481,6 +1480,7 @@ fig_capita.update_layout(
         tickformat='d',               # Formato de dígito entero
         gridcolor='#F0F5FF'
     ),
+    showlegend=False,
     yaxis=dict(
         rangemode='tozero',
         gridcolor='#f0fbff'
@@ -1562,6 +1562,7 @@ fig_acceso = px.bar(
 
 fig_acceso.update_layout(
     template="plotly_white",
+    showlegend=False,
     height=400,
     margin=dict(l=10, r=10, t=20, b=10),
     xaxis_title="Porcentaje de Viviendas (%)",
@@ -1616,7 +1617,7 @@ fig_genero = px.bar(
     }
 )
 
-fig_genero.update_traces(textposition="outside")
+fig_genero.update_traces(textposition="outside", showlegend=False)
 
 ```
 Fuente: INEGI, Encuesta Nacional de Ingresos y Gastos de los Hogares (ENIGH) 2024
@@ -1719,6 +1720,7 @@ _ = fig_bal.add_trace(go.Bar(
 
 fig_bal.update_layout(
     barmode='group',
+    showlegend=False,
     yaxis_title='km³',
     template='plotly_white',
     hovermode='x unified'
@@ -1800,6 +1802,8 @@ Objetivo: Dejar de ser espectador de la crisis.
 ::: {.section-divider}
 :::
 
+::: {#datos}
+:::
 ::: {#datos .section .section-alt}
 ::: {.page-wrapper}
 
@@ -2024,7 +2028,7 @@ Tlamatipohua
 
 ::: {.badge-row}
 [🌊 ODS 6 — Agua Limpia y Saneamiento]{.badge}
-[📊 Datos abiertos: INEGI / CONAGUA/ IMTA/ CLICOM/ Gobierno de México ]{.badge}
+[📊 Datos abiertos: INEGI / CONAGUA/ Gobierno de México ]{.badge}
 [🇲🇽 HackODS UNAM 2026]{.badge}
 :::
 :::
