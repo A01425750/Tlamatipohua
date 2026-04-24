@@ -2024,6 +2024,11 @@ El Censo registra 2,467 de los 2,478 municipios del país. Los 11 faltantes corr
 :::
 La variable `tsalud1_h/m` de la ENIGH 2024 mide horas de cuidados no remunerados en salud, no específicamente el acarreo de agua. La medición precisa requeriría la **ENUT** (Encuesta Nacional sobre Uso del Tiempo), cuya última edición disponible es 2019.
 :::
+:::
+
+
+
+
 
 
 ::: {.footer}
