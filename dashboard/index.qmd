@@ -788,14 +788,14 @@ fig_estatal = px.bar(
     color='Sector',
     color_discrete_sequence=px.colors.qualitative.Safe
 )
-
+#fig_estatal.update_xaxes(categoryorder='total descending')
 # 4. CONFIGURACIÓN DE LAYOUT CONSOLIDADA
-fig_estatal.update_xaxes(
-    categoryorder='total descending',
-    tickangle=-45
+fig_estatal.update_layout(
+    xaxis_tickangle=-45,
+    legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
+    hovermode='x unified',
+    showlegend=False
 )
-
-fig_estatal.update_layout(showlegend=False)
 
 
 ```
@@ -966,16 +966,8 @@ fig_radar.update_layout(
             range=[0, np.log10(resumen[sectores].max().max() + 10000)]
         )))
 
-# Añadimos relleno y configuramos el tooltip
-fig_radar.update_traces(
-    fill='toself',
-    hovertemplate="%{theta}: %{customdata[0]:,.0f} hm³<extra>Zona %{data.name}</extra>",
-    showlegend=False
-)
 
-# 5. CONFIGURACIÓN DE EJES Y LAYOUT
-tick_vals_real = [10, 100, 1000, 10000, 50000]
-tick_vals_log = [np.log10(v) for v in tick_vals_real]
+
 
 
 ```
@@ -1126,12 +1118,6 @@ fig_stress.update_layout(
     template='plotly_white',
     yaxis=dict(range=[40, 50]) # Ajuste para ver mejor la variación
 )
-# 3. CONFIGURACIÓN DE LAYOUT CONSOLIDADA
-fig_stress.update_traces(
-    line=dict(color="#F03BF3", width=4),
-    #marker=dict(size=8),
-    name='Nivel de Estrés (%)',
-    showlegend=False)
 
 ```
 Fuente: INEGI, Indicadores ODS 6.4.2; CONAGUA 2024
