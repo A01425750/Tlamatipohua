@@ -152,9 +152,9 @@ body {
 /* ─── HERO ───────────────────────────────────────── */
 .hero {
   background: linear-gradient(135deg, #001AFF 0%, #0066FF 40%, #00C8B4 100%);
-  padding: 80px 32px 90px;
+  padding: 80px 80px 90px;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .hero::before {
@@ -171,6 +171,12 @@ body {
   text-align: center;
   position: relative;
   z-index: 1;
+}
+
+.hero-title {
+  text-align: center;
+  color: white;
+  font-size: 1rem;
 }
 
 .hero-tag {

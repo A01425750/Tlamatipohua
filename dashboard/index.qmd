@@ -9,7 +9,351 @@ format:
 jupyter: python3
 execute:
   echo: false
-  warning: false
+  warning: false--
+---
+
+```{python}
+import pandas as pd
+import numpy as np
+import plotly.graph_objects as go
+import plotly.express as px
+```
+
+::: {.topbar}
+::: {.topbar-logo}
+[]{.dot} Tlamatipohua
+:::
+::: {.topbar-nav}
+[Inicio](#gancho)
+[Estrés](#estres)
+[Calculadora](#calculadora)
+[Inequidad](#brecha)
+[Día Cero](#dia-cero)
+[Acción](#resolucion)
+:::
+[ODS 6 · México]{.topbar-badge}
+:::
+
+::: {#gancho .hero}
+::: {.hero-content}
+::: {.hero-tag}
+🌊 ODS 6 · Agua Limpia y Saneamiento
+:::
+::: {.hero-h1 .hero-title--large}
+¿Qué tan profunda es la [deuda líquida]{.hero-emphasis} que tu rutina diaria contrae con el futuro y la desigualdad hídrica de México?
+:::
+::: {.hero-sub}
+El agua no es un recurso infinito — es un préstamo ecológico que rara vez devolvemos. Cada ducha, cada café, cada kilo de carne tiene un precio invisible.
+:::
+
+::: {.hero-stats}
+::: {.hero-stat}
+[192.27 pesos/m³]{.num}
+
+::: {.label}
+de eficiencia en el uso del agua \
+en el año 2023 (Gobierno de México, 2023)
+:::
+:::
+
+::: {.hero-stat}
+[6,040 km²]{.num}
+
+::: {.label}
+de área de manglares en el 2020 \
+(Gobierno de México, 2023)
+:::
+:::
+
+::: {.hero-stat}
+[Pasamos de 47 a 39]{.num}
+
+::: {.label}
+instituciones participantes en la gestión \
+integrada de los recursos hídricos en México \
+del 2020 al 2023 (Gobierno de México, 2023)
+:::
+:::
+:::
+
+:::
+:::
+
+::: {.section-divider}
+:::
+
+
+::: {.section .section-alt}
+::: {.page-wrapper}
+
+::: {.section-header}
+::: {}
+[Panorama Nacional]{.section-label}
+
+[Indicadores clave del Indicador 6.4.2 (CONAGUA/SEMARNAT/SINA). Los acuíferos se recargan más lento de lo que los vaciamos.]{.section-desc}
+:::
+:::
+
+::: {.kpi-grid}
+
+::: {.card .card-accent}
+::: {.card-title}
+Extracción Total 2023
+:::
+::: {.card-value}
+90,629
+:::
+::: {.card-unit}
+millones de m³ extraídos (SINA, SEMARNAT, CONAGUA, 2023)
+:::
+[↑ +5.8% vs 2015]{.card-trend .up}
+:::
+
+::: {.card .card-accent}
+::: {.card-title}
+Recursos renovables totales de agua dulce
+:::
+::: {.card-value}
+472,195
+:::
+::: {.card-unit}
+millones de m³ disponibles (SINA, SEMARNAT, CONAGUA, 2023)
+:::
+[↑ +5.68% vs 2015]{.card-trend .up}
+:::
+
+::: {.card .card-accent}
+::: {.card-title}
+Concesionada / Asignada
+:::
+::: {.card-value}
+68.1 km³
+:::
+::: {.card-unit}
+comprometida legalmente (SINA, 2023)
+:::
+[↑ +0.7413% vs 2013]{.card-trend .up}
+:::
+
+::: {.card .card-accent}
+::: {.card-title}
+Volumen de agua renovable 
+:::
+::: {.card-value}
+121.9 km³
+:::
+::: {.card-unit}
+Indicador 6n.2.1 (SINA, 2023)
+:::
+[↓ -0.234% vs 2013]{.card-trend .up}
+:::
+
+:::
+
+::: {.card .card-spacious}
+::: {.card-title .card-title--large}
+Balance hídrico nacional: ¿Cuánta agua hay vs. cuánta consumimos?
+:::
+```{python}
+import pandas as pd
+import numpy as np
+import plotly.express as px
+import plotly.graph_objects as go
+# Balance hídrico nacional: ¿Cuánta agua hay vs. cuánta consumimos?
+
+#Fuente: INEGI 6.4.2
+
+df_ext_raw = pd.read_csv('../datos/6.4.2/conjunto_de_datos/6.4.2_dc_967_es.csv') # Extraccion
+df_ren_raw = pd.read_csv('../datos/6.4.2/conjunto_de_datos/6.4.2_dc_968_es.csv') # Renovables
+df_eco_raw = pd.read_csv('../datos/6.4.2/conjunto_de_datos/6.4.2_dc_969_es.csv') # Caudal Ecologico
+
+# Funcion para limpiar los df raw
+def clean(df):
+    df_clean = df.iloc[:, :2].copy()
+    col_valor = df_clean.columns[1]
+    
+    df_clean[col_valor] = pd.to_numeric(
+        df_clean[col_valor].astype(str).str.replace(',', '').str.strip(), 
+        errors='coerce'
+    )
+    
+    df_clean['Periodo'] = pd.to_numeric(df_clean['Periodo'], errors='coerce')
+    
+    return df_clean
+
+df_ext = clean(df_ext_raw)
+df_ren = clean(df_ren_raw)
+df_eco = clean(df_eco_raw)
+
+df_bal = df_ext.merge(df_ren, on='Periodo').merge(df_eco, on='Periodo').sort_values('Periodo')
+
+df_bal.columns = ['Anio', 'Extraccion', 'Renovable', 'Caudal_Ecologico'] # renombramos columnas
+
+df_bal["Extraccion + Caudal"] = df_bal["Extraccion"] + df_bal["Caudal_Ecologico"]
+
+df_bal["Disponible"] = df_bal["Renovable"] - df_bal["Extraccion + Caudal"]  
+
+fig_bal = go.Figure()
+
+_ = fig_bal.add_trace(go.Bar(
+    x=df_bal['Anio'], y=df_bal['Renovable'] / 1000, 
+    name='Renovable', marker_color='#0066FF'
+))
+_ = fig_bal.add_trace(go.Bar(
+    x=df_bal['Anio'], y=df_bal['Caudal_Ecologico'] / 1000   , 
+    name='Ecológica', marker_color='#00C8B4'
+))
+_ = fig_bal.add_trace(go.Bar(
+    x=df_bal['Anio'], y=df_bal['Extraccion'] / 1000, 
+    name='Extracción', marker_color='#FF3B3B'
+))
+_ = fig_bal.add_trace(go.Bar(
+    x=df_bal["Anio"], y=df_bal["Extraccion + Caudal"] / 1000,
+    name='Extr. + Reserva', marker_color='#FF9A3B'
+))
+_ = fig_bal.add_trace(go.Bar(
+    x=df_bal["Anio"], y=df_bal["Disponible"] / 1000,
+    name='Disponible', marker_color='#3BFF3B'
+))
+
+fig_bal.update_layout(
+    barmode='group',
+    yaxis_title='km³',
+    template='plotly_white',
+    hovermode='x unified'
+)
+```
+:::
+
+
+::: {.card .card-spacious}
+::: {.card-title .card-title--large}
+Presión Hídrica Nacional por Región
+:::
+```{python}
+# Presión hídrica nacional por región hidrológico-administrativa (RHA)
+#El grado de presión es el 
+
+import json
+
+# Leemos los datos
+with open('../datos/RHA/rha2023.json', 'r') as f:
+    geojson_rha = json.load(f)
+
+f = "../datos/Grado_de_Presion/Grado_de_Presion_2022.xlsx"
+    
+gp = pd.read_excel(f,usecols=["Región Hidrológico-Administrativa","Grado de Presión (%)"])
+gp.columns = ["RHA",2022]
+
+gp["RHA"] = gp["RHA"].str.replace(r"^\s*[IVXLCDM]+\s*[-.]?\s*", "", regex=True)
+name_mapping = {
+    "Península de Baja California": "Península De Baja California",
+    'Cuencas Centrales del Norte': 'Cuencas Centrales Del Norte',
+    "Península de Yucatán": "Península De Yucatán",
+    'Aguas del Valle de México': 'Valle de México'
+}
+gp['RHA'] = gp['RHA'].replace(name_mapping)
+
+gp_largo = pd.melt(gp,id_vars=["RHA"],var_name="Año",value_name="Grado de presión (%)")
+gp_largo["Año"] = gp_largo["Año"].astype(int)
+fig = px.choropleth(gp_largo,geojson=geojson_rha,locations="RHA",featureidkey="properties.rha",color="Grado de presión (%)",color_continuous_scale="RdYlGn_r")
+fig.update_geos(fitbounds="locations",visible=False)
+#fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
+#fig.show()
+```
+:::
+
+
+::: {.section-divider}
+:::
+
+:::
+:::
+
+::: {#resolucion .section}
+::: {.page-wrapper}
+
+::: {.resolution-intro}
+[Sección 6 · Resolución]{.section-label .section-label--center}
+
+[El primer paso para pagar una deuda es reconocer que existe.]{.section-title .section-title--center}
+[Al entender la deuda líquida que compartimos, podemos dejar de administrar la escasez y empezar a diseñar la abundancia. Los datos que visualizaste hoy son el México que sobrevivirá mañana si actuamos.]{.resolution-copy}
+
+::: {.quote-block .quote-block--left}
+"No heredamos el agua de nuestros padres, la tomamos prestada de nuestros hijos." — Proverbio indígena
+:::
+:::
+:::
+:::
+
+::: {.solutions-grid}
+
+::: {.solution-card}
+::: {.solution-icon}
+🚿
+**Reduce tu ducha a 5 minutos**
+Cada minuto que ahorras son 10 litros de agua potable. Con 120 millones de mexicanos, un minuto menos por persona equivale a 1.2 millones de m³ diarios devueltos al acuífero.
+
+:::
+:::
+
+
+::: {.solution-card}
+::: {.solution-icon}
+🥩
+**Reduce carne un día a la semana**
+Un kilo de carne de res requiere aproximadamente 15,000 litros de agua. Reducir un día a la semana por hogar equivale a ahorrar alrededor de 780 litros semanales en huella hídrica.
+
+:::
+:::
+
+
+::: {.solution-card}
+::: {.solution-icon}
+🌧️
+**Instala captación de lluvia**
+Un techo de 50 m² puede captar hasta 30,000 litros al año. Esta inversión puede cubrir el 40% del consumo doméstico y reducir la extracción del acuífero.
+
+:::
+:::
+
+
+::: {.solution-card .solution-card--featured}
+::: {.solution-icon}
+💧
+[Comparte este dashboard]{.featured-title}
+[La deuda hídrica es colectiva. Cada persona que visualiza sus datos es un agente de cambio potencial. Convierte tu 'huella de sed' en una huella de acción.]{.featured-text}
+
+:::
+:::
+:::
+
+
+::: {.outro-box}
+::: {.outro-title}
+Objetivo: Dejar de ser espectador de la crisis.
+:::
+[Identifica tu impacto y convierte tu 'huella de sed' en una huella de cambio. En el México de hoy, cada gota que visualizamos es una gota que podemos salvar.]{.outro-copy}
+
+::: {.badge-row}
+[🌊 ODS 6 — Agua Limpia y Saneamiento]{.badge}
+[📊 Datos abiertos: INEGI / CONAGUA/ IMTA/ CLICOM/ Gobierno de México ]{.badge}
+[🇲🇽 HackODS UNAM - Tlamatipohua]{.badge}
+
+:::
+:::
+
+
+::: {.footer}
+Tlamatipohua · Dashboard ODS 6 — Deuda Líquida · HackODS UNAM 2026
+Indicadores 6.5.2, 6.4.2, 6.4.1, 6.6.1, 6.5.1, 6.3.2
+:::
+
+:::
+:::
+:::
+:::
+:::
 ---
 
 ```{python}
