@@ -1561,18 +1561,32 @@ for red, label in [(False, "sin red"), (True, "con red")]:
 
 df_genero = pd.DataFrame(stats_genero)
 
-# 2. CREACIÓN DE LA GRÁFICA
-fig_genero = px.bar(
-    df_genero, x="Horas", y="Categoría", 
-    orientation="h", text="Horas",
-    color="Categoría",
-    color_discrete_map={
-        "Mujeres sin red": "#FF3B3B", "Mujeres con red": "#FF9A3B",
-        "Hombres sin red": "#2B8BFF", "Hombres con red": "#B8D4FF"
-    }
+# 2. CREACIÓN Y CONFIGURACIÓN EN CADENA (Cero duplicados)
+fig_genero = (
+    px.bar(
+        df_genero, x="Horas", y="Categoría", 
+        orientation="h", text="Horas",
+        color="Categoría",
+        color_discrete_map={
+            "Mujeres sin red": "#FF3B3B", "Mujeres con red": "#FF9A3B",
+            "Hombres sin red": "#2B8BFF", "Hombres con red": "#B8D4FF"
+        }
+    )
+    .update_traces(
+        textposition="outside",
+        showlegend=False # ¡Adiós leyenda amontonada!
+    )
+    .update_layout(
+        template="plotly_white",
+        height=400,
+        margin=dict(l=10, r=40, t=20, b=10), # r=40 da espacio al número final
+        xaxis_title="Horas Semanales",
+        yaxis_title="",
+        xaxis=dict(range=[0, df_genero['Horas'].max() * 1.2])
+    )
 )
 
-fig_genero.update_traces(textposition="outside")
+fig_genero
 
 ```
 Fuente: INEGI, Encuesta Nacional de Ingresos y Gastos de los Hogares (ENIGH) 2024
