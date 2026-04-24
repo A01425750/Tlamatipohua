@@ -96,7 +96,7 @@ Comentarios 1º Mentoría 2026-04-10
 - Se recomendó que al final se pueda convertir el tablero en una solución que se pueda obtener a través de un impacto social.
 
 
-Comentarios 2º Mentoría 2026-04-10
+Comentarios 2º Mentoría 2026-04-20
 
 
 - Definir usuarios objetivos
