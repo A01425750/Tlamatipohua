@@ -101,10 +101,78 @@ del 2020 al 2023 (Gobierno de México, 2023)
 :::
 
 
+::: {.section-divider}
+:::
 
 
+::: {.section .section-alt}
+::: {.page-wrapper}
 
-<br>
+::: {.section-header}
+::: {}
+[Panorama Nacional]{.section-label}
+
+[Indicador 6.4.2 (CONAGUA/SEMARNAT/SINA). Los acuíferos se recargan más lento de lo que los vaciamos.]{.section-desc}
+:::
+:::
+
+::: {.kpi-grid}
+
+::: {.card .card-accent}
+::: {.card-title}
+Extracción Total 2023
+:::
+::: {.card-value}
+90,629
+:::
+::: {.card-unit}
+millones de m³ extraídos (SINA, SEMARNAT, CONAGUA, 2023)
+:::
+[↑ +5.8% vs 2015]{.card-trend .up}
+:::
+
+::: {.card .card-accent}
+::: {.card-title}
+Recursos renovables totales de agua dulce
+:::
+::: {.card-value}
+472,195
+:::
+::: {.card-unit}
+millones de m³ disponibles (SINA, SEMARNAT, CONAGUA, 2023)
+:::
+[↑ +5.68% vs 2015]{.card-trend .up}
+:::
+
+::: {.card .card-accent}
+::: {.card-title}
+Concesionada / Asignada
+:::
+::: {.card-value}
+68.1 km³
+:::
+::: {.card-unit}
+comprometida legalmente (SINA, 2023)
+:::
+[↑ +0.7413% vs 2013]{.card-trend .up}
+:::
+
+::: {.card .card-accent}
+::: {.card-title}
+Volumen de agua renovable 
+:::
+::: {.card-value}
+121.9 km³
+:::
+::: {.card-unit}
+Indicador 6n.2.1 (SINA, 2023)
+:::
+[↓ -0.234% vs 2013]{.card-trend .up}
+:::
+
+:::
+
+
 
 ::: {#disponibilidad .section .section-alt}
 
@@ -116,7 +184,7 @@ del 2020 al 2023 (Gobierno de México, 2023)
 [En México, la crisis hídrica no se explica únicamente por la falta de agua a nivel nacional, sino por una profunda desconexión entre la geografía del recurso y la distribución de la población.]{.resolution-copy}
 
 ::: {.quote-block .quote-block--left}
-**Zona sur:** Mientras que las zonas del sur del país (Chiapas, Oaxaca y Tabasco) concentran la mayor abundancia de agua renovable per cápita, los polos de mayor densidad del centro y norte —como el Valle de México— operan con una disponibilidad por habitante críticamente baja.
+**Zona Sur:** Mientras que las zonas del sur del país (Chiapas, Oaxaca y Tabasco) concentran la mayor abundancia de agua renovable per cápita, los polos de mayor densidad del centro y norte —como el Valle de México— operan con una disponibilidad por habitante críticamente baja.
 :::
 
 [Esta presión poblacional obliga a los gobiernos a administrar la urgencia: más de la mitad de las acciones municipales (**53.9%**) son reactivas, intentando llevar servicios a zonas sin planeación. Mientras tanto, soluciones de fondo como la **regularización (6.78%)** o la **reubicación (9.49%)** ocupan un espacio mínimo en la agenda.]{.resolution-copy}
@@ -265,7 +333,8 @@ _ = fig_deuda.update_layout(
     height=450,
     margin=dict(l=10, r=10, t=20, b=10),
     legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
-    xaxis=dict(title='Año')
+    xaxis=dict(title='Año'),
+    showlegend=False
 )
 
 _ = fig_deuda.update_yaxes(
@@ -289,75 +358,6 @@ fig_deuda
 Fuente: REPDA 2023; INEGI, Censo de Población y Vivienda 2010 y 2020
 :::
 
-::: {.section-divider}
-:::
-
-
-::: {.section .section-alt}
-::: {.page-wrapper}
-
-::: {.section-header}
-::: {}
-[Panorama Nacional]{.section-label}
-
-:::
-:::
-
-::: {.kpi-grid}
-
-::: {.card .card-accent}
-::: {.card-title}
-Extracción Total 2023
-:::
-::: {.card-value}
-90,629
-:::
-::: {.card-unit}
-millones de m³ extraídos (SINA, SEMARNAT, CONAGUA, 2023)
-:::
-[↑ +5.8% vs 2015]{.card-trend .up}
-:::
-
-::: {.card .card-accent}
-::: {.card-title}
-Recursos renovables totales de agua dulce
-:::
-::: {.card-value}
-472,195
-:::
-::: {.card-unit}
-millones de m³ disponibles (SINA, SEMARNAT, CONAGUA, 2023)
-:::
-[↑ +5.68% vs 2015]{.card-trend .up}
-:::
-
-::: {.card .card-accent}
-::: {.card-title}
-Concesionada / Asignada
-:::
-::: {.card-value}
-68.1 km³
-:::
-::: {.card-unit}
-comprometida legalmente (SINA, 2023)
-:::
-[↑ +0.7413% vs 2013]{.card-trend .up}
-:::
-
-::: {.card .card-accent}
-::: {.card-title}
-Volumen de agua renovable 
-:::
-::: {.card-value}
-121.9 km³
-:::
-::: {.card-unit}
-Indicador 6n.2.1 (SINA, 2023)
-:::
-[↓ -0.234% vs 2013]{.card-trend .up}
-:::
-
-:::
 
 ::: {.card .card-spacious}
 ::: {.card-title .card-title--large}
@@ -417,6 +417,7 @@ fig_abundancia.update_layout(
     coloraxis_showscale=False,
     xaxis_title="m³/habitante/año",
     yaxis_title="",
+    showlegend=False,
     hovermode='y unified'
 )
 
@@ -485,14 +486,7 @@ fig_gap.update_layout(
     xaxis_title='',
     yaxis_title='Cantidad de Municipios',
     hovermode='x unified',
-    legend=dict(
-        orientation="h", 
-        yanchor="bottom", 
-        y=1.02, 
-        xanchor="right", 
-        x=1, 
-        title=""
-    )
+    showlegend=False
 )
 
 
@@ -542,7 +536,8 @@ fig_act = px.pie(
 # 3. CONFIGURACIÓN ÚNICA DE LAYOUT
 fig_act.update_traces(
     textinfo='percent+label',
-    hoverinfo='label+value+percent'
+    hoverinfo='label+value+percent',
+    showlegend=False
 )
 
 ```
@@ -617,7 +612,8 @@ fig_ranking.update_layout(
     xaxis_title="m³ / habitante / año",
     yaxis_title="",
     yaxis={'categoryorder':'total ascending'},
-    hovermode='y unified'
+    hovermode='y unified',
+    showlegend=False
 )
 
 # Renderizado único
@@ -728,7 +724,8 @@ fig_sector = px.pie(
 # 3. CONFIGURACIÓN DE LAYOUT CONSOLIDADA
 fig_sector.update_traces(
     textinfo='percent+label',
-    hoverinfo='label+value+percent'
+    hoverinfo='label+value+percent',
+    showlegend=False
 )
 
 
@@ -854,6 +851,7 @@ fig_pop.update_layout(
     height=600,
     margin=dict(l=10, r=10, t=20, b=10),
     coloraxis_showscale=False,
+    showlegend=False,
     hovermode='y unified',
     xaxis=dict(
         type='log', 
@@ -954,16 +952,20 @@ fig_radar = px.line_polar(
     color_discrete_map=colores,
     custom_data=['Volumen']  # Guardamos el volumen real para mostrarlo en el tooltip
 )
-
-# Añadimos relleno y configuramos el tooltip
-fig_radar.update_traces(
-    fill='toself',
-    hovertemplate="%{theta}: %{customdata[0]:,.0f} hm³<extra>Zona %{data.name}</extra>"
-)
-
-# 5. CONFIGURACIÓN DE EJES Y LAYOUT
 tick_vals_real = [10, 100, 1000, 10000, 50000]
 tick_vals_log = [np.log10(v) for v in tick_vals_real]
+fig_radar.update_layout(
+    polar=dict(
+        radialaxis=dict(
+            visible=True,
+            tickvals=tick_vals_log,
+            ticktext=["10", "100", "1k", "10k", "50k"],
+            gridcolor="#E2EAFF",
+            range=[0, np.log10(resumen[sectores].max().max() + 10000)]
+        )))
+
+
+
 
 
 ```
@@ -1026,9 +1028,6 @@ fig_rha = px.line(
     color_discrete_map=colores_rha
 )
 
-# Añadimos los marcadores y ajustamos el grosor de línea
-
-
 # Añadir el Umbral Crítico directamente como una línea horizontal
 fig_rha.add_hline(
     y=55,
@@ -1038,9 +1037,6 @@ fig_rha.add_hline(
     annotation_text="Umbral 55%",
     annotation_position="bottom right"
 )
-
-# 4. CONFIGURACIÓN DE LAYOUT
-
 ```
 Fuente: CONAGUA, Estadísticas del Agua en México; elaboración propia con datos EDA
 :::
@@ -1110,15 +1106,15 @@ df_st = df_st.sort_values('Periodo')
 fig_stress = px.line(
     df_st, 
     x='Periodo', 
-    y=col_val, 
-    markers=True
+    y=col_val#, 
+    #markers=True
 )
 
-# 3. CONFIGURACIÓN DE LAYOUT CONSOLIDADA
-fig_stress.update_traces(
-    line=dict(color="#F03BF3", width=4),
-    marker=dict(size=8),
-    name='Nivel de Estrés (%)'
+fig_stress.update_layout(
+    xaxis_title='Año',
+    yaxis_title='% de Estrés Hídrico',
+    template='plotly_white',
+    yaxis=dict(range=[40, 50]) # Ajuste para ver mejor la variación
 )
 
 ```
@@ -1185,7 +1181,8 @@ fig_merge = px.line(
 fig_merge.update_traces(
     fill='tozeroy', 
     line=dict(width=3),
-    marker=dict(size=8)
+    marker=dict(size=8),
+    showlegend=False
 )
 
 ```
@@ -1244,18 +1241,12 @@ fig_visible = go.Figure(
     layout=go.Layout(
         template='plotly_white',
         barmode='group', 
+        showlegend=False,
         height=450, 
         margin=dict(l=10, r=10, t=20, b=10),
         hovermode='x unified',
         xaxis=dict(title=''),
-        yaxis=dict(title="Volumen (hm³)"),
-        legend=dict(
-            orientation="h", 
-            yanchor="bottom", 
-            y=1.02, 
-            xanchor="right", 
-            x=1
-        )
+        yaxis=dict(title="Volumen (hm³)")
     )
 )
 
@@ -1311,6 +1302,7 @@ fig_agro.update_traces(
 
 fig_agro.update_layout(
     template='plotly_white',
+    showlegend=False,
     height=800, 
     
     # AJUSTE DE LA LEYENDA (Barra de colores)
@@ -1410,8 +1402,8 @@ fig_scatter = px.scatter(
 fig_scatter.update_layout(
     template='plotly_white',
     height=550,
-    margin=dict(l=10, r=10, t=20, b=10),
     showlegend=False,
+    margin=dict(l=10, r=10, t=20, b=10),
     hovermode='closest'
 )
 
@@ -1481,6 +1473,7 @@ fig_capita.update_layout(
         tickformat='d',               # Formato de dígito entero
         gridcolor='#F0F5FF'
     ),
+    showlegend=False,
     yaxis=dict(
         rangemode='tozero',
         gridcolor='#f0fbff'
@@ -1562,6 +1555,7 @@ fig_acceso = px.bar(
 
 fig_acceso.update_layout(
     template="plotly_white",
+    showlegend=False,
     height=400,
     margin=dict(l=10, r=10, t=20, b=10),
     xaxis_title="Porcentaje de Viviendas (%)",
@@ -1616,7 +1610,7 @@ fig_genero = px.bar(
     }
 )
 
-fig_genero.update_traces(textposition="outside")
+fig_genero.update_traces(textposition="outside", showlegend=False)
 
 ```
 Fuente: INEGI, Encuesta Nacional de Ingresos y Gastos de los Hogares (ENIGH) 2024
@@ -1643,7 +1637,7 @@ Fuente: INEGI, Encuesta Nacional de Ingresos y Gastos de los Hogares (ENIGH) 202
 :::
 
 ::: {.quote-block .quote-block--left}
-**Territorio:** México vive una realidad partida. Mientras el sur cuenta con una disponibilidad robusta, el poder económico del centro y norte del paíse opera con balances rojos, extrayendo sistemáticamente más de lo que la naturaleza puede devolver.
+**Territorio:** México vive una realidad partida. Mientras el sur cuenta con una disponibilidad robusta, el motor económico del centro y norte del país opera con balances rojos, extrayendo sistemáticamente más de lo que la naturaleza puede devolver.
 :::
 
 :::
@@ -1719,6 +1713,7 @@ _ = fig_bal.add_trace(go.Bar(
 
 fig_bal.update_layout(
     barmode='group',
+    showlegend=False,
     yaxis_title='km³',
     template='plotly_white',
     hovermode='x unified'
@@ -1794,13 +1789,14 @@ Un techo de 50 m² puede captar hasta 30,000 litros al año. Esta inversión pue
 Objetivo: Dejar de ser espectador de la crisis.
 :::
 [Identifica tu impacto y convierte tu 'huella de sed' en una huella de cambio. En el México de hoy, cada gota que visualizamos es una gota que podemos salvar.]{.outro-copy}
-
 :::
 
 
 ::: {.section-divider}
 :::
 
+::: {#datos}
+:::
 ::: {#datos .section .section-alt}
 ::: {.page-wrapper}
 
@@ -2014,22 +2010,21 @@ El Censo registra 2,467 de los 2,478 municipios del país. Los 11 faltantes corr
 :::
 La variable `tsalud1_h/m` de la ENIGH 2024 mide horas de cuidados no remunerados en salud, no específicamente el acarreo de agua. La medición precisa requeriría la **ENUT** (Encuesta Nacional sobre Uso del Tiempo), cuya última edición disponible es 2019.
 :::
+
+
+
 :::
-
-
-
-
-
+:::
 
 ::: {.footer}
 Tlamatipohua
+
+::: {.badge-row}
 [🌊 ODS 6 — Agua Limpia y Saneamiento]{.badge}
 [📊 Datos abiertos: INEGI / CONAGUA/ Gobierno de México ]{.badge}
-[🇲🇽 HackODS UNAM]{.badge}
+[🇲🇽 HackODS UNAM 2026]{.badge}
+:::
 :::
 
-
-:::
-:::
 :::
 :::
