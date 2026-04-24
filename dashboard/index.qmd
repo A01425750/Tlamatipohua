@@ -15,9 +15,12 @@ execute:
 
 ```{python}
 import pandas as pd
-import numpy as np
 import plotly.graph_objects as go
 import plotly.express as px
+import re
+import os
+from plotly.subplots import make_subplots
+import numpy as np
 ```
 
 ::: {.topbar}
@@ -261,6 +264,65 @@ fig = px.choropleth(gp_largo,geojson=geojson_rha,locations="RHA",featureidkey="p
 fig.update_geos(fitbounds="locations",visible=False)
 #fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
 #fig.show()
+```
+:::
+::: {.card .card-spacious}
+::: {.card-title .card-title--large}
+Población vs. Recursos Hídricos por Entidad Federativa (2021)
+:::
+```{python}
+import os
+import pandas as pd
+import plotly.express as px
+
+# Archivos de datos
+files_agua = [
+    "../datos/AguaRenovable/EntidadFederativa/Agua_Renovable_EntidadFederativa_2017.xlsx",
+    "../datos/AguaRenovable/EntidadFederativa/Agua_Renovable_EntidadFederativa_2018.xlsx",
+    "../datos/AguaRenovable/EntidadFederativa/Agua_Renovable_EntidadFederativa_2019.xlsx",
+    "../datos/AguaRenovable/EntidadFederativa/Agua_Renovable_EntidadFederativa_2020.xlsx",
+    "../datos/AguaRenovable/EntidadFederativa/Agua_Renovable_EntidadFederativa_2021.xlsx"
+]
+
+all_data_agua = []
+for f in files_agua:
+    if os.path.exists(f):
+        df_temp = pd.read_excel(f, engine='openpyxl')
+        all_data_agua.append(df_temp)
+
+master_agua = pd.concat(all_data_agua, ignore_index=True)
+
+# Limpieza de columnas numéricas (se realiza ANTES de filtrar)
+cols_num = [
+    'Agua Renovable (hm³/año)', 
+    'Población (Millones de habitantes)', 
+    'Agua Renovable per cápita (m³/habitante/año)'
+]
+
+for col in cols_num:
+    master_agua[col] = pd.to_numeric(
+        master_agua[col].astype(str).str.replace(',', '').str.replace('"', '').str.strip(), 
+        errors='coerce'
+    ).fillna(0)
+
+# Filtrar año 2021
+df_2021 = master_agua[master_agua['Año'] == 2021]
+
+# Gráfica: Población vs Recursos
+fig_pob = px.scatter(
+    df_2021, 
+    x='Población (Millones de habitantes)', 
+    y='Agua Renovable (hm³/año)',
+    size='Agua Renovable per cápita (m³/habitante/año)', 
+    color='Entidad Federativa'
+)
+
+fig_pob.update_layout(
+    template='plotly_white',
+    height=350,
+    margin=dict(l=10, r=10, t=20, b=10),
+    showlegend=False
+)
 ```
 :::
 
