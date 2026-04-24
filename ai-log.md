@@ -385,3 +385,62 @@ color_discrete_sequence=px.colors.qualitative.Pastel)
 - **Resultado**: Se hizo una recomendación de sintáxis para lograrlo.
 - **Decisión**: Se incluyeron los cambios en index.qmd
 
+### 2026-04-23 | Gemini | Ajuste de estilos, layouts y solución de errores en Plotly
+
+- **Tarea:** Corregir errores en la carga de datos (KeyError), evitar la superposición de títulos y leyendas, y aplicar una línea gráfica consistente en múltiples figuras (fondos blancos/azul claro, fuente Arial, áreas rellenas, ejes desde 0).
+
+- **Prompt:** "en este archivo ayudame a darle formato a los textos de las graficas porque algunas se sobrelapan...", "haz el fondo del grid azul clarito", "a estas graficas ponles fondo blanco y cambia el tipo de fuente..."
+
+- **Resultado:** Se refactorizó el código de update_layout en varias gráficas para unificar márgenes (aumentando t y b), mover leyendas a la parte inferior y ajustar la tipografía, logrando que los textos y anotaciones de fuentes tengan suficiente espacio para "respirar".
+
+- **Decisión:** Se actualizaron las celdas de las gráficas en el archivo .ipynb y .qmd eliminando .show() intermedios para asegurar su correcta renderización.
+
+### 2026-04-23 | Gemini | Redacción de textos narrativos para el dashboard
+
+- **Tarea:** Redactar los textos introductorios para contextualizar los datos técnicos dentro del marco de la "Deuda Hídrica" y el impacto social.
+
+- **Prompt:** "ayudame a crear un texto introductorio para la sección 3: inequidad de acceso, te muestro las graficas que quiero incluir" y "ahora ayudame a escribir el texto de introducción para la parte de balance hídrico".
+
+- **Resultado:** Se generaron introducciones estructuradas con viñetas que explican la crisis de escasez (balance de la riqueza per cápita) y la vulnerabilidad en asentamientos irregulares (costo y exclusión de la red).
+
+- **Decisión:** Se integraron estos textos en formato Markdown como preámbulos a sus respectivas visualizaciones interactivas dentro del reporte.
+
+### 2026-04-23 | Claude Sonnet 4.6 | Preparación de Dashboard ODS 6 — Deuda Líquida (Tlamatipohua)
+
+- **Tarea:** Agregar título, subtítulo de especificación y nota de fuente a cada gráfica de un notebook de Python.
+
+- **Prompt:** Archivo graficas_final.ipynb con 18 gráficas en Plotly. Pedir que cada gráfica tenga título en negritas, subtítulo descriptivo tipo "Zona Metropolitana del Valle de México, 2019–2024…" y nota de fuente al pie, todo dentro de la visualización de Plotly usando update_layout y add_annotation.
+
+- **Resultado:** Notebook graficas_final_con_titulos.ipynb con las 18 celdas modificadas. Cada figura recibió update_layout con título HTML y subtítulo en <sup>, más add_annotation anclada en y=-0.13 para la fuente.
+
+- **Decisión:** Se usó este notebook como base para integrar las gráficas al index.qmd.
+
+
+### 2026-04-23 | Claude Sonnet 4.6 | Limpieza de HTML en Quarto Dashboard
+
+- **Tarea:** Eliminar todo el HTML embebido de sobre_los_datos.qmd y reescribirlo con Quarto Markdown nativo para format: dashboard.
+
+- **Prompt:** Archivo con una tabla <table> completa y bloques :::{.limitacion} que referenciaban clases CSS personalizadas. Pedir conversión a Markdown puro sin ningún tag HTML.
+
+- **Resultado:** Tabla convertida a pipes Markdown (|), limitaciones convertidas a secciones **título** + párrafo + ---, footer como texto plano, y clases CSS de terceros eliminadas.
+Decisión: Se adoptó esta versión como sobre_los_datos.qmd definitivo.
+
+### 2026-04-23 | Claude Sonnet 4.6 | Integración completa de gráficas y secciones en index.qmd
+
+- **Tarea:** Unificar en un solo index.qmd el código de todas las gráficas del notebook, los textos narrativos de cada sección, y el contenido de sobre_los_datos.qmd, sin HTML puro y respetando el sistema de clases de styles.css.
+
+- **Prompt:** Tres archivos de entrada (index.qmd base, graficas_final_con_titulos.ipynb, sobre_los_datos.qmd) más el styles.css de referencia. Pedir que las gráficas queden en bloques {python} dentro de sus tarjetas .card.card-spacious, los textos narrativos del notebook como párrafos en las secciones correspondientes, y "Sobre los Datos" como sección #sobrelosdatos antes del footer.
+
+- **Resultado:** index.qmd de 2,158 líneas con 6 secciones ancladas (#poblacion, #consumo, #inequidad, #balancehidrico, #accion, #sobrelosdatos), 22 bloques Python, 0 tags HTML directos, y la tabla de fuentes en Markdown nativo.
+
+- **Decisión:** Este archivo reemplaza al index.qmd original como entregable principal del proyecto.
+
+### 2026-04-23 | Claude Sonnet 4.6 | Rediseño visual de la sección "Sobre los Datos"
+
+- **Tarea:** Darle formato visual coherente con el resto del dashboard a la sección de metadatos, que se veía como texto plano.
+
+- **Prompt:** Sección final del index.qmd con una tabla Markdown de 19 filas y 6 limitaciones separadas por ---. Pedir rediseño usando únicamente las clases ya definidas en styles.css, sin HTML.
+
+- **Resultado:** Sección reestructurada en cuatro bloques: (1) fila de 4 KPIs .card.card-accent con métricas clave (19 datasets, 4 instituciones, cobertura 2000–2024, 8 indicadores ODS); (2) 8 tarjetas .card.card-spacious en grid .grid-auto-320 agrupando datasets relacionados, con emojis, badges de indicador y cobertura, descripción y ruta en .text-note--muted; (3) 6 tarjetas equivalentes para las limitaciones; (4) bloque .outro-box de créditos con badges de instituciones.
+
+- **Decisión:** Se integró directamente en el index.qmd final mediante str_replace sobre la sección anterior.
