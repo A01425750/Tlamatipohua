@@ -1147,6 +1147,343 @@ fig_rha.add_hline(
 Fuente: CONAGUA, Estadísticas del Agua en México; elaboración propia con datos EDA
 :::
 
+::: {.card .card-spacious}
+::: {.card-title .card-title--large}
+Evolución del Estrés Hídrico en México — Indicador 6.4.2
+:::
+
+Nivel de estrés hídrico nacional medido como el porcentaje de extracción de agua dulce en comparación con los recursos renovables disponibles.
+
+```{python}
+import pandas as pd
+import plotly.express as px
+
+# 1. CARGA Y LIMPIEZA DE DATOS
+path_sh = '../datos/6.4.2/conjunto_de_datos/6.4.2_sh_es.csv'
+df_st = pd.read_csv(path_sh)
+
+# Limpieza: El valor está en la segunda columna (porcentaje)
+col_val = df_st.columns[1]
+df_st[col_val] = pd.to_numeric(
+    df_st[col_val].astype(str).str.replace(',', ''), 
+    errors='coerce'
+)
+df_st = df_st.sort_values('Periodo')
+
+# 2. CREACIÓN DE LA GRÁFICA (Plotly Express)
+fig_stress = px.line(
+    df_st, 
+    x='Periodo', 
+    y=col_val, 
+    markers=True
+)
+
+# 3. CONFIGURACIÓN DE LAYOUT CONSOLIDADA
+fig_stress.update_traces(
+    line=dict(color="#F03BF3", width=4),
+    marker=dict(size=8),
+    name='Nivel de Estrés (%)'
+)
+
+```
+Fuente: INEGI, Indicadores ODS 6.4.2; CONAGUA 2024
+:::
+
+::: {.card .card-spacious}
+::: {.card-title .card-title--large}
+Estrés Hídrico: Nacional vs. Centro-Norte (2015–2023)
+:::
+
+México, 2015–2023 — Comparación del nivel de estrés hídrico nacional (6.4.2) y de la región Centro-Norte (6N.2.1). Esta comparativa resalta cómo el promedio nacional oculta situaciones críticas en regiones específicas.
+```{python}
+import pandas as pd
+import plotly.express as px
+
+# 1. FUNCIÓN DE CARGA Y LIMPIEZA UNIFICADA
+def cargar_indicador(path):
+    df = pd.read_csv(path, encoding='latin1', sep=None, engine='python')
+    df.columns = [c.strip() for c in df.columns]
+    df.rename(columns={df.columns[0]: 'Periodo'}, inplace=True)
+    
+    # Identificamos la columna de valor (segunda columna)
+    col_val = df.columns[1]
+    df[col_val] = pd.to_numeric(df[col_val].astype(str).str.replace(',', ''), errors='coerce')
+    
+    # Filtro: Desde 2015 y ordenamiento
+    df['Periodo'] = pd.to_numeric(df['Periodo'], errors='coerce')
+    df = df[df['Periodo'] >= 2015]
+    return df.sort_values('Periodo'), col_val
+
+# 2. PROCESAMIENTO DE DATOS
+path_st = '../datos/6.4.2/conjunto_de_datos/6.4.2_sh_es.csv'
+path_sh = '../datos/6N.2.1_es/conjunto_de_datos/6n.2.1_sh_es.csv'
+
+df_st_raw, col_st = cargar_indicador(path_st)
+df_sh_raw, col_sh = cargar_indicador(path_sh)
+
+# Preparar formato largo para Plotly Express
+df_st_raw['Indicador'] = 'Nacional (6.4.2)'
+df_st_raw = df_st_raw.rename(columns={col_st: 'Estrés (%)'})
+
+df_sh_raw['Indicador'] = 'Centro y Norte (6N.2.1)'
+df_sh_raw = df_sh_raw.rename(columns={col_sh: 'Estrés (%)'})
+
+# Unificamos ambos DataFrames
+df_merge = pd.concat([df_st_raw, df_sh_raw], ignore_index=True)
+
+# 3. CREACIÓN DE LA GRÁFICA (Consolidada en un solo objeto)
+fig_merge = px.line(
+    df_merge, 
+    x='Periodo', 
+    y='Estrés (%)', 
+    color='Indicador',
+    line_dash='Indicador',
+    markers=True,
+    color_discrete_map={
+        'Nacional (6.4.2)': '#F03BF3', 
+        'Centro y Norte (6N.2.1)': '#0066FF'
+    }
+)
+
+# 4. CONFIGURACIÓN DE ESTILOS Y ÁREAS RELLENAS
+fig_merge.update_traces(
+    fill='tozeroy', 
+    line=dict(width=3),
+    marker=dict(size=8)
+)
+
+```
+Fuente: INEGI, Indicadores ODS 6.4.2 y 6N.2.1; CONAGUA 2024
+:::
+
+::: {.card .card-spacious}
+::: {.card-title .card-title--large}
+Consumo Visible vs. Invisible de Agua en México (2023)
+:::
+
+México, 2023 — Comparación entre el uso urbano-doméstico (visible) y el uso agropecuario e industrial (invisible).
+
+```{python}
+import pandas as pd
+import plotly.graph_objects as go
+
+# 1. CARGA Y LIMPIEZA DE DATOS (Bloque independiente)
+path_repda = '../datos/Repda/repda_estatal2023.xlsx'
+df_2023 = pd.read_excel(path_repda, engine='openpyxl')
+
+def clean_num(col_name):
+    return pd.to_numeric(
+        df_2023[col_name].astype(str).str.replace(',', '').str.strip(), 
+        errors='coerce'
+    ).fillna(0)
+
+# El "Consumo Visible" es el uso Urbano y Doméstico
+total_dir = clean_num('Público urbano (H)').sum() + clean_num('Doméstico ( C)').sum()
+
+# El "Consumo Invisible" es la suma de los sectores productivos
+total_ind = (
+    clean_num('Agrícola (inscrito + pendiente) (A)').sum() + 
+    clean_num('Industrial (F1)').sum() + 
+    clean_num('Pecuario (G)').sum() + 
+    clean_num('Servicios ( E )').sum() + 
+    clean_num('Agroindustrial (B)').sum()
+)
+
+# 2. CREACIÓN DE LA GRÁFICA (Enfoque declarativo de un solo paso)
+fig_visible = go.Figure(
+    data=[
+        go.Bar(
+            name='Consumo Visible (Urbano/Casa)', 
+            x=['Nacional'], 
+            y=[total_dir], 
+            marker_color='#00C8B4' # Turquesa (Uso Doméstico)
+        ),
+        go.Bar(
+            name='Consumo Invisible (Agro/Industria)', 
+            x=['Nacional'], 
+            y=[total_ind], 
+            marker_color='#FF3B3B' # Rojo (Indica mayor peso/impacto)
+        )
+    ],
+    layout=go.Layout(
+        template='plotly_white',
+        barmode='group', 
+        height=450, 
+        margin=dict(l=10, r=10, t=20, b=10),
+        hovermode='x unified',
+        xaxis=dict(title=''),
+        yaxis=dict(title="Volumen (hm³)"),
+        legend=dict(
+            orientation="h", 
+            yanchor="bottom", 
+            y=1.02, 
+            xanchor="right", 
+            x=1
+        )
+    )
+)
+
+# Renderizado único para Quarto
+fig_visible
+```
+Fuente: CONAGUA, Registro Público de Derechos de Agua (REPDA) 2023
+:::
+
+::: {.card .card-spacious}
+::: {.card-title .card-title--large}
+Extracción de Agua para Uso Agrícola por Estado (2023)
+:::
+
+México, 2023 — Volumen de agua concesionada para uso agrícola por entidad federativa. Este sector representa el mayor porcentaje de la deuda hídrica nacional.
+
+```{python}
+import pandas as pd
+import plotly.express as px
+
+# 1. CARGA Y LIMPIEZA DE DATOS
+path_repda = '../datos/Repda/repda_estatal2023.xlsx'
+df_2023_raw = pd.read_excel(path_repda, engine='openpyxl')
+
+def clean_numeric(df, col_name):
+    """Limpia comas y convierte a formato numérico"""
+    return pd.to_numeric(
+        df[col_name].astype(str).str.replace(',', '').str.strip(), 
+        errors='coerce'
+    ).fillna(0)
+
+# Limpiamos la columna agrícola y filtramos totales
+df_2023_raw['Agrícola'] = clean_numeric(df_2023_raw, 'Agrícola (inscrito + pendiente) (A)')
+top_agro = df_2023_raw[~df_2023_raw['Estado'].str.contains('Total|Nacional', case=False, na=False)]
+
+# 2. CREACIÓN DE LA GRÁFICA (Plotly Express)
+fig_agro = px.bar(
+    top_agro, 
+    x='Agrícola', 
+    y='Estado', 
+    orientation='h', 
+    color='Agrícola', 
+    color_continuous_scale='Greens',
+    labels={'Agrícola': 'Volumen'} # Título más corto para la leyenda
+)
+
+# 3. CONFIGURACIÓN DE LAYOUT CONSOLIDADA
+fig_agro.update_traces(
+    marker_line_color='rgb(8,48,107)',
+    marker_line_width=0.5, 
+    opacity=0.9
+)
+
+fig_agro.update_layout(
+    template='plotly_white',
+    height=800, 
+    
+    # AJUSTE DE LA LEYENDA (Barra de colores)
+    coloraxis_colorbar=dict(
+        title=dict(
+            text="hm³", # Unidad de medida
+            side="top"  # Ponemos el texto ARRIBA de la barra, no al lado
+        ),
+        thicknessmode="pixels", thickness=15,
+        lenmode="pixels", len=300,
+        x=1.12, # Empujamos la leyenda más a la derecha (antes 1.05)
+        yanchor="middle",
+        y=0.5
+    ),
+    
+    # AJUSTE DE MÁRGENES (Damos mucho más espacio a la derecha)
+    # l=160 para los nombres de estados, r=180 para que la leyenda no se encime
+    margin=dict(l=160, r=180, t=50, b=50),
+    
+    xaxis_title="Volumen (hm³)",
+    yaxis_title="",
+    yaxis={'categoryorder':'total ascending'},
+    hovermode='y unified'
+)
+
+```
+Fuente: CONAGUA, Registro Público de Derechos de Agua (REPDA) 2023
+:::
+
+::: {.card .card-spacious}
+::: {.card-title .card-title--large}
+Correlación: Intensidad Agrícola vs. Pecuaria por Estado (2023)
+:::
+```{python}
+import os
+import re
+import pandas as pd
+import plotly.express as px
+
+# 1. CARGA Y LIMPIEZA DE DATOS
+files = [
+    "../datos/Repda/repda_estatal2020.xlsx",
+    "../datos/Repda/repda_estatal2021.xlsx",
+    "../datos/Repda/repda_estatal2022.xlsx",
+    "../datos/Repda/repda_estatal2023.xlsx"
+]
+
+all_data = []
+for f in files:
+    if os.path.exists(f):
+        year_match = re.search(r"(\d{4})", f)
+        year = int(year_match.group(1)) if year_match else 0
+        
+        df = pd.read_excel(f, engine='openpyxl')
+        
+        # Limpieza masiva de columnas numéricas
+        for col in df.columns[3:]:
+            df[col] = pd.to_numeric(
+                df[col].astype(str).str.replace('"', '').str.replace(',', '').str.strip(), 
+                errors='coerce'
+            ).fillna(0)
+        
+        # Asignación de nombres estandarizados
+        df['Anio'] = year
+        df['Uso_Agricola'] = df[[c for c in df.columns if 'Agrícola' in c][0]]
+        df['Uso_Pecuario'] = df[[c for c in df.columns if 'Pecuario' in c][0]]
+        df['Total_Extraccion'] = df[[c for c in df.columns if 'Total por estado' in c][0]]
+        
+        all_data.append(df)
+
+master_df = pd.concat(all_data, ignore_index=True)
+df_2023 = master_df[master_df['Anio'] == 2023].copy()
+
+# Preparación para escala logarítmica (evitar ceros)
+df_2023['Uso_Agricola'] = df_2023['Uso_Agricola'].replace(0, 0.01)
+df_2023['Uso_Pecuario'] = df_2023['Uso_Pecuario'].replace(0, 0.01)
+df_2023['Total_Extraccion'] = df_2023['Total_Extraccion'].astype(float)
+
+# 2. CREACIÓN DE LA GRÁFICA (Bubble Chart)
+fig_scatter = px.scatter(
+    df_2023, 
+    x="Uso_Agricola", 
+    y="Uso_Pecuario",
+    size="Total_Extraccion", 
+    color="Estado", 
+    hover_name="Estado", 
+    log_x=True, 
+    log_y=True,
+    size_max=60,
+    labels={
+        'Uso_Agricola': 'Uso Agrícola (Mm³)', 
+        'Uso_Pecuario': 'Uso Pecuario (Mm³)'
+    }
+)
+
+# 3. CONFIGURACIÓN DE LAYOUT CONSOLIDADA
+fig_scatter.update_layout(
+    template='plotly_white',
+    height=550,
+    margin=dict(l=10, r=10, t=20, b=10),
+    showlegend=False,
+    hovermode='closest'
+)
+
+
+```
+Fuente: CONAGUA, Registro Público de Derechos de Agua (REPDA) 2023
+:::
+
 ::: {.section-divider}
 :::
 
