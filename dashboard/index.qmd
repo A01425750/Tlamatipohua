@@ -324,6 +324,244 @@ fig_pob.update_layout(
     showlegend=False
 )
 ```
+Fuente: CONAGUA, Estadísticas del Agua en México 2021
+:::
+
+::: {.card .card-spacious}
+::: {.card-title .card-title--large}
+Análisis de Deuda Hídrica: Crecimiento poblacional vs. Agua Concesionada (2012-2023)
+:::
+```{python}
+import pandas as pd
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
+
+# 1. CARGA Y LIMPIEZA DE DATOS DE AGUA (Indicador 6N.2.1)
+path_agua = '../datos/6N.2.1_es/conjunto_de_datos/6n.2.1_dc_1215_es.csv'
+df_ind = pd.read_csv(path_agua, encoding='latin1', sep=None, engine='python')
+df_ind.columns = [c.strip() for c in df_ind.columns]
+df_ind = df_ind.iloc[:, [0, 1]].dropna()
+df_ind.columns = ['Anio', 'Volumen_km3']
+df_ind = df_ind[df_ind['Anio'] >= 2012].sort_values('Anio')
+
+# 2. CARGA Y PROYECCIÓN DE POBLACIÓN
+path_pop = '../datos/Poblacion/Poblacion_01-2.xlsx'
+df_pop_raw = pd.read_excel(path_pop, sheet_name='Tabulado', header=None)
+
+# Localizamos la fila nacional para obtener datos de 2010 y 2020
+mask = df_pop_raw.apply(lambda row: row.astype(str).str.contains("Estados Unidos Mexicanos", case=False, na=False).any(), axis=1)
+fila_nacional = df_pop_raw[mask]
+
+if not fila_nacional.empty:
+    def clean_num(val):
+        return float(str(val).replace('\xa0', '').replace(' ', '').replace(',', ''))
+
+    # Datos base para la proyección lineal
+    pop_2010 = clean_num(fila_nacional.iloc[0, 5])
+    pop_2020 = clean_num(fila_nacional.iloc[0, 8])
+    tasa_crecimiento = (pop_2020 - pop_2010) / 10
+    
+    años_grafica = list(range(2012, int(df_ind['Anio'].max()) + 1))
+    df_pob = pd.DataFrame({
+        'Anio': años_grafica,
+        'Poblacion': [pop_2010 + (a - 2010) * tasa_crecimiento for a in años_grafica]
+    })
+
+# 3. CREACIÓN DE LA GRÁFICA
+fig_deuda = make_subplots(specs=[[{"secondary_y": True}]])
+
+# Traza de Población (Fondo - Eje Secundario)
+fig_deuda.add_trace(
+    go.Scatter(
+        x=df_pob['Anio'], 
+        y=df_pob['Poblacion'] / 1e6,
+        fill='tozeroy', 
+        name='Población (Millones)',
+        fillcolor='rgba(184, 212, 255, 0.2)', 
+        line=dict(color='rgba(184, 212, 255, 0.4)')
+    ),
+    secondary_y=True
+)
+
+# Traza de Agua Concesionada (Frente - Eje Primario)
+fig_deuda.add_trace(
+    go.Scatter(
+        x=df_ind['Anio'], 
+        y=df_ind['Volumen_km3'],
+        mode='lines+markers', 
+        name='Agua Concesionada (km³)',
+        line=dict(color='#0066FF', width=4), 
+        marker=dict(size=8)
+    ),
+    secondary_y=False
+)
+
+# 4. CONFIGURACIÓN CONSOLIDADA DE DISEÑO
+fig_deuda.update_layout(
+    template='plotly_white',
+    hovermode='x unified',
+    margin=dict(l=10, r=10, t=20, b=10),
+    legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
+    xaxis=dict(title='Año')
+)
+
+# Configuración de ejes Y (ambos forzados a iniciar en 0)
+fig_deuda.update_yaxes(
+    title_text="<b>Volumen Concesionado (km³)</b>", 
+    color="#0066FF", 
+    secondary_y=False, 
+    rangemode="tozero"
+)
+
+fig_deuda.update_yaxes(
+    title_text="Población (Millones)", 
+    secondary_y=True, 
+    showgrid=False, 
+    rangemode="tozero"
+)
+
+# Renderizado final para Quarto
+
+```
+:::
+
+
+::: {.card .card-spacious}
+::: {.card-title .card-title--large}
+Estados con Mayor Abundancia Hídrica per Cápita (2021)
+:::
+
+México, 2021 — Disponibilidad de agua renovable por habitante, por entidad federativa.
+
+```{python}
+import os
+import pandas as pd
+import plotly.express as px
+
+# 1. Preparación de datos (Carga y limpieza)
+files_agua = [
+    "../datos/AguaRenovable/EntidadFederativa/Agua_Renovable_EntidadFederativa_2017.xlsx",
+    "../datos/AguaRenovable/EntidadFederativa/Agua_Renovable_EntidadFederativa_2018.xlsx",
+    "../datos/AguaRenovable/EntidadFederativa/Agua_Renovable_EntidadFederativa_2019.xlsx",
+    "../datos/AguaRenovable/EntidadFederativa/Agua_Renovable_EntidadFederativa_2020.xlsx",
+    "../datos/AguaRenovable/EntidadFederativa/Agua_Renovable_EntidadFederativa_2021.xlsx"
+]
+
+all_data_agua = []
+for f in files_agua:
+    if os.path.exists(f):
+        df_temp = pd.read_excel(f, engine='openpyxl')
+        all_data_agua.append(df_temp)
+
+master_agua = pd.concat(all_data_agua, ignore_index=True)
+
+# Limpieza de columna numérica
+col_capita = 'Agua Renovable per cápita (m³/habitante/año)'
+master_agua[col_capita] = pd.to_numeric(
+    master_agua[col_capita].astype(str).str.replace(',', '').str.strip(), 
+    errors='coerce'
+).fillna(0)
+
+# Filtrar 2021 y ordenar (Ascending=True para que el mayor quede arriba en px.bar h)
+df_2021 = master_agua[master_agua['Año'] == 2021]
+abundancia = df_2021.sort_values(col_capita, ascending=True)
+
+# 2. Creación de la Gráfica
+fig_abundancia = px.bar(
+    abundancia, 
+    x=col_capita, 
+    y='Entidad Federativa', 
+    orientation='h',
+    color=col_capita, 
+    color_continuous_scale='Blues'
+)
+
+# 3. Configuración de Layout Consolidada
+fig_abundancia.update_layout(
+    template='plotly_white',
+    height=400,
+    margin=dict(l=10, r=10, t=10, b=10),
+    coloraxis_showscale=False,
+    xaxis_title="m³/habitante/año",
+    yaxis_title="",
+    hovermode='y unified'
+)
+
+
+
+```
+Fuente: CONAGUA, Estadísticas del Agua en México 2021
+:::
+
+::: {.card .card-spacious}
+::: {.card-title .card-title--large}
+Brecha de Servicios Básicos en Municipios
+:::
+
+México, 2021 — Presencia o ausencia de servicios públicos en los 2,467 municipios registrados.
+
+```{python}
+import pandas as pd
+import plotly.graph_objects as go
+
+# 1. CARGA Y PROCESAMIENTO (Silencioso)
+path_serv = "../datos/Res_territorial_ah_CNGMD2021/res_terr_ah_irreg_cngmd2021_csv/conjunto_de_datos/m2s13p23_cngmd2021.csv"
+df_serv = pd.read_csv(path_serv)
+
+# Mapeo y limpieza
+service_names = {
+    1: 'Agua potable', 2: 'Drenaje', 3: 'Electrificación', 
+    4: 'Alumbrado', 5: 'Pavimentación', 6: 'Recolección de Basura'
+}
+df_serv['Servicio'] = df_serv['servpub_a'].map(service_names)
+df_serv['Existencia'] = df_serv['rensnn1'].apply(lambda x: 1 if x == 1 else 0)
+
+# Estadísticas
+stats = df_serv.groupby('Servicio')['Existencia'].sum().reset_index()
+total_mun = df_serv['ubicageo_c'].nunique()
+stats['Falta'] = total_mun - stats['Existencia']
+
+# 2. CONSTRUCCIÓN DE LA GRÁFICA (Un solo objeto)
+fig_gap = go.Figure()
+
+# Capa 1: Con Servicio
+fig_gap.add_trace(go.Bar(
+    name='Con Servicio', x=stats['Servicio'], y=stats['Existencia'], 
+    marker_color='#00C8B4'
+))
+
+# Capa 2: Sin Servicio
+fig_gap.add_trace(go.Bar(
+    name='Sin Servicio', x=stats['Servicio'], y=stats['Falta'], 
+    marker_color='#FF3B3B'
+))
+
+# 3. CONFIGURACIÓN FINAL (Consolidada para evitar duplicados)
+fig_gap.update_layout(
+    template='plotly_white',
+    barmode='stack',
+    height=450,
+    margin=dict(l=10, r=10, t=80, b=10),
+    xaxis_title='',
+    yaxis_title='Cantidad de Municipios',
+    hovermode='x unified',
+    legend=dict(
+        orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1
+    ),
+    # Título y Subtítulo integrados en una sola llamada
+    title=dict(
+        text=(
+            "<b>Brecha de Servicios Públicos</b><br>"
+            "<sup>Presencia vs. Ausencia en 2,467 municipios (CNGMD 2021)</sup>"
+        ),
+        x=0.5, xanchor='center', font=dict(size=16)
+    )
+)
+
+# Renderizado único
+
+```
+Fuente: INEGI, Censo Nacional de Gobiernos Municipales y Demarcaciones Territoriales 2021 (CNGMD)
 :::
 
 
