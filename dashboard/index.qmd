@@ -192,118 +192,6 @@ Indicador 6n.2.1 (SINA, 2023)
 
 ::: {.card .card-spacious}
 ::: {.card-title .card-title--large}
-Balance hídrico nacional: ¿Cuánta agua hay vs. cuánta consumimos?
-:::
-```{python}
-import pandas as pd
-import numpy as np
-import plotly.express as px
-import plotly.graph_objects as go
-# Balance hídrico nacional: ¿Cuánta agua hay vs. cuánta consumimos?
-
-#Fuente: INEGI 6.4.2
-
-df_ext_raw = pd.read_csv('../datos/6.4.2/conjunto_de_datos/6.4.2_dc_967_es.csv') # Extraccion
-df_ren_raw = pd.read_csv('../datos/6.4.2/conjunto_de_datos/6.4.2_dc_968_es.csv') # Renovables
-df_eco_raw = pd.read_csv('../datos/6.4.2/conjunto_de_datos/6.4.2_dc_969_es.csv') # Caudal Ecologico
-
-# Funcion para limpiar los df raw
-def clean(df):
-    df_clean = df.iloc[:, :2].copy()
-    col_valor = df_clean.columns[1]
-    
-    df_clean[col_valor] = pd.to_numeric(
-        df_clean[col_valor].astype(str).str.replace(',', '').str.strip(), 
-        errors='coerce'
-    )
-    
-    df_clean['Periodo'] = pd.to_numeric(df_clean['Periodo'], errors='coerce')
-    
-    return df_clean
-
-df_ext = clean(df_ext_raw)
-df_ren = clean(df_ren_raw)
-df_eco = clean(df_eco_raw)
-
-df_bal = df_ext.merge(df_ren, on='Periodo').merge(df_eco, on='Periodo').sort_values('Periodo')
-
-df_bal.columns = ['Anio', 'Extraccion', 'Renovable', 'Caudal_Ecologico'] # renombramos columnas
-
-df_bal["Extraccion + Caudal"] = df_bal["Extraccion"] + df_bal["Caudal_Ecologico"]
-
-df_bal["Disponible"] = df_bal["Renovable"] - df_bal["Extraccion + Caudal"]  
-
-fig_bal = go.Figure()
-
-_ = fig_bal.add_trace(go.Bar(
-    x=df_bal['Anio'], y=df_bal['Renovable'] / 1000, 
-    name='Renovable', marker_color='#0066FF'
-))
-_ = fig_bal.add_trace(go.Bar(
-    x=df_bal['Anio'], y=df_bal['Caudal_Ecologico'] / 1000   , 
-    name='Ecológica', marker_color='#00C8B4'
-))
-_ = fig_bal.add_trace(go.Bar(
-    x=df_bal['Anio'], y=df_bal['Extraccion'] / 1000, 
-    name='Extracción', marker_color='#FF3B3B'
-))
-_ = fig_bal.add_trace(go.Bar(
-    x=df_bal["Anio"], y=df_bal["Extraccion + Caudal"] / 1000,
-    name='Extr. + Reserva', marker_color='#FF9A3B'
-))
-_ = fig_bal.add_trace(go.Bar(
-    x=df_bal["Anio"], y=df_bal["Disponible"] / 1000,
-    name='Disponible', marker_color='#3BFF3B'
-))
-
-fig_bal.update_layout(
-    barmode='group',
-    yaxis_title='km³',
-    template='plotly_white',
-    hovermode='x unified'
-)
-```
-:::
-
-
-::: {.card .card-spacious}
-::: {.card-title .card-title--large}
-Presión Hídrica Nacional por Región
-:::
-```{python}
-# Presión hídrica nacional por región hidrológico-administrativa (RHA)
-#El grado de presión es el 
-
-import json
-
-# Leemos los datos
-with open('../datos/RHA/rha2023.json', 'r') as f:
-    geojson_rha = json.load(f)
-
-f = "../datos/Grado_de_Presion/Grado_de_Presion_2022.xlsx"
-    
-gp = pd.read_excel(f,usecols=["Región Hidrológico-Administrativa","Grado de Presión (%)"])
-gp.columns = ["RHA",2022]
-
-gp["RHA"] = gp["RHA"].str.replace(r"^\s*[IVXLCDM]+\s*[-.]?\s*", "", regex=True)
-name_mapping = {
-    "Península de Baja California": "Península De Baja California",
-    'Cuencas Centrales del Norte': 'Cuencas Centrales Del Norte',
-    "Península de Yucatán": "Península De Yucatán",
-    'Aguas del Valle de México': 'Valle de México'
-}
-gp['RHA'] = gp['RHA'].replace(name_mapping)
-
-gp_largo = pd.melt(gp,id_vars=["RHA"],var_name="Año",value_name="Grado de presión (%)")
-gp_largo["Año"] = gp_largo["Año"].astype(int)
-fig = px.choropleth(gp_largo,geojson=geojson_rha,locations="RHA",featureidkey="properties.rha",color="Grado de presión (%)",color_continuous_scale="RdYlGn_r")
-fig.update_geos(fitbounds="locations",visible=False)
-#fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
-#fig.show()
-```
-:::
-::: {.card .card-spacious}
-::: {.card-title .card-title--large}
 Población vs. Recursos Hídricos por Entidad Federativa (2021)
 :::
 ```{python}
@@ -1479,15 +1367,359 @@ fig_scatter.update_layout(
     hovermode='closest'
 )
 
-
 ```
 Fuente: CONAGUA, Registro Público de Derechos de Agua (REPDA) 2023
 :::
 
-::: {.section-divider}
+::: {.card .card-spacious}
+::: {.card-title .card-title--large}
+Evolución de la Disponibilidad de Agua Renovable per Cápita (Nacional)
+:::
+```{python}
+import os
+import pandas as pd
+import plotly.express as px
+
+# 1. CARGA Y PROCESAMIENTO DE DATOS
+files_agua = [
+    "../datos/AguaRenovable/EntidadFederativa/Agua_Renovable_EntidadFederativa_2017.xlsx",
+    "../datos/AguaRenovable/EntidadFederativa/Agua_Renovable_EntidadFederativa_2018.xlsx",
+    "../datos/AguaRenovable/EntidadFederativa/Agua_Renovable_EntidadFederativa_2019.xlsx",
+    "../datos/AguaRenovable/EntidadFederativa/Agua_Renovable_EntidadFederativa_2020.xlsx",
+    "../datos/AguaRenovable/EntidadFederativa/Agua_Renovable_EntidadFederativa_2021.xlsx"
+]
+
+all_data_agua = []
+for f in files_agua:
+    if os.path.exists(f):
+        df_temp = pd.read_excel(f, engine='openpyxl')
+        all_data_agua.append(df_temp)
+
+master_agua = pd.concat(all_data_agua, ignore_index=True)
+
+# Limpieza de columnas numéricas
+cols_num = ['Agua Renovable (hm³/año)', 'Población (Millones de habitantes)']
+for col in cols_num:
+    master_agua[col] = pd.to_numeric(
+        master_agua[col].astype(str).str.replace(',', '').str.strip(), 
+        errors='coerce'
+    ).fillna(0)
+
+# Agrupación Nacional
+nacional = master_agua.groupby('Año')[cols_num].sum().reset_index()
+nacional['Per_Capita_Nac'] = (nacional['Agua Renovable (hm³/año)'] / nacional['Población (Millones de habitantes)'])
+
+# 2. CREACIÓN DE LA GRÁFICA (Plotly Express Area)
+fig_capita = px.area(
+    nacional, 
+    x='Año', 
+    y='Per_Capita_Nac',
+    markers=True
+)
+
+
+
+fig_capita.update_layout(
+    template='plotly_white',
+    height=400,
+    margin=dict(l=10, r=10, t=20, b=10),
+    xaxis_title='',
+    yaxis_title='m³/hab/año',
+    hovermode='x unified',
+    xaxis=dict(
+        tickmode='linear',
+        tick0=nacional['Año'].min(), # Punto de inicio en el primer año
+        dtick=1,                      # Fuerza pasos de 1 en 1 (años enteros)
+        tickformat='d',               # Formato de dígito entero
+        gridcolor='#F0F5FF'
+    ),
+    yaxis=dict(
+        rangemode='tozero',
+        gridcolor='#f0fbff'
+    )
+)
+
+
+```
+Fuente: CONAGUA, Estadísticas del Agua en México 2021
+:::
+
+::: {.section .section-alt}
+::: {.page-wrapper}
+
+::: {.resolution-intro}
+[Inequidad de Acceso]{.section-label .section-label--center}
+
+[La crisis del agua en México no es un fenómeno democrático]{.section-title .section-title--center}
+
+[Mientras los sectores industriales y agrícolas cuentan con marcos legales para asegurar su abastecimiento, millones de personas quedan atrapadas en la zona desatendida de la infraestructura urbana.]{.resolution-copy}
+
+[En esta sección, analizamos la inequidad de acceso a través de la lupa de los asentamientos irregulares. Estas zonas representan el punto más crítico de la deuda social hídrica por tres razones fundamentales:]{.resolution-copy}
+
+::: {.quote-block .quote-block--left}
+**Exclusión de la Red:** La irregularidad en la tenencia de la tierra suele traducirse en la incapacidad legal de los organismos operadores para instalar tomas de agua formales.
+:::
+
+::: {.quote-block .quote-block--left}
+**El Costo de la Precariedad:** Irónicamente, quienes viven en estos asentamientos suelen pagar el agua más cara del país, al depender de servicios de pipas privadas cuyo costo por litro supera con creces la tarifa doméstica subsidiada.
+:::
+
+::: {.quote-block .quote-block--left}
+**Vulnerabilidad Sistémica:** Como muestran las visualizaciones a continuación, la concentración de población en estos asentamientos en estados como el Estado de México o Veracruz no es solo un reto de vivienda, sino un mapa de riesgo sanitario y social.
 :::
 
 :::
+:::
+:::
+
+::: {.card .card-spacious}
+::: {.card-title .card-title--large}
+Acceso al Agua por Tipo de Fuente (2016 vs. 2024)
+:::
+
+México, 2016 y 2024 — Distribución de viviendas por tipo de acceso al agua. Esta comparativa permite observar la evolución del servicio de red continua frente a fuentes alternativas.
+
+```{python}
+import pandas as pd
+import plotly.express as px
+
+# 1. CARGA Y PROCESAMIENTO 2024
+df_viv = pd.read_csv(
+    "../datos/6.4.1/conjunto_de_datos_viviendas_enigh2024_ns/conjunto_de_datos/conjunto_de_datos_viviendas_enigh2024_ns.csv",
+    low_memory=False, usecols=["folioviv", "agua_ent", "ab_agua", "dotac_agua", "factor"]
+)
+
+total = df_viv["factor"].sum()
+# Cálculos de porcentajes 2024
+red_continua = df_viv[df_viv["agua_ent"].isin([1, 2]) & (df_viv["dotac_agua"] == 1)]["factor"].sum()
+llave_publica = df_viv[df_viv["agua_ent"].isin([1, 2]) & df_viv["dotac_agua"].isin([2, 3, 4, 5])]["factor"].sum()
+pipa = df_viv[df_viv["ab_agua"] == 4]["factor"].sum()
+acarreo = df_viv[(df_viv["agua_ent"] == 3) & (df_viv["ab_agua"] != 4)]["factor"].sum()
+
+# 2. CONSOLIDACIÓN DE DATOS (Formato Largo para evitar duplicados)
+data_fuente = {
+    "Fuente": ["Red continua", "Llave pública", "Pipa de agua", "Acarreo/otros"] * 2,
+    "Año": ["2016"] * 4 + ["2024"] * 4,
+    "Porcentaje": [57.4, 5.2, 8.3, 29.1, 
+                   round(red_continua/total*100, 1), 
+                   round(llave_publica/total*100, 1), 
+                   round(pipa/total*100, 1), 
+                   round(acarreo/total*100, 1)]
+}
+df_plot_acceso = pd.DataFrame(data_fuente)
+
+# 3. CREACIÓN DE LA GRÁFICA
+fig_acceso = px.bar(
+    df_plot_acceso, 
+    y="Fuente", x="Porcentaje", color="Año",
+    orientation="h", barmode="group",
+    color_discrete_map={"2016": "rgba(184,212,255,0.9)", "2024": "rgba(0,102,255,0.85)"}
+)
+
+fig_acceso.update_layout(
+    template="plotly_white",
+    height=400,
+    margin=dict(l=10, r=10, t=20, b=10),
+    xaxis_title="Porcentaje de Viviendas (%)",
+    yaxis_title="",
+    legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1, title=""),
+    hovermode="y unified"
+)
+
+
+```
+Fuente: INEGI, Encuesta Nacional de Ingresos y Gastos de los Hogares (ENIGH) 2024
+:::
+
+::: {.card .card-spacious}
+::: {.card-title .card-title--large}
+Deuda de Tiempo por Género y Acceso al Agua
+:::
+
+México, 2024 — Horas semanales promedio dedicadas a cuidados no remunerados y salud, desglosado por género y disponibilidad de red de agua en la vivienda.
+
+```{python}
+import pandas as pd
+import plotly.express as px
+
+# 1. CARGA Y MERGE (Viviendas + Hogares)
+df_viv_mini = pd.read_csv("../datos/6.4.1/conjunto_de_datos_viviendas_enigh2024_ns/conjunto_de_datos/conjunto_de_datos_viviendas_enigh2024_ns.csv", low_memory=False, usecols=["folioviv", "agua_ent"])
+df_hog_mini = pd.read_csv("../datos/6.4.1/conjunto_de_datos_hogares_enigh2024_ns/conjunto_de_datos/conjunto_de_datos_hogares_enigh2024_ns.csv", low_memory=False, usecols=["folioviv", "tsalud1_h", "tsalud1_m", "factor"])
+
+merged = df_viv_mini.merge(df_hog_mini, on="folioviv")
+merged["tiene_red"] = merged["agua_ent"].isin([1, 2])
+
+def horas_prom(df, col_h):
+    return (df[col_h] * df["factor"]).sum() / df["factor"].sum()
+
+# Cálculo de promedios
+stats_genero = []
+for red, label in [(False, "sin red"), (True, "con red")]:
+    sub = merged[merged["tiene_red"] == red]
+    stats_genero.append({"Categoría": f"Mujeres {label}", "Horas": round(horas_prom(sub, "tsalud1_m"), 1)})
+    stats_genero.append({"Categoría": f"Hombres {label}", "Horas": round(horas_prom(sub, "tsalud1_h"), 1)})
+
+df_genero = pd.DataFrame(stats_genero)
+
+# 2. CREACIÓN DE LA GRÁFICA
+fig_genero = px.bar(
+    df_genero, x="Horas", y="Categoría", 
+    orientation="h", text="Horas",
+    color="Categoría",
+    color_discrete_map={
+        "Mujeres sin red": "#FF3B3B", "Mujeres con red": "#FF9A3B",
+        "Hombres sin red": "#2B8BFF", "Hombres con red": "#B8D4FF"
+    }
+)
+
+fig_genero.update_traces(textposition="outside")
+
+```
+Fuente: INEGI, Encuesta Nacional de Ingresos y Gastos de los Hogares (ENIGH) 2024
+:::
+
+::: {.section .section-alt}
+::: {.page-wrapper}
+
+::: {.resolution-intro}
+[Balance Hídrico]{.section-label .section-label--center}
+
+[El diagnóstico de la viabilidad de nuestra civilización]{.section-title .section-title--center}
+
+[En esta sección, analizamos la "cuenta bancaria" de México: cuánta agua se renueva anualmente frente a cuánta hemos comprometido legalmente a través de concesiones. El balance hídrico no es simplemente una resta entre lluvia y consumo; es la métrica que define si nuestro crecimiento es sostenible o si estamos viviendo de prestado.]{.resolution-copy}
+
+[Para entender la gravedad de nuestra Deuda Hídrica, debemos observar tres indicadores críticos:]{.resolution-copy}
+
+::: {.quote-block .quote-block--left}
+**La Caída del Capital Per Cápita:** A medida que la población crece, la "rebanada" de agua que nos toca a cada mexicano se reduce drásticamente. Lo que en 1950 era abundancia, hoy es una cifra que se acerca peligrosamente a los umbrales internacionales de escasez crónica.
+:::
+
+::: {.quote-block .quote-block--left}
+**El Grado de Presión:** Este indicador mide qué tanto nos estamos "comiendo" el capital en lugar de vivir de los intereses. Superar el **55% de presión** no es solo un dato estadístico; es una señal de alarma que indica que estamos extrayendo agua de reservas profundas (acuíferos) que tardaron miles de años en formarse.
+:::
+
+::: {.quote-block .quote-block--left}
+**La Paradoja del Territorio:** México vive una realidad partida. Mientras el sur cuenta con una disponibilidad robusta, el motor económico del centro y norte del país opera con balances rojos, extrayendo sistemáticamente más de lo que la naturaleza puede devolver.
+:::
+
+:::
+:::
+:::
+
+
+::: {.card .card-spacious}
+::: {.card-title .card-title--large}
+Balance hídrico nacional: ¿Cuánta agua hay vs. cuánta consumimos?
+:::
+```{python}
+import pandas as pd
+import numpy as np
+import plotly.express as px
+import plotly.graph_objects as go
+# Balance hídrico nacional: ¿Cuánta agua hay vs. cuánta consumimos?
+
+#Fuente: INEGI 6.4.2
+
+df_ext_raw = pd.read_csv('../datos/6.4.2/conjunto_de_datos/6.4.2_dc_967_es.csv') # Extraccion
+df_ren_raw = pd.read_csv('../datos/6.4.2/conjunto_de_datos/6.4.2_dc_968_es.csv') # Renovables
+df_eco_raw = pd.read_csv('../datos/6.4.2/conjunto_de_datos/6.4.2_dc_969_es.csv') # Caudal Ecologico
+
+# Funcion para limpiar los df raw
+def clean(df):
+    df_clean = df.iloc[:, :2].copy()
+    col_valor = df_clean.columns[1]
+    
+    df_clean[col_valor] = pd.to_numeric(
+        df_clean[col_valor].astype(str).str.replace(',', '').str.strip(), 
+        errors='coerce'
+    )
+    
+    df_clean['Periodo'] = pd.to_numeric(df_clean['Periodo'], errors='coerce')
+    
+    return df_clean
+
+df_ext = clean(df_ext_raw)
+df_ren = clean(df_ren_raw)
+df_eco = clean(df_eco_raw)
+
+df_bal = df_ext.merge(df_ren, on='Periodo').merge(df_eco, on='Periodo').sort_values('Periodo')
+
+df_bal.columns = ['Anio', 'Extraccion', 'Renovable', 'Caudal_Ecologico'] # renombramos columnas
+
+df_bal["Extraccion + Caudal"] = df_bal["Extraccion"] + df_bal["Caudal_Ecologico"]
+
+df_bal["Disponible"] = df_bal["Renovable"] - df_bal["Extraccion + Caudal"]  
+
+fig_bal = go.Figure()
+
+_ = fig_bal.add_trace(go.Bar(
+    x=df_bal['Anio'], y=df_bal['Renovable'] / 1000, 
+    name='Renovable', marker_color='#0066FF'
+))
+_ = fig_bal.add_trace(go.Bar(
+    x=df_bal['Anio'], y=df_bal['Caudal_Ecologico'] / 1000   , 
+    name='Ecológica', marker_color='#00C8B4'
+))
+_ = fig_bal.add_trace(go.Bar(
+    x=df_bal['Anio'], y=df_bal['Extraccion'] / 1000, 
+    name='Extracción', marker_color='#FF3B3B'
+))
+_ = fig_bal.add_trace(go.Bar(
+    x=df_bal["Anio"], y=df_bal["Extraccion + Caudal"] / 1000,
+    name='Extr. + Reserva', marker_color='#FF9A3B'
+))
+_ = fig_bal.add_trace(go.Bar(
+    x=df_bal["Anio"], y=df_bal["Disponible"] / 1000,
+    name='Disponible', marker_color='#3BFF3B'
+))
+
+fig_bal.update_layout(
+    barmode='group',
+    yaxis_title='km³',
+    template='plotly_white',
+    hovermode='x unified'
+)
+```
+Fuente: CONAGUA, REPDA 2021 y Estadísticas del Agua en México 2021
+:::
+
+
+::: {.card .card-spacious}
+::: {.card-title .card-title--large}
+Presión Hídrica Nacional por Región
+:::
+```{python}
+# Presión hídrica nacional por región hidrológico-administrativa (RHA)
+#El grado de presión es el 
+
+import json
+
+# Leemos los datos
+with open('../datos/RHA/rha2023.json', 'r') as f:
+    geojson_rha = json.load(f)
+
+f = "../datos/Grado_de_Presion/Grado_de_Presion_2022.xlsx"
+    
+gp = pd.read_excel(f,usecols=["Región Hidrológico-Administrativa","Grado de Presión (%)"])
+gp.columns = ["RHA",2022]
+
+gp["RHA"] = gp["RHA"].str.replace(r"^\s*[IVXLCDM]+\s*[-.]?\s*", "", regex=True)
+name_mapping = {
+    "Península de Baja California": "Península De Baja California",
+    'Cuencas Centrales del Norte': 'Cuencas Centrales Del Norte',
+    "Península de Yucatán": "Península De Yucatán",
+    'Aguas del Valle de México': 'Valle de México'
+}
+gp['RHA'] = gp['RHA'].replace(name_mapping)
+
+gp_largo = pd.melt(gp,id_vars=["RHA"],var_name="Año",value_name="Grado de presión (%)")
+gp_largo["Año"] = gp_largo["Año"].astype(int)
+fig = px.choropleth(gp_largo,geojson=geojson_rha,locations="RHA",featureidkey="properties.rha",color="Grado de presión (%)",color_continuous_scale="RdYlGn_r")
+fig.update_geos(fitbounds="locations",visible=False)
+#fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
+#fig.show()
+```
+Fuente: CONAGUA, REPDA 2021 y Estadísticas del Agua en México 2021
 :::
 
 ::: {#resolucion .section}
