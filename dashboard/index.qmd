@@ -1,11 +1,12 @@
 ---
 title: "Tlamatipohua — Deuda Líquida"
 format:
-  html:
+  dashboard:
     theme: none
     css: styles.css
     toc: false
     page-layout: custom
+    scrolling: true
 jupyter: python3
 execute:
   echo: false
@@ -36,10 +37,14 @@ import plotly.express as px
 
 ::: {#gancho .hero}
 ::: {.hero-content}
+
 ::: {.hero-tag}
 🌊 ODS 6 · Agua Limpia y Saneamiento
 :::
-# ¿Qué tan profunda es la [deuda líquida]{.hero-emphasis} que tu rutina diaria contrae con el futuro y la desigualdad hídrica de México? {.hero-title}
+
+::: {.hero-h1 .hero-title--large}
+¿Qué tan profunda es la [deuda líquida]{.hero-emphasis} que tu rutina diaria contrae con el futuro y la desigualdad hídrica de México?
+:::
 
 ::: {.hero-sub}
 El agua no es un recurso infinito — es un préstamo ecológico que rara vez devolvemos. Cada ducha, cada café, cada kilo de carne tiene un precio invisible.
