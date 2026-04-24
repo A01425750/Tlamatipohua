@@ -892,7 +892,7 @@ Un techo de 50 m² puede captar hasta 30,000 litros al año. Esta inversión pue
 ::: {.solution-icon}
 💧
 [Comparte este dashboard]{.featured-title}
-[La deuda hídrica es colectiva. Cada persona que visualiza sus datos es un agente de cambio potencial. Convierte tu 'huella de sed' en una huella de acción.]{.featured-text}
+[La deuda hídrica es colectiva. Cada persona que visualiza sus datos es un agente de cambio potencial. Convierte tu 'deuda hídrica' en una huella de acción.]{.featured-text}
 
 :::
 :::
@@ -903,7 +903,7 @@ Un techo de 50 m² puede captar hasta 30,000 litros al año. Esta inversión pue
 ::: {.outro-title}
 Objetivo: Dejar de ser espectador de la crisis.
 :::
-[Identifica tu impacto y convierte tu 'huella de sed' en una huella de cambio. En el México de hoy, cada gota que visualizamos es una gota que podemos salvar.]{.outro-copy}
+[Identifica tu impacto y convierte tu 'deuda hídrica' en una huella de cambio. En el México de hoy, cada gota que visualizamos es una gota que podemos salvar.]{.outro-copy}
 
 ::: {.badge-row}
 [🌊 ODS 6 — Agua Limpia y Saneamiento]{.badge}
