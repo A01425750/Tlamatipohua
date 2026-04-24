@@ -380,6 +380,223 @@ Objetivo: Dejar de ser espectador de la crisis.
 :::
 :::
 
+::: {.section}
+[Sobre los datos]{.section-label .section-label--center}
+[Documentación de fuentes y metodología]{.section-title .section-title--center}
+
+[Este dashboard fue construido íntegramente con **datos abiertos oficiales** de instituciones mexicanas y del sistema ONU. Todos los datasets son públicos, reproducibles y están referenciados con su indicador ODS correspondiente.]{.section-desc}
+
+:::
+
+::: {.kpi-grid}
+
+::: {.card .card-accent}
+::: {.card-title}
+Datasets integrados
+:::
+::: {.card-value}
+19
+:::
+::: {.card-unit}
+fuentes de datos oficiales
+:::
+:::
+
+::: {.card .card-accent}
+::: {.card-title}
+Instituciones fuente
+:::
+::: {.card-value}
+4
+:::
+::: {.card-unit}
+CONAGUA · INEGI · SEMARNAT · SINA
+:::
+:::
+
+::: {.card .card-accent}
+::: {.card-title}
+Cobertura temporal
+:::
+::: {.card-value}
+2000–2024
+:::
+::: {.card-unit}
+hasta ENIGH 2024 y REPDA 2023
+:::
+:::
+
+::: {.card .card-accent}
+::: {.card-title}
+Indicadores ODS cubiertos
+:::
+::: {.card-value}
+8
+:::
+::: {.card-unit}
+6.1.1 · 6.2.1 · 6.4.1 · 6.4.2 · 6.5.1 · 6.5.2 · 6.6.1 · 6n.2.1
+:::
+:::
+
+:::
+
+[Fuentes de Datos]{.section-label}
+
+::: {.grid-auto-320}
+
+::: {.card .card-spacious}
+::: {.card-title .card-title--compact}
+💧 Agua Renovable
+:::
+**Entidad Federativa** · `CONAGUA / SEMARNAT / SINA`
+
+[6.4.2 · 6n.2.1]{.badge} [2017–2021 · 32 estados]{.badge}
+
+Disponibilidad anual de agua renovable y per cápita por entidad. Unidades: hm³/año y m³/hab/año.
+
+[`datos/AguaRenovable/EntidadFederativa/`]{.text-note--muted}
+:::
+
+::: {.card .card-spacious}
+::: {.card-title .card-title--compact}
+🗺️ Agua Renovable por RHA
+:::
+**Regiones Hidrológico-Administrativas** · `CONAGUA / SEMARNAT / SINA`
+
+[6.4.2 · 6n.2.1]{.badge} [2005–2023 · 13 RHA]{.badge}
+
+Serie larga por región. Base del análisis de presión hídrica territorial. Unidades: hm³/año.
+
+[`datos/AguaRenovable/RHA/`]{.text-note--muted}
+:::
+
+::: {.card .card-spacious}
+::: {.card-title .card-title--compact}
+📋 REPDA Estatal
+:::
+**Registro Público de Derechos de Agua** · `CONAGUA / SINA`
+
+[6.4.2 · 6n.2.1]{.badge} [2020–2023 · 32 estados · 8 usos]{.badge}
+
+Volúmenes concesionados por sector (agrícola, industrial, pecuario, urbano…). Unidades: hm³/año.
+
+[`datos/Repda/repda_estatal{año}.xlsx`]{.text-note--muted}
+:::
+
+::: {.card .card-spacious}
+::: {.card-title .card-title--compact}
+📉 Estrés Hídrico Nacional
+:::
+**Indicadores 6.4.2 y 6n.2.1** · `CONAGUA / INEGI`
+
+[ODS 6.4.2]{.badge} [2000–2023 · Nacional]{.badge}
+
+Nivel de estrés como % de extracción sobre disponibilidad. Incluye extracción total, recursos renovables y caudal ecológico.
+
+[`datos/6.4.2/conjunto_de_datos/`]{.text-note--muted}
+:::
+
+::: {.card .card-spacious}
+::: {.card-title .card-title--compact}
+📊 Grado de Presión por RHA
+:::
+**Serie histórica por región** · `CONAGUA / SINA`
+
+[6n.2.1]{.badge} [2003–2022 · 13 RHA]{.badge}
+
+Porcentaje de extracción respecto al agua disponible. Umbral crítico internacional: 55%.
+
+[`datos/Grado_de_Presion/Grado_de_Presion_{año}.xlsx`]{.text-note--muted}
+:::
+
+::: {.card .card-spacious}
+::: {.card-title .card-title--compact}
+🏠 ENIGH 2024 — Viviendas y Hogares
+:::
+**Encuesta Nacional de Ingresos y Gastos** · `INEGI`
+
+[ODS 1.4.1 · 6.4.1]{.badge} [2024 · ~90,000 viviendas]{.badge}
+
+Microdatos expandidos de acceso al agua por tipo de fuente, dotación y género. Incluye módulo de hogares para análisis de tiempo de cuidados.
+
+[`datos/6.4.1/conjunto_de_datos_viviendas_enigh2024_ns/`]{.text-note--muted}
+:::
+
+::: {.card .card-spacious}
+::: {.card-title .card-title--compact}
+🏘️ CNGMD 2021 — Asentamientos Irregulares
+:::
+**Censo Nacional de Gobiernos Municipales** · `INEGI`
+
+[ODS 6.1.1 · 6.2.1 · 11.1.1]{.badge} [2021 · 2,467 municipios]{.badge}
+
+Tres módulos: población en asentamientos (m2s13p21), acciones municipales (m2s13p22) y brecha de servicios básicos (m2s13p23).
+
+[`datos/Res_territorial_ah_CNGMD2021/`]{.text-note--muted}
+:::
+
+::: {.card .card-spacious}
+::: {.card-title .card-title--compact}
+👥 Población y Geometría
+:::
+**Censos y cartografía de referencia** · `INEGI / CONAGUA`
+
+[Referencia demográfica · espacial]{.badge} [2010 · 2020 · 2023]{.badge}
+
+Población por entidad (censos 2010 y 2020) y geometría GeoJSON de las 13 Regiones Hidrológico-Administrativas para la cartografía.
+
+[`datos/Poblacion/` · `datos/RHA/rha2023.json`]{.text-note--muted}
+:::
+
+:::
+
+[Limitaciones Reconocidas]{.section-label}
+
+::: {.grid-auto-320}
+
+::: {.card .card-spacious}
+::: {.card-title .card-title--compact}
+🕐 Cobertura temporal heterogénea
+:::
+Los datasets no comparten el mismo año de corte. REPDA llega a 2023, el agua renovable estatal solo hasta 2021, y la ENIGH refleja 2024. Las comparaciones entre variables de distintos años deben leerse como **tendencias**, no como fotografías simultáneas.
+:::
+
+::: {.card .card-spacious}
+::: {.card-title .card-title--compact}
+📈 Población proyectada (no censal)
+:::
+Para 2012–2023, la gráfica de "Deuda hídrica nacional" usa una **proyección lineal** entre los censos 2010 y 2020 (INEGI). La tasa de crecimiento se asume constante, lo que subestima el impacto de la migración interna y el crecimiento diferenciado por región.
+:::
+
+::: {.card .card-spacious}
+::: {.card-title .card-title--compact}
+⚠️ REPDA ≠ extracción real
+:::
+El REPDA registra volúmenes **concesionados** (legalmente autorizados), no los volúmenes efectivamente extraídos. La extracción ilegal o no registrada —especialmente en acuíferos del norte— no está capturada. El déficit real puede ser mayor al que muestran los datos.
+:::
+
+::: {.card .card-spacious}
+::: {.card-title .card-title--compact}
+🏚️ CNGMD 2021: cobertura municipal parcial
+:::
+El Censo registra 2,467 de los 2,478 municipios del país. Los 11 faltantes corresponden en su mayoría a zonas de difícil acceso. El total expandido de población en asentamientos puede estar **subrepresentado**.
+:::
+
+::: {.card .card-spacious}
+::: {.card-title .card-title--compact}
+⏱️ Deuda de tiempo (género): proxy limitado
+:::
+La variable `tsalud1_h/m` de la ENIGH 2024 mide horas de cuidados no remunerados en salud, no específicamente el acarreo de agua. La medición precisa requeriría la **ENUT** (Encuesta Nacional sobre Uso del Tiempo), cuya última edición disponible es 2019.
+:::
+
+::: {.card .card-spacious}
+::: {.card-title .card-title--compact}
+🌊 Indicadores ODS: series cortas
+:::
+Los indicadores 6.4.1, 6.4.2 y 6n.2.1 tienen cobertura desde 2000–2015 según el caso, con actualizaciones irregulares. La comparación con las metas globales del ODS 6 (objetivo **2030**) requiere cautela ante posibles revisiones metodológicas futuras.
+:::
+:::
+
 ::: {.footer}
 Tlamatipohua · Dashboard ODS 6 — Deuda Líquida · HackODS UNAM 2026
 Indicadores 6.5.2, 6.4.2, 6.4.1, 6.6.1, 6.5.1, 6.3.2
