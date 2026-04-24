@@ -15,7 +15,6 @@ execute:
 
 ```{python}
 import pandas as pd
-import numpy as np
 import plotly.graph_objects as go
 import plotly.express as px
 import re
@@ -24,33 +23,31 @@ from plotly.subplots import make_subplots
 import numpy as np
 ```
 
+
+
 ::: {.topbar}
 ::: {.topbar-logo}
 []{.dot} Tlamatipohua
 :::
 ::: {.topbar-nav}
-[Deuda hídrica](#deuda)
-[¿Cuánta agua hay?](#disponibilidad)
-[¿Cómo se consume?](#consumo)
-[Inequidad de acceso](#inequidad)
-[Balance hídrico](#balance)
+[Inicio](#gancho)
+[Estrés](#estres)
+[Calculadora](#calculadora)
+[Inequidad](#brecha)
+[Día Cero](#dia-cero)
 [Acción](#resolucion)
-[Sobre los datos](#datos)
 :::
 [ODS 6 · México]{.topbar-badge}
 :::
 
 ::: {#gancho .hero}
 ::: {.hero-content}
-
 ::: {.hero-tag}
 🌊 ODS 6 · Agua Limpia y Saneamiento
 :::
-
 ::: {.hero-h1 .hero-title--large}
 ¿Qué tan profunda es la [deuda líquida]{.hero-emphasis} que tu rutina diaria contrae con el futuro y la desigualdad hídrica de México?
 :::
-
 ::: {.hero-sub}
 El agua no es un recurso infinito — es un préstamo ecológico que rara vez devolvemos. Cada ducha, cada café, cada kilo de carne tiene un precio invisible.
 :::
@@ -84,6 +81,112 @@ del 2020 al 2023 (Gobierno de México, 2023)
 :::
 :::
 :::
+
+:::
+:::
+
+::: {.section-divider}
+:::
+
+
+::: {.section .section-alt}
+::: {.page-wrapper}
+
+::: {.section-header}
+::: {}
+[Panorama Nacional]{.section-label}
+
+[Indicadores clave del Indicador 6.4.2 (CONAGUA/SEMARNAT/SINA). Los acuíferos se recargan más lento de lo que los vaciamos.]{.section-desc}
+:::
+:::
+
+::: {.kpi-grid}
+
+::: {.card .card-accent}
+::: {.card-title}
+Extracción Total 2023
+:::
+::: {.card-value}
+90,629
+:::
+::: {.card-unit}
+millones de m³ extraídos (SINA, SEMARNAT, CONAGUA, 2023)
+:::
+[↑ +5.8% vs 2015]{.card-trend .up}
+:::
+
+::: {.card .card-accent}
+::: {.card-title}
+Recursos renovables totales de agua dulce
+:::
+::: {.card-value}
+472,195
+:::
+::: {.card-unit}
+millones de m³ disponibles (SINA, SEMARNAT, CONAGUA, 2023)
+:::
+[↑ +5.68% vs 2015]{.card-trend .up}
+:::
+
+::: {.card .card-accent}
+::: {.card-title}
+Concesionada / Asignada
+:::
+::: {.card-value}
+68.1 km³
+:::
+::: {.card-unit}
+comprometida legalmente (SINA, 2023)
+:::
+[↑ +0.7413% vs 2013]{.card-trend .up}
+:::
+
+::: {.card .card-accent}
+::: {.card-title}
+Volumen de agua renovable 
+:::
+::: {.card-value}
+121.9 km³
+:::
+::: {.card-unit}
+Indicador 6n.2.1 (SINA, 2023)
+:::
+[↓ -0.234% vs 2013]{.card-trend .up}
+:::
+
+:::
+
+::: {.section .section-alt}
+::: {.page-wrapper}
+
+::: {.resolution-intro}
+[¿Qué es la Deuda Hídrica?]{.section-label .section-label--center}
+
+[Un préstamo invisible contra el futuro]{.section-title .section-title--center}
+
+[La deuda hídrica no es una metáfora; es un déficit contable y ecológico real. Ocurre cuando el agua que extraemos para nuestras actividades supera la capacidad de la naturaleza para renovarse. A nivel individual, es un préstamo invisible: cada litro que consumimos hoy bajo este esquema es agua que las futuras generaciones ya no podrán utilizar.]{.resolution-copy}
+:::
+
+<br>
+
+::: {.resolution-intro}
+[Distribución del Recurso]{.section-label .section-label--center}
+
+[¿Cuánta agua hay realmente?]{.section-title .section-title--center}
+
+[En México, la crisis hídrica no se explica únicamente por la falta de agua a nivel nacional, sino por una profunda desconexión entre la geografía del recurso y la distribución de la población.]{.resolution-copy}
+
+::: {.quote-block .quote-block--left}
+**La paradoja del sur:** Mientras que las zonas del sur del país (Chiapas, Oaxaca y Tabasco) concentran la mayor abundancia de agua renovable per cápita, los polos de mayor densidad del centro y norte —como el Valle de México— operan con una disponibilidad por habitante críticamente baja.
+:::
+
+[Esta presión poblacional obliga a los gobiernos a administrar la urgencia: más de la mitad de las acciones municipales (**53.9%**) son reactivas, intentando llevar servicios a zonas sin planeación. Mientras tanto, soluciones de fondo como la **regularización (6.78%)** o la **reubicación (9.49%)** ocupan un espacio mínimo en la agenda.]{.resolution-copy}
+
+::: {.quote-block .quote-block--left}
+**La conclusión:** Estamos forzando el crecimiento urbano en regiones donde la naturaleza hace tiempo dejó de tener crédito. Llevamos tuberías a lugares donde, geográficamente, los números ya no cuadran.
+:::
+:::
+
 :::
 :::
 
@@ -146,67 +249,6 @@ fig_pob.update_layout(
 )
 ```
 Fuente: CONAGUA, Estadísticas del Agua en México 2021
-::: 
-
-
-::: {.section}
-[Panorama Nacional]{.section-label}
-[Indicadores clave del Indicador 6.4.2 (CONAGUA/SEMARNAT/SINA). Los acuíferos se recargan más lento de lo que los vaciamos.]{.section-desc}
-
-::: {.kpi-grid}
-
-::: {.card}
-::: {.card-title}
-Extracción Total 2023
-:::
-::: {.card-value}
-90,629
-:::
-::: {.card-unit}
-millones de m³ extraídos (SINA, SEMARNAT, CONAGUA, 2023)
-:::
-[↑ +5.8% vs 2015]{.card-trend .up}
-:::
-
-::: {.card}
-::: {.card-title}
-Recursos renovables totales de agua dulce
-:::
-::: {.card-value}
-472,195
-:::
-::: {.card-unit}
-millones de m³ disponibles (SINA, SEMARNAT, CONAGUA, 2023)
-:::
-[↑ +5.68% vs 2015]{.card-trend .up}
-:::
-
-::: {.card}
-::: {.card-title}
-Concesionada / Asignada
-:::
-::: {.card-value}
-68.1 km³
-:::
-::: {.card-unit}
-comprometida legalmente (SINA, 2023)
-:::
-[↑ +0.7413% vs 2013]{.card-trend .up}
-:::
-
-::: {.card}
-::: {.card-title}
-Volumen de agua renovable 
-:::
-::: {.card-value}
-121.9 km³
-:::
-::: {.card-unit}
-Indicador 6n.2.1 (SINA, 2023)
-:::
-[↓ -0.234% vs 2013]{.card-trend .up}
-:::
-:::
 :::
 
 ::: {.card .card-spacious}
@@ -576,8 +618,10 @@ fig_ranking.update_layout(
 Fuente: CONAGUA, Estadísticas del Agua en México 2023
 :::
 
-::: {.section}
+::: {.section .section-alt}
+::: {.page-wrapper}
 
+::: {.resolution-intro}
 [¿Cómo se consume?]{.section-label .section-label--center}
 
 [¿Quién consume el agua en México y cuánta nos queda realmente?]{.section-title .section-title--center}
@@ -594,6 +638,8 @@ Fuente: CONAGUA, Estadísticas del Agua en México 2023
 **La Desigualdad Geográfica:** No todos los estados consumen igual. Mientras que el sur del país cuenta con abundancia natural, estados del norte como Sinaloa, Sonora y Chihuahua lideran la extracción total debido a su alta intensidad agrícola y pecuaria. En estas regiones, la "concesión per cápita" a menudo ignora la capacidad real de renovación de sus acuíferos.
 :::
 
+:::
+:::
 :::
 
 
@@ -989,47 +1035,579 @@ fig_rha.add_hline(
 Fuente: CONAGUA, Estadísticas del Agua en México; elaboración propia con datos EDA
 :::
 
-
-::: {.card-spacious}
+::: {.card .card-spacious}
 ::: {.card-title .card-title--large}
-Presión Hídrica Nacional por Región
+Evolución del Estrés Hídrico en México — Indicador 6.4.2
+:::
+
+Nivel de estrés hídrico nacional medido como el porcentaje de extracción de agua dulce en comparación con los recursos renovables disponibles.
+
+```{python}
+import pandas as pd
+import plotly.express as px
+
+# 1. CARGA Y LIMPIEZA DE DATOS
+path_sh = '../datos/6.4.2/conjunto_de_datos/6.4.2_sh_es.csv'
+df_st = pd.read_csv(path_sh)
+
+# Limpieza: El valor está en la segunda columna (porcentaje)
+col_val = df_st.columns[1]
+df_st[col_val] = pd.to_numeric(
+    df_st[col_val].astype(str).str.replace(',', ''), 
+    errors='coerce'
+)
+df_st = df_st.sort_values('Periodo')
+
+# 2. CREACIÓN DE LA GRÁFICA (Plotly Express)
+fig_stress = px.line(
+    df_st, 
+    x='Periodo', 
+    y=col_val, 
+    markers=True
+)
+
+# 3. CONFIGURACIÓN DE LAYOUT CONSOLIDADA
+fig_stress.update_traces(
+    line=dict(color="#F03BF3", width=4),
+    marker=dict(size=8),
+    name='Nivel de Estrés (%)'
+)
+
+```
+Fuente: INEGI, Indicadores ODS 6.4.2; CONAGUA 2024
+:::
+
+::: {.card .card-spacious}
+::: {.card-title .card-title--large}
+Estrés Hídrico: Nacional vs. Centro-Norte (2015–2023)
+:::
+
+México, 2015–2023 — Comparación del nivel de estrés hídrico nacional (6.4.2) y de la región Centro-Norte (6N.2.1). Esta comparativa resalta cómo el promedio nacional oculta situaciones críticas en regiones específicas.
+```{python}
+import pandas as pd
+import plotly.express as px
+
+# 1. FUNCIÓN DE CARGA Y LIMPIEZA UNIFICADA
+def cargar_indicador(path):
+    df = pd.read_csv(path, encoding='latin1', sep=None, engine='python')
+    df.columns = [c.strip() for c in df.columns]
+    df.rename(columns={df.columns[0]: 'Periodo'}, inplace=True)
+    
+    # Identificamos la columna de valor (segunda columna)
+    col_val = df.columns[1]
+    df[col_val] = pd.to_numeric(df[col_val].astype(str).str.replace(',', ''), errors='coerce')
+    
+    # Filtro: Desde 2015 y ordenamiento
+    df['Periodo'] = pd.to_numeric(df['Periodo'], errors='coerce')
+    df = df[df['Periodo'] >= 2015]
+    return df.sort_values('Periodo'), col_val
+
+# 2. PROCESAMIENTO DE DATOS
+path_st = '../datos/6.4.2/conjunto_de_datos/6.4.2_sh_es.csv'
+path_sh = '../datos/6N.2.1_es/conjunto_de_datos/6n.2.1_sh_es.csv'
+
+df_st_raw, col_st = cargar_indicador(path_st)
+df_sh_raw, col_sh = cargar_indicador(path_sh)
+
+# Preparar formato largo para Plotly Express
+df_st_raw['Indicador'] = 'Nacional (6.4.2)'
+df_st_raw = df_st_raw.rename(columns={col_st: 'Estrés (%)'})
+
+df_sh_raw['Indicador'] = 'Centro y Norte (6N.2.1)'
+df_sh_raw = df_sh_raw.rename(columns={col_sh: 'Estrés (%)'})
+
+# Unificamos ambos DataFrames
+df_merge = pd.concat([df_st_raw, df_sh_raw], ignore_index=True)
+
+# 3. CREACIÓN DE LA GRÁFICA (Consolidada en un solo objeto)
+fig_merge = px.line(
+    df_merge, 
+    x='Periodo', 
+    y='Estrés (%)', 
+    color='Indicador',
+    line_dash='Indicador',
+    markers=True,
+    color_discrete_map={
+        'Nacional (6.4.2)': '#F03BF3', 
+        'Centro y Norte (6N.2.1)': '#0066FF'
+    }
+)
+
+# 4. CONFIGURACIÓN DE ESTILOS Y ÁREAS RELLENAS
+fig_merge.update_traces(
+    fill='tozeroy', 
+    line=dict(width=3),
+    marker=dict(size=8)
+)
+
+```
+Fuente: INEGI, Indicadores ODS 6.4.2 y 6N.2.1; CONAGUA 2024
+:::
+
+::: {.card .card-spacious}
+::: {.card-title .card-title--large}
+Consumo Visible vs. Invisible de Agua en México (2023)
+:::
+
+México, 2023 — Comparación entre el uso urbano-doméstico (visible) y el uso agropecuario e industrial (invisible).
+
+```{python}
+import pandas as pd
+import plotly.graph_objects as go
+
+# 1. CARGA Y LIMPIEZA DE DATOS (Bloque independiente)
+path_repda = '../datos/Repda/repda_estatal2023.xlsx'
+df_2023 = pd.read_excel(path_repda, engine='openpyxl')
+
+def clean_num(col_name):
+    return pd.to_numeric(
+        df_2023[col_name].astype(str).str.replace(',', '').str.strip(), 
+        errors='coerce'
+    ).fillna(0)
+
+# El "Consumo Visible" es el uso Urbano y Doméstico
+total_dir = clean_num('Público urbano (H)').sum() + clean_num('Doméstico ( C)').sum()
+
+# El "Consumo Invisible" es la suma de los sectores productivos
+total_ind = (
+    clean_num('Agrícola (inscrito + pendiente) (A)').sum() + 
+    clean_num('Industrial (F1)').sum() + 
+    clean_num('Pecuario (G)').sum() + 
+    clean_num('Servicios ( E )').sum() + 
+    clean_num('Agroindustrial (B)').sum()
+)
+
+# 2. CREACIÓN DE LA GRÁFICA (Enfoque declarativo de un solo paso)
+fig_visible = go.Figure(
+    data=[
+        go.Bar(
+            name='Consumo Visible (Urbano/Casa)', 
+            x=['Nacional'], 
+            y=[total_dir], 
+            marker_color='#00C8B4' # Turquesa (Uso Doméstico)
+        ),
+        go.Bar(
+            name='Consumo Invisible (Agro/Industria)', 
+            x=['Nacional'], 
+            y=[total_ind], 
+            marker_color='#FF3B3B' # Rojo (Indica mayor peso/impacto)
+        )
+    ],
+    layout=go.Layout(
+        template='plotly_white',
+        barmode='group', 
+        height=450, 
+        margin=dict(l=10, r=10, t=20, b=10),
+        hovermode='x unified',
+        xaxis=dict(title=''),
+        yaxis=dict(title="Volumen (hm³)"),
+        legend=dict(
+            orientation="h", 
+            yanchor="bottom", 
+            y=1.02, 
+            xanchor="right", 
+            x=1
+        )
+    )
+)
+
+# Renderizado único para Quarto
+fig_visible
+```
+Fuente: CONAGUA, Registro Público de Derechos de Agua (REPDA) 2023
+:::
+
+::: {.card .card-spacious}
+::: {.card-title .card-title--large}
+Extracción de Agua para Uso Agrícola por Estado (2023)
+:::
+
+México, 2023 — Volumen de agua concesionada para uso agrícola por entidad federativa. Este sector representa el mayor porcentaje de la deuda hídrica nacional.
+
+```{python}
+import pandas as pd
+import plotly.express as px
+
+# 1. CARGA Y LIMPIEZA DE DATOS
+path_repda = '../datos/Repda/repda_estatal2023.xlsx'
+df_2023_raw = pd.read_excel(path_repda, engine='openpyxl')
+
+def clean_numeric(df, col_name):
+    """Limpia comas y convierte a formato numérico"""
+    return pd.to_numeric(
+        df[col_name].astype(str).str.replace(',', '').str.strip(), 
+        errors='coerce'
+    ).fillna(0)
+
+# Limpiamos la columna agrícola y filtramos totales
+df_2023_raw['Agrícola'] = clean_numeric(df_2023_raw, 'Agrícola (inscrito + pendiente) (A)')
+top_agro = df_2023_raw[~df_2023_raw['Estado'].str.contains('Total|Nacional', case=False, na=False)]
+
+# 2. CREACIÓN DE LA GRÁFICA (Plotly Express)
+fig_agro = px.bar(
+    top_agro, 
+    x='Agrícola', 
+    y='Estado', 
+    orientation='h', 
+    color='Agrícola', 
+    color_continuous_scale='Greens',
+    labels={'Agrícola': 'Volumen'} # Título más corto para la leyenda
+)
+
+# 3. CONFIGURACIÓN DE LAYOUT CONSOLIDADA
+fig_agro.update_traces(
+    marker_line_color='rgb(8,48,107)',
+    marker_line_width=0.5, 
+    opacity=0.9
+)
+
+fig_agro.update_layout(
+    template='plotly_white',
+    height=800, 
+    
+    # AJUSTE DE LA LEYENDA (Barra de colores)
+    coloraxis_colorbar=dict(
+        title=dict(
+            text="hm³", # Unidad de medida
+            side="top"  # Ponemos el texto ARRIBA de la barra, no al lado
+        ),
+        thicknessmode="pixels", thickness=15,
+        lenmode="pixels", len=300,
+        x=1.12, # Empujamos la leyenda más a la derecha (antes 1.05)
+        yanchor="middle",
+        y=0.5
+    ),
+    
+    # AJUSTE DE MÁRGENES (Damos mucho más espacio a la derecha)
+    # l=160 para los nombres de estados, r=180 para que la leyenda no se encime
+    margin=dict(l=160, r=180, t=50, b=50),
+    
+    xaxis_title="Volumen (hm³)",
+    yaxis_title="",
+    yaxis={'categoryorder':'total ascending'},
+    hovermode='y unified'
+)
+
+```
+Fuente: CONAGUA, Registro Público de Derechos de Agua (REPDA) 2023
+:::
+
+::: {.card .card-spacious}
+::: {.card-title .card-title--large}
+Correlación: Intensidad Agrícola vs. Pecuaria por Estado (2023)
 :::
 ```{python}
-# Presión hídrica nacional por región hidrológico-administrativa (RHA)
-#El grado de presión es el 
+import os
+import re
+import pandas as pd
+import plotly.express as px
 
-import json
+# 1. CARGA Y LIMPIEZA DE DATOS
+files = [
+    "../datos/Repda/repda_estatal2020.xlsx",
+    "../datos/Repda/repda_estatal2021.xlsx",
+    "../datos/Repda/repda_estatal2022.xlsx",
+    "../datos/Repda/repda_estatal2023.xlsx"
+]
 
-# Leemos los datos
-with open('../datos/RHA/rha2023.json', 'r') as f:
-    geojson_rha = json.load(f)
+all_data = []
+for f in files:
+    if os.path.exists(f):
+        year_match = re.search(r"(\d{4})", f)
+        year = int(year_match.group(1)) if year_match else 0
+        
+        df = pd.read_excel(f, engine='openpyxl')
+        
+        # Limpieza masiva de columnas numéricas
+        for col in df.columns[3:]:
+            df[col] = pd.to_numeric(
+                df[col].astype(str).str.replace('"', '').str.replace(',', '').str.strip(), 
+                errors='coerce'
+            ).fillna(0)
+        
+        # Asignación de nombres estandarizados
+        df['Anio'] = year
+        df['Uso_Agricola'] = df[[c for c in df.columns if 'Agrícola' in c][0]]
+        df['Uso_Pecuario'] = df[[c for c in df.columns if 'Pecuario' in c][0]]
+        df['Total_Extraccion'] = df[[c for c in df.columns if 'Total por estado' in c][0]]
+        
+        all_data.append(df)
 
-f = "../datos/Grado_de_Presion/Grado_de_Presion_2022.xlsx"
-    
-gp = pd.read_excel(f,usecols=["Región Hidrológico-Administrativa","Grado de Presión (%)"])
-gp.columns = ["RHA",2022]
+master_df = pd.concat(all_data, ignore_index=True)
+df_2023 = master_df[master_df['Anio'] == 2023].copy()
 
-gp["RHA"] = gp["RHA"].str.replace(r"^\s*[IVXLCDM]+\s*[-.]?\s*", "", regex=True)
-name_mapping = {
-    "Península de Baja California": "Península De Baja California",
-    'Cuencas Centrales del Norte': 'Cuencas Centrales Del Norte',
-    "Península de Yucatán": "Península De Yucatán",
-    'Aguas del Valle de México': 'Valle de México'
-}
-gp['RHA'] = gp['RHA'].replace(name_mapping)
+# Preparación para escala logarítmica (evitar ceros)
+df_2023['Uso_Agricola'] = df_2023['Uso_Agricola'].replace(0, 0.01)
+df_2023['Uso_Pecuario'] = df_2023['Uso_Pecuario'].replace(0, 0.01)
+df_2023['Total_Extraccion'] = df_2023['Total_Extraccion'].astype(float)
 
-gp_largo = pd.melt(gp,id_vars=["RHA"],var_name="Año",value_name="Grado de presión (%)")
-gp_largo["Año"] = gp_largo["Año"].astype(int)
-fig = px.choropleth(gp_largo,geojson=geojson_rha,locations="RHA",featureidkey="properties.rha",color="Grado de presión (%)",color_continuous_scale="RdYlGn_r")
-fig.update_geos(fitbounds="locations",visible=False)
-#fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
-#fig.show()
+# 2. CREACIÓN DE LA GRÁFICA (Bubble Chart)
+fig_scatter = px.scatter(
+    df_2023, 
+    x="Uso_Agricola", 
+    y="Uso_Pecuario",
+    size="Total_Extraccion", 
+    color="Estado", 
+    hover_name="Estado", 
+    log_x=True, 
+    log_y=True,
+    size_max=60,
+    labels={
+        'Uso_Agricola': 'Uso Agrícola (Mm³)', 
+        'Uso_Pecuario': 'Uso Pecuario (Mm³)'
+    }
+)
+
+# 3. CONFIGURACIÓN DE LAYOUT CONSOLIDADA
+fig_scatter.update_layout(
+    template='plotly_white',
+    height=550,
+    margin=dict(l=10, r=10, t=20, b=10),
+    showlegend=False,
+    hovermode='closest'
+)
+
 ```
+Fuente: CONAGUA, Registro Público de Derechos de Agua (REPDA) 2023
+:::
+
+::: {.card .card-spacious}
+::: {.card-title .card-title--large}
+Evolución de la Disponibilidad de Agua Renovable per Cápita (Nacional)
+:::
+```{python}
+import os
+import pandas as pd
+import plotly.express as px
+
+# 1. CARGA Y PROCESAMIENTO DE DATOS
+files_agua = [
+    "../datos/AguaRenovable/EntidadFederativa/Agua_Renovable_EntidadFederativa_2017.xlsx",
+    "../datos/AguaRenovable/EntidadFederativa/Agua_Renovable_EntidadFederativa_2018.xlsx",
+    "../datos/AguaRenovable/EntidadFederativa/Agua_Renovable_EntidadFederativa_2019.xlsx",
+    "../datos/AguaRenovable/EntidadFederativa/Agua_Renovable_EntidadFederativa_2020.xlsx",
+    "../datos/AguaRenovable/EntidadFederativa/Agua_Renovable_EntidadFederativa_2021.xlsx"
+]
+
+all_data_agua = []
+for f in files_agua:
+    if os.path.exists(f):
+        df_temp = pd.read_excel(f, engine='openpyxl')
+        all_data_agua.append(df_temp)
+
+master_agua = pd.concat(all_data_agua, ignore_index=True)
+
+# Limpieza de columnas numéricas
+cols_num = ['Agua Renovable (hm³/año)', 'Población (Millones de habitantes)']
+for col in cols_num:
+    master_agua[col] = pd.to_numeric(
+        master_agua[col].astype(str).str.replace(',', '').str.strip(), 
+        errors='coerce'
+    ).fillna(0)
+
+# Agrupación Nacional
+nacional = master_agua.groupby('Año')[cols_num].sum().reset_index()
+nacional['Per_Capita_Nac'] = (nacional['Agua Renovable (hm³/año)'] / nacional['Población (Millones de habitantes)'])
+
+# 2. CREACIÓN DE LA GRÁFICA (Plotly Express Area)
+fig_capita = px.area(
+    nacional, 
+    x='Año', 
+    y='Per_Capita_Nac',
+    markers=True
+)
+
+
+
+fig_capita.update_layout(
+    template='plotly_white',
+    height=400,
+    margin=dict(l=10, r=10, t=20, b=10),
+    xaxis_title='',
+    yaxis_title='m³/hab/año',
+    hovermode='x unified',
+    xaxis=dict(
+        tickmode='linear',
+        tick0=nacional['Año'].min(), # Punto de inicio en el primer año
+        dtick=1,                      # Fuerza pasos de 1 en 1 (años enteros)
+        tickformat='d',               # Formato de dígito entero
+        gridcolor='#F0F5FF'
+    ),
+    yaxis=dict(
+        rangemode='tozero',
+        gridcolor='#f0fbff'
+    )
+)
+
+
+```
+Fuente: CONAGUA, Estadísticas del Agua en México 2021
+:::
+
+::: {.section .section-alt}
+::: {.page-wrapper}
+
+::: {.resolution-intro}
+[Inequidad de Acceso]{.section-label .section-label--center}
+
+[La crisis del agua en México no es un fenómeno democrático]{.section-title .section-title--center}
+
+[Mientras los sectores industriales y agrícolas cuentan con marcos legales para asegurar su abastecimiento, millones de personas quedan atrapadas en la zona desatendida de la infraestructura urbana.]{.resolution-copy}
+
+[En esta sección, analizamos la inequidad de acceso a través de la lupa de los asentamientos irregulares. Estas zonas representan el punto más crítico de la deuda social hídrica por tres razones fundamentales:]{.resolution-copy}
+
+::: {.quote-block .quote-block--left}
+**Exclusión de la Red:** La irregularidad en la tenencia de la tierra suele traducirse en la incapacidad legal de los organismos operadores para instalar tomas de agua formales.
+:::
+
+::: {.quote-block .quote-block--left}
+**El Costo de la Precariedad:** Irónicamente, quienes viven en estos asentamientos suelen pagar el agua más cara del país, al depender de servicios de pipas privadas cuyo costo por litro supera con creces la tarifa doméstica subsidiada.
+:::
+
+::: {.quote-block .quote-block--left}
+**Vulnerabilidad Sistémica:** Como muestran las visualizaciones a continuación, la concentración de población en estos asentamientos en estados como el Estado de México o Veracruz no es solo un reto de vivienda, sino un mapa de riesgo sanitario y social.
+:::
+
+:::
+:::
+:::
+
+::: {.card .card-spacious}
+::: {.card-title .card-title--large}
+Acceso al Agua por Tipo de Fuente (2016 vs. 2024)
+:::
+
+México, 2016 y 2024 — Distribución de viviendas por tipo de acceso al agua. Esta comparativa permite observar la evolución del servicio de red continua frente a fuentes alternativas.
+
+```{python}
+import pandas as pd
+import plotly.express as px
+
+# 1. CARGA Y PROCESAMIENTO 2024
+df_viv = pd.read_csv(
+    "../datos/6.4.1/conjunto_de_datos_viviendas_enigh2024_ns/conjunto_de_datos/conjunto_de_datos_viviendas_enigh2024_ns.csv",
+    low_memory=False, usecols=["folioviv", "agua_ent", "ab_agua", "dotac_agua", "factor"]
+)
+
+total = df_viv["factor"].sum()
+# Cálculos de porcentajes 2024
+red_continua = df_viv[df_viv["agua_ent"].isin([1, 2]) & (df_viv["dotac_agua"] == 1)]["factor"].sum()
+llave_publica = df_viv[df_viv["agua_ent"].isin([1, 2]) & df_viv["dotac_agua"].isin([2, 3, 4, 5])]["factor"].sum()
+pipa = df_viv[df_viv["ab_agua"] == 4]["factor"].sum()
+acarreo = df_viv[(df_viv["agua_ent"] == 3) & (df_viv["ab_agua"] != 4)]["factor"].sum()
+
+# 2. CONSOLIDACIÓN DE DATOS (Formato Largo para evitar duplicados)
+data_fuente = {
+    "Fuente": ["Red continua", "Llave pública", "Pipa de agua", "Acarreo/otros"] * 2,
+    "Año": ["2016"] * 4 + ["2024"] * 4,
+    "Porcentaje": [57.4, 5.2, 8.3, 29.1, 
+                   round(red_continua/total*100, 1), 
+                   round(llave_publica/total*100, 1), 
+                   round(pipa/total*100, 1), 
+                   round(acarreo/total*100, 1)]
+}
+df_plot_acceso = pd.DataFrame(data_fuente)
+
+# 3. CREACIÓN DE LA GRÁFICA
+fig_acceso = px.bar(
+    df_plot_acceso, 
+    y="Fuente", x="Porcentaje", color="Año",
+    orientation="h", barmode="group",
+    color_discrete_map={"2016": "rgba(184,212,255,0.9)", "2024": "rgba(0,102,255,0.85)"}
+)
+
+fig_acceso.update_layout(
+    template="plotly_white",
+    height=400,
+    margin=dict(l=10, r=10, t=20, b=10),
+    xaxis_title="Porcentaje de Viviendas (%)",
+    yaxis_title="",
+    legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1, title=""),
+    hovermode="y unified"
+)
+
+
+```
+Fuente: INEGI, Encuesta Nacional de Ingresos y Gastos de los Hogares (ENIGH) 2024
+:::
+
+::: {.card .card-spacious}
+::: {.card-title .card-title--large}
+Deuda de Tiempo por Género y Acceso al Agua
+:::
+
+México, 2024 — Horas semanales promedio dedicadas a cuidados no remunerados y salud, desglosado por género y disponibilidad de red de agua en la vivienda.
+
+```{python}
+import pandas as pd
+import plotly.express as px
+
+# 1. CARGA Y MERGE (Viviendas + Hogares)
+df_viv_mini = pd.read_csv("../datos/6.4.1/conjunto_de_datos_viviendas_enigh2024_ns/conjunto_de_datos/conjunto_de_datos_viviendas_enigh2024_ns.csv", low_memory=False, usecols=["folioviv", "agua_ent"])
+df_hog_mini = pd.read_csv("../datos/6.4.1/conjunto_de_datos_hogares_enigh2024_ns/conjunto_de_datos/conjunto_de_datos_hogares_enigh2024_ns.csv", low_memory=False, usecols=["folioviv", "tsalud1_h", "tsalud1_m", "factor"])
+
+merged = df_viv_mini.merge(df_hog_mini, on="folioviv")
+merged["tiene_red"] = merged["agua_ent"].isin([1, 2])
+
+def horas_prom(df, col_h):
+    return (df[col_h] * df["factor"]).sum() / df["factor"].sum()
+
+# Cálculo de promedios
+stats_genero = []
+for red, label in [(False, "sin red"), (True, "con red")]:
+    sub = merged[merged["tiene_red"] == red]
+    stats_genero.append({"Categoría": f"Mujeres {label}", "Horas": round(horas_prom(sub, "tsalud1_m"), 1)})
+    stats_genero.append({"Categoría": f"Hombres {label}", "Horas": round(horas_prom(sub, "tsalud1_h"), 1)})
+
+df_genero = pd.DataFrame(stats_genero)
+
+# 2. CREACIÓN DE LA GRÁFICA
+fig_genero = px.bar(
+    df_genero, x="Horas", y="Categoría", 
+    orientation="h", text="Horas",
+    color="Categoría",
+    color_discrete_map={
+        "Mujeres sin red": "#FF3B3B", "Mujeres con red": "#FF9A3B",
+        "Hombres sin red": "#2B8BFF", "Hombres con red": "#B8D4FF"
+    }
+)
+
+fig_genero.update_traces(textposition="outside")
+
+```
+Fuente: INEGI, Encuesta Nacional de Ingresos y Gastos de los Hogares (ENIGH) 2024
+:::
+
+::: {.section .section-alt}
+::: {.page-wrapper}
+
+::: {.resolution-intro}
+[Balance Hídrico]{.section-label .section-label--center}
+
+[El diagnóstico de la viabilidad de nuestra civilización]{.section-title .section-title--center}
+
+[En esta sección, analizamos la "cuenta bancaria" de México: cuánta agua se renueva anualmente frente a cuánta hemos comprometido legalmente a través de concesiones. El balance hídrico no es simplemente una resta entre lluvia y consumo; es la métrica que define si nuestro crecimiento es sostenible o si estamos viviendo de prestado.]{.resolution-copy}
+
+[Para entender la gravedad de nuestra Deuda Hídrica, debemos observar tres indicadores críticos:]{.resolution-copy}
+
+::: {.quote-block .quote-block--left}
+**La Caída del Capital Per Cápita:** A medida que la población crece, la "rebanada" de agua que nos toca a cada mexicano se reduce drásticamente. Lo que en 1950 era abundancia, hoy es una cifra que se acerca peligrosamente a los umbrales internacionales de escasez crónica.
+:::
+
+::: {.quote-block .quote-block--left}
+**El Grado de Presión:** Este indicador mide qué tanto nos estamos "comiendo" el capital en lugar de vivir de los intereses. Superar el **55% de presión** no es solo un dato estadístico; es una señal de alarma que indica que estamos extrayendo agua de reservas profundas (acuíferos) que tardaron miles de años en formarse.
+:::
+
+::: {.quote-block .quote-block--left}
+**La Paradoja del Territorio:** México vive una realidad partida. Mientras el sur cuenta con una disponibilidad robusta, el motor económico del centro y norte del país opera con balances rojos, extrayendo sistemáticamente más de lo que la naturaleza puede devolver.
+:::
+
+:::
+:::
 :::
 
 
-
-::: {.card-spacious}
+::: {.card .card-spacious}
 ::: {.card-title .card-title--large}
 Balance hídrico nacional: ¿Cuánta agua hay vs. cuánta consumimos?
 :::
@@ -1102,15 +1680,61 @@ fig_bal.update_layout(
     hovermode='x unified'
 )
 ```
+Fuente: CONAGUA, REPDA 2021 y Estadísticas del Agua en México 2021
 :::
 
-::: {.section}
+
+::: {.card .card-spacious}
+::: {.card-title .card-title--large}
+Presión Hídrica Nacional por Región
+:::
+```{python}
+# Presión hídrica nacional por región hidrológico-administrativa (RHA)
+#El grado de presión es el 
+
+import json
+
+# Leemos los datos
+with open('../datos/RHA/rha2023.json', 'r') as f:
+    geojson_rha = json.load(f)
+
+f = "../datos/Grado_de_Presion/Grado_de_Presion_2022.xlsx"
+    
+gp = pd.read_excel(f,usecols=["Región Hidrológico-Administrativa","Grado de Presión (%)"])
+gp.columns = ["RHA",2022]
+
+gp["RHA"] = gp["RHA"].str.replace(r"^\s*[IVXLCDM]+\s*[-.]?\s*", "", regex=True)
+name_mapping = {
+    "Península de Baja California": "Península De Baja California",
+    'Cuencas Centrales del Norte': 'Cuencas Centrales Del Norte',
+    "Península de Yucatán": "Península De Yucatán",
+    'Aguas del Valle de México': 'Valle de México'
+}
+gp['RHA'] = gp['RHA'].replace(name_mapping)
+
+gp_largo = pd.melt(gp,id_vars=["RHA"],var_name="Año",value_name="Grado de presión (%)")
+gp_largo["Año"] = gp_largo["Año"].astype(int)
+fig = px.choropleth(gp_largo,geojson=geojson_rha,locations="RHA",featureidkey="properties.rha",color="Grado de presión (%)",color_continuous_scale="RdYlGn_r")
+fig.update_geos(fitbounds="locations",visible=False)
+#fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
+#fig.show()
+```
+Fuente: CONAGUA, REPDA 2021 y Estadísticas del Agua en México 2021
+:::
+
+::: {#resolucion .section}
+::: {.page-wrapper}
+
+::: {.resolution-intro}
 [Sección 6 · Resolución]{.section-label .section-label--center}
+
 [El primer paso para pagar una deuda es reconocer que existe.]{.section-title .section-title--center}
 [Al entender la deuda líquida que compartimos, podemos dejar de administrar la escasez y empezar a diseñar la abundancia. Los datos que visualizaste hoy son el México que sobrevivirá mañana si actuamos.]{.resolution-copy}
 
 ::: {.quote-block .quote-block--left}
 "No heredamos el agua de nuestros padres, la tomamos prestada de nuestros hijos." — Proverbio indígena
+:::
+:::
 :::
 :::
 
@@ -1121,33 +1745,41 @@ fig_bal.update_layout(
 🚿
 **Reduce tu ducha a 5 minutos**
 Cada minuto que ahorras son 10 litros de agua potable. Con 120 millones de mexicanos, un minuto menos por persona equivale a 1.2 millones de m³ diarios devueltos al acuífero.
+
 :::
 :::
+
 
 ::: {.solution-card}
 ::: {.solution-icon}
 🥩
 **Reduce carne un día a la semana**
 Un kilo de carne de res requiere aproximadamente 15,000 litros de agua. Reducir un día a la semana por hogar equivale a ahorrar alrededor de 780 litros semanales en huella hídrica.
+
 :::
 :::
+
 
 ::: {.solution-card}
 ::: {.solution-icon}
 🌧️
 **Instala captación de lluvia**
 Un techo de 50 m² puede captar hasta 30,000 litros al año. Esta inversión puede cubrir el 40% del consumo doméstico y reducir la extracción del acuífero.
+
 :::
 :::
+
 
 ::: {.solution-card .solution-card--featured}
 ::: {.solution-icon}
 💧
 [Comparte este dashboard]{.featured-title}
 [La deuda hídrica es colectiva. Cada persona que visualiza sus datos es un agente de cambio potencial. Convierte tu 'huella de sed' en una huella de acción.]{.featured-text}
+
 :::
 :::
 :::
+
 
 ::: {.outro-box}
 ::: {.outro-title}
@@ -1159,227 +1791,18 @@ Objetivo: Dejar de ser espectador de la crisis.
 [🌊 ODS 6 — Agua Limpia y Saneamiento]{.badge}
 [📊 Datos abiertos: INEGI / CONAGUA/ IMTA/ CLICOM/ Gobierno de México ]{.badge}
 [🇲🇽 HackODS UNAM - Tlamatipohua]{.badge}
-:::
-:::
 
-::: {.section}
-[Sobre los datos]{.section-label .section-label--center}
-[Documentación de fuentes y metodología]{.section-title .section-title--center}
-
-[Este dashboard fue construido íntegramente con **datos abiertos oficiales** de instituciones mexicanas y del sistema ONU. Todos los datasets son públicos, reproducibles y están referenciados con su indicador ODS correspondiente.]{.section-desc}
-
-:::
-
-::: {.kpi-grid}
-
-::: {.card .card-accent}
-::: {.card-title}
-Datasets integrados
-:::
-::: {.card-value}
-19
-:::
-::: {.card-unit}
-fuentes de datos oficiales
 :::
 :::
 
-::: {.card .card-accent}
-::: {.card-title}
-Instituciones fuente
-:::
-::: {.card-value}
-4
-:::
-::: {.card-unit}
-CONAGUA · INEGI · SEMARNAT · SINA
-:::
-:::
-
-::: {.card .card-accent}
-::: {.card-title}
-Cobertura temporal
-:::
-::: {.card-value}
-2000–2024
-:::
-::: {.card-unit}
-hasta ENIGH 2024 y REPDA 2023
-:::
-:::
-
-::: {.card .card-accent}
-::: {.card-title}
-Indicadores ODS cubiertos
-:::
-::: {.card-value}
-8
-:::
-::: {.card-unit}
-6.1.1 · 6.2.1 · 6.4.1 · 6.4.2 · 6.5.1 · 6.5.2 · 6.6.1 · 6n.2.1
-:::
-:::
-
-:::
-
-[Fuentes de Datos]{.section-label}
-
-::: {.grid-auto-320}
-
-::: {.card .card-spacious}
-::: {.card-title .card-title--compact}
-💧 Agua Renovable
-:::
-**Entidad Federativa** · `CONAGUA / SEMARNAT / SINA`
-
-[6.4.2 · 6n.2.1]{.badge} [2017–2021 · 32 estados]{.badge}
-
-Disponibilidad anual de agua renovable y per cápita por entidad. Unidades: hm³/año y m³/hab/año.
-
-[`datos/AguaRenovable/EntidadFederativa/`]{.text-note--muted}
-:::
-
-::: {.card .card-spacious}
-::: {.card-title .card-title--compact}
-🗺️ Agua Renovable por RHA
-:::
-**Regiones Hidrológico-Administrativas** · `CONAGUA / SEMARNAT / SINA`
-
-[6.4.2 · 6n.2.1]{.badge} [2005–2023 · 13 RHA]{.badge}
-
-Serie larga por región. Base del análisis de presión hídrica territorial. Unidades: hm³/año.
-
-[`datos/AguaRenovable/RHA/`]{.text-note--muted}
-:::
-
-::: {.card .card-spacious}
-::: {.card-title .card-title--compact}
-📋 REPDA Estatal
-:::
-**Registro Público de Derechos de Agua** · `CONAGUA / SINA`
-
-[6.4.2 · 6n.2.1]{.badge} [2020–2023 · 32 estados · 8 usos]{.badge}
-
-Volúmenes concesionados por sector (agrícola, industrial, pecuario, urbano…). Unidades: hm³/año.
-
-[`datos/Repda/repda_estatal{año}.xlsx`]{.text-note--muted}
-:::
-
-::: {.card .card-spacious}
-::: {.card-title .card-title--compact}
-📉 Estrés Hídrico Nacional
-:::
-**Indicadores 6.4.2 y 6n.2.1** · `CONAGUA / INEGI`
-
-[ODS 6.4.2]{.badge} [2000–2023 · Nacional]{.badge}
-
-Nivel de estrés como % de extracción sobre disponibilidad. Incluye extracción total, recursos renovables y caudal ecológico.
-
-[`datos/6.4.2/conjunto_de_datos/`]{.text-note--muted}
-:::
-
-::: {.card .card-spacious}
-::: {.card-title .card-title--compact}
-📊 Grado de Presión por RHA
-:::
-**Serie histórica por región** · `CONAGUA / SINA`
-
-[6n.2.1]{.badge} [2003–2022 · 13 RHA]{.badge}
-
-Porcentaje de extracción respecto al agua disponible. Umbral crítico internacional: 55%.
-
-[`datos/Grado_de_Presion/Grado_de_Presion_{año}.xlsx`]{.text-note--muted}
-:::
-
-::: {.card .card-spacious}
-::: {.card-title .card-title--compact}
-🏠 ENIGH 2024 — Viviendas y Hogares
-:::
-**Encuesta Nacional de Ingresos y Gastos** · `INEGI`
-
-[ODS 1.4.1 · 6.4.1]{.badge} [2024 · ~90,000 viviendas]{.badge}
-
-Microdatos expandidos de acceso al agua por tipo de fuente, dotación y género. Incluye módulo de hogares para análisis de tiempo de cuidados.
-
-[`datos/6.4.1/conjunto_de_datos_viviendas_enigh2024_ns/`]{.text-note--muted}
-:::
-
-::: {.card .card-spacious}
-::: {.card-title .card-title--compact}
-🏘️ CNGMD 2021 — Asentamientos Irregulares
-:::
-**Censo Nacional de Gobiernos Municipales** · `INEGI`
-
-[ODS 6.1.1 · 6.2.1 · 11.1.1]{.badge} [2021 · 2,467 municipios]{.badge}
-
-Tres módulos: población en asentamientos (m2s13p21), acciones municipales (m2s13p22) y brecha de servicios básicos (m2s13p23).
-
-[`datos/Res_territorial_ah_CNGMD2021/`]{.text-note--muted}
-:::
-
-::: {.card .card-spacious}
-::: {.card-title .card-title--compact}
-👥 Población y Geometría
-:::
-**Censos y cartografía de referencia** · `INEGI / CONAGUA`
-
-[Referencia demográfica · espacial]{.badge} [2010 · 2020 · 2023]{.badge}
-
-Población por entidad (censos 2010 y 2020) y geometría GeoJSON de las 13 Regiones Hidrológico-Administrativas para la cartografía.
-
-[`datos/Poblacion/` · `datos/RHA/rha2023.json`]{.text-note--muted}
-:::
-
-:::
-
-[Limitaciones Reconocidas]{.section-label}
-
-::: {.grid-auto-320}
-
-::: {.card .card-spacious}
-::: {.card-title .card-title--compact}
-🕐 Cobertura temporal heterogénea
-:::
-Los datasets no comparten el mismo año de corte. REPDA llega a 2023, el agua renovable estatal solo hasta 2021, y la ENIGH refleja 2024. Las comparaciones entre variables de distintos años deben leerse como **tendencias**, no como fotografías simultáneas.
-:::
-
-::: {.card .card-spacious}
-::: {.card-title .card-title--compact}
-📈 Población proyectada (no censal)
-:::
-Para 2012–2023, la gráfica de "Deuda hídrica nacional" usa una **proyección lineal** entre los censos 2010 y 2020 (INEGI). La tasa de crecimiento se asume constante, lo que subestima el impacto de la migración interna y el crecimiento diferenciado por región.
-:::
-
-::: {.card .card-spacious}
-::: {.card-title .card-title--compact}
-⚠️ REPDA ≠ extracción real
-:::
-El REPDA registra volúmenes **concesionados** (legalmente autorizados), no los volúmenes efectivamente extraídos. La extracción ilegal o no registrada —especialmente en acuíferos del norte— no está capturada. El déficit real puede ser mayor al que muestran los datos.
-:::
-
-::: {.card .card-spacious}
-::: {.card-title .card-title--compact}
-🏚️ CNGMD 2021: cobertura municipal parcial
-:::
-El Censo registra 2,467 de los 2,478 municipios del país. Los 11 faltantes corresponden en su mayoría a zonas de difícil acceso. El total expandido de población en asentamientos puede estar **subrepresentado**.
-:::
-
-::: {.card .card-spacious}
-::: {.card-title .card-title--compact}
-⏱️ Deuda de tiempo (género): proxy limitado
-:::
-La variable `tsalud1_h/m` de la ENIGH 2024 mide horas de cuidados no remunerados en salud, no específicamente el acarreo de agua. La medición precisa requeriría la **ENUT** (Encuesta Nacional sobre Uso del Tiempo), cuya última edición disponible es 2019.
-:::
-
-::: {.card .card-spacious}
-::: {.card-title .card-title--compact}
-🌊 Indicadores ODS: series cortas
-:::
-Los indicadores 6.4.1, 6.4.2 y 6n.2.1 tienen cobertura desde 2000–2015 según el caso, con actualizaciones irregulares. La comparación con las metas globales del ODS 6 (objetivo **2030**) requiere cautela ante posibles revisiones metodológicas futuras.
-:::
-:::
 
 ::: {.footer}
 Tlamatipohua · Dashboard ODS 6 — Deuda Líquida · HackODS UNAM 2026
 Indicadores 6.5.2, 6.4.2, 6.4.1, 6.6.1, 6.5.1, 6.3.2
+:::
+
+:::
+:::
+:::
+:::
 :::
