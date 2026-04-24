@@ -23,6 +23,8 @@ from plotly.subplots import make_subplots
 import numpy as np
 ```
 
+
+
 ::: {.topbar}
 ::: {.topbar-logo}
 []{.dot} Tlamatipohua
@@ -152,6 +154,40 @@ Indicador 6n.2.1 (SINA, 2023)
 [↓ -0.234% vs 2013]{.card-trend .up}
 :::
 
+:::
+
+::: {.section .section-alt}
+::: {.page-wrapper}
+
+::: {.resolution-intro}
+[¿Qué es la Deuda Hídrica?]{.section-label .section-label--center}
+
+[Un préstamo invisible contra el futuro]{.section-title .section-title--center}
+
+[La deuda hídrica no es una metáfora; es un déficit contable y ecológico real. Ocurre cuando el agua que extraemos para nuestras actividades supera la capacidad de la naturaleza para renovarse. A nivel individual, es un préstamo invisible: cada litro que consumimos hoy bajo este esquema es agua que las futuras generaciones ya no podrán utilizar.]{.resolution-copy}
+:::
+
+<br>
+
+::: {.resolution-intro}
+[Distribución del Recurso]{.section-label .section-label--center}
+
+[¿Cuánta agua hay realmente?]{.section-title .section-title--center}
+
+[En México, la crisis hídrica no se explica únicamente por la falta de agua a nivel nacional, sino por una profunda desconexión entre la geografía del recurso y la distribución de la población.]{.resolution-copy}
+
+::: {.quote-block .quote-block--left}
+**La paradoja del sur:** Mientras que las zonas del sur del país (Chiapas, Oaxaca y Tabasco) concentran la mayor abundancia de agua renovable per cápita, los polos de mayor densidad del centro y norte —como el Valle de México— operan con una disponibilidad por habitante críticamente baja.
+:::
+
+[Esta presión poblacional obliga a los gobiernos a administrar la urgencia: más de la mitad de las acciones municipales (**53.9%**) son reactivas, intentando llevar servicios a zonas sin planeación. Mientras tanto, soluciones de fondo como la **regularización (6.78%)** o la **reubicación (9.49%)** ocupan un espacio mínimo en la agenda.]{.resolution-copy}
+
+::: {.quote-block .quote-block--left}
+**La conclusión:** Estamos forzando el crecimiento urbano en regiones donde la naturaleza hace tiempo dejó de tener crédito. Llevamos tuberías a lugares donde, geográficamente, los números ya no cuadran.
+:::
+:::
+
+:::
 :::
 
 ::: {.card .card-spacious}
@@ -562,6 +598,239 @@ fig_gap.update_layout(
 
 ```
 Fuente: INEGI, Censo Nacional de Gobiernos Municipales y Demarcaciones Territoriales 2021 (CNGMD)
+:::
+
+::: {.card .card-spacious}
+::: {.card-title .card-title--large}
+Acciones Municipales ante Asentamientos Irregulares
+:::
+
+México, 2021 — Distribución porcentual de acciones reportadas por municipios (CNGMD).
+
+```{python}
+import pandas as pd
+import plotly.express as px
+
+# 1. CARGA Y PROCESAMIENTO DE DATOS
+path_actions = "../datos/Res_territorial_ah_CNGMD2021/res_terr_ah_irreg_cngmd2021_csv/conjunto_de_datos/m2s13p22_cngmd2021.csv"
+df_actions = pd.read_csv(path_actions)
+
+# Mapeo de categorías
+act_names = {
+    1: 'Regularización', 
+    2: 'Dotación de Servicios', 
+    3: 'Reubicación', 
+    4: 'Prevención', 
+    5: 'Otros'
+}
+df_actions['Accion'] = df_actions['accahirr_a'].map(act_names)
+df_actions['Realizada'] = df_actions['rensnn1'].apply(lambda x: 1 if x == 1 else 0)
+
+# Agrupación para la gráfica
+act_stats = df_actions.groupby('Accion')['Realizada'].sum().reset_index()
+
+# 2. CREACIÓN DE LA GRÁFICA (Dona)
+fig_act = px.pie(
+    act_stats, 
+    values='Realizada', 
+    names='Accion', 
+    hole=0.4,
+    color_discrete_sequence=px.colors.qualitative.Safe
+)
+
+# 3. CONFIGURACIÓN ÚNICA DE LAYOUT
+fig_act.update_traces(
+    textinfo='percent+label',
+    hoverinfo='label+value+percent'
+)
+
+```
+Fuente: INEGI, Censo Nacional de Gobiernos Municipales y Demarcaciones Territoriales 2021
+:::
+
+
+::: {.card .card-spacious}
+::: {.card-title .card-title--large}
+Disponibilidad de Agua per Cápita por Región (2023)
+:::
+
+México, 2023 — Agua renovable disponible por habitante en cada Región Hidrológico-Administrativa (RHA).
+
+```{python}
+import os
+import pandas as pd
+import plotly.express as px
+
+# 1. CARGA Y LIMPIEZA DE DATOS (RHA)
+rha_files = [
+    "../datos/AguaRenovable/RHA/Agua_Renovable_RHA_2014.xlsx", 
+    "../datos/AguaRenovable/RHA/Agua_Renovable_RHA_2015.xlsx",
+    "../datos/AguaRenovable/RHA/Agua_Renovable_RHA_2016.xlsx", 
+    "../datos/AguaRenovable/RHA/Agua_Renovable_RHA_2017.xlsx",
+    "../datos/AguaRenovable/RHA/Agua_Renovable_RHA_2018.xlsx", 
+    "../datos/AguaRenovable/RHA/Agua_Renovable_RHA_2019.xlsx",
+    "../datos/AguaRenovable/RHA/Agua_Renovable_RHA_2020.xlsx", 
+    "../datos/AguaRenovable/RHA/Agua_Renovable_RHA_2021.xlsx",
+    "../datos/AguaRenovable/RHA/Agua_Renovable_RHA_2022.xlsx", 
+    "../datos/AguaRenovable/RHA/Agua_Renovable_RHA_2023.xlsx"
+]
+
+all_data = []
+for f in rha_files:
+    if os.path.exists(f):
+        df = pd.read_excel(f, engine='openpyxl')
+        all_data.append(df)
+
+master_rha = pd.concat(all_data, ignore_index=True)
+
+# Limpieza de columnas numéricas
+col_capita = 'Agua Renovable per cápita (m³/habitante/año)'
+cols_clean = ['Agua Renovable (hm³/año)', 'Población (Millones de habitantes)', col_capita]
+
+for c in cols_clean:
+    master_rha[c] = pd.to_numeric(
+        master_rha[c].astype(str).str.replace(',', ''), 
+        errors='coerce'
+    ).fillna(0)
+
+# Filtrar año 2023 y ordenar
+df_2023 = master_rha[master_rha['Año'] == 2023].sort_values(col_capita, ascending=True)
+
+# 2. CREACIÓN DE LA GRÁFICA
+fig_ranking = px.bar(
+    df_2023, 
+    x=col_capita, 
+    y='RHA', 
+    orientation='h',
+    color=col_capita, 
+    color_continuous_scale='Purples',
+    labels={col_capita: 'm³ / hab / año'}
+)
+
+# 3. CONFIGURACIÓN DE LAYOUT ÚNICA
+fig_ranking.update_layout(
+    template='plotly_white',
+    height=500,
+    margin=dict(l=10, r=10, t=20, b=10),
+    coloraxis_showscale=False,
+    xaxis_title="m³ / habitante / año",
+    yaxis_title="",
+    yaxis={'categoryorder':'total ascending'},
+    hovermode='y unified'
+)
+
+# Renderizado único
+
+```
+Fuente: CONAGUA, Estadísticas del Agua en México 2023
+:::
+
+::: {.section .section-alt}
+::: {.page-wrapper}
+
+::: {.resolution-intro}
+[¿Cómo se consume?]{.section-label .section-label--center}
+
+[¿Quién consume el agua en México y cuánta nos queda realmente?]{.section-title .section-title--center}
+
+[Cuando pensamos en el consumo de agua, la mayoría podemos imaginar el tiempo que pasamos en la ducha o el agua que usamos para lavar los platos. Sin embargo, los datos del Registro Público de Derechos de Agua (REPDA) revelan una realidad mucho más compleja: lo que vemos en nuestras casas es solo la superficie de una deuda masiva.]{.resolution-copy}
+
+[En México, el consumo se divide en dos mundos drásticamente desiguales:]{.resolution-copy}
+
+::: {.quote-block .quote-block--left}
+**El Consumo Invisible (Indirecto):** Es el verdadero motor de la deuda hídrica. Más del 70% del agua concesionada en el país se destina al sector agrícola, seguida por la industria y la generación de energía. Cada alimento que consumimos y cada producto que compramos tiene un costo hídrico oculto que supera por mucho nuestro gasto doméstico.
+:::
+
+::: {.quote-block .quote-block--left}
+**La Desigualdad Geográfica:** No todos los estados consumen igual. Mientras que el sur del país cuenta con abundancia natural, estados del norte como Sinaloa, Sonora y Chihuahua lideran la extracción total debido a su alta intensidad agrícola y pecuaria. En estas regiones, la "concesión per cápita" a menudo ignora la capacidad real de renovación de sus acuíferos.
+:::
+
+:::
+:::
+:::
+
+
+::: {.card .card-spacious}
+::: {.card-title .card-title--large}
+Distribución del Agua Concesionada por Sector (2023)
+:::
+
+México, 2023 — Composición porcentual del volumen concesionado por sector productivo según el Registro Público de Derechos de Agua (REPDA).
+
+```{python}
+import os
+import re
+import pandas as pd
+import plotly.express as px
+
+# 1. CARGA Y LIMPIEZA DE DATOS
+files = [
+    "../datos/Repda/repda_estatal2020.xlsx",
+    "../datos/Repda/repda_estatal2021.xlsx",
+    "../datos/Repda/repda_estatal2022.xlsx",
+    "../datos/Repda/repda_estatal2023.xlsx"
+]
+
+all_data = []
+
+for f in files:
+    if os.path.exists(f):
+        # Extraemos año del nombre del archivo
+        year_match = re.search(r"(\d{4})", f)
+        year = int(year_match.group(1)) if year_match else 0
+        
+        df = pd.read_excel(f, engine='openpyxl')
+        df = df.dropna(subset=[df.columns[2]])
+
+        # Identificación flexible de columnas
+        col_dom = [c for c in df.columns if 'Doméstico' in c][0]
+        col_urb = [c for c in df.columns if 'Público urbano' in c][0]
+        col_agr = [c for c in df.columns if 'Agrícola' in c][0]
+        col_ind = [c for c in df.columns if 'Industrial (F1)' in c][0]
+        col_pec = [c for c in df.columns if 'Pecuario (G)' in c][0]
+        col_agroind = [c for c in df.columns if 'Agroindustrial (B)' in c][0]
+        col_serv = [c for c in df.columns if 'Servicios' in c][0]
+
+        # Conversión a números
+        cols_to_fix = [col_dom, col_urb, col_agr, col_ind, col_pec, col_agroind, col_serv]
+        for col in cols_to_fix:
+            df[col] = pd.to_numeric(
+                df[col].astype(str).str.replace(',', '').str.replace('"', '').str.strip(), 
+                errors='coerce'
+            ).fillna(0)
+
+        df['Anio'] = year
+        df['Consumo Directo'] = df[col_urb] + df[col_dom]
+        all_data.append(df)
+
+master_df = pd.concat(all_data, ignore_index=True)
+df_2023 = master_df[master_df['Anio'] == 2023]
+
+# 2. PREPARACIÓN DE LA GRÁFICA
+sectores = {
+    'Agrícola': df_2023[col_agr].sum(),
+    'Industrial': df_2023[col_ind].sum(),
+    'Pecuario': df_2023[col_pec].sum(),
+    'Urbano/Doméstico': df_2023['Consumo Directo'].sum(),
+    'Servicios/Otros': df_2023[col_serv].sum() + df_2023[col_agroind].sum()
+}
+
+fig_sector = px.pie(
+    names=list(sectores.keys()), 
+    values=list(sectores.values()), 
+    hole=0.5, 
+    color_discrete_sequence=px.colors.qualitative.Safe
+)
+
+# 3. CONFIGURACIÓN DE LAYOUT CONSOLIDADA
+fig_sector.update_traces(
+    textinfo='percent+label',
+    hoverinfo='label+value+percent'
+)
+
+
+```
+Fuente: CONAGUA, Registro Público de Derechos de Agua (REPDA) 2023
 :::
 
 
