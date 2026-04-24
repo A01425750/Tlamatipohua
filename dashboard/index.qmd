@@ -2,6 +2,7 @@
 title: "Tlamatipohua — Deuda Líquida"
 format:
   dashboard:
+    expandable: false
     theme: none
     css: styles.css
     toc: false
@@ -2014,6 +2015,9 @@ La variable `tsalud1_h/m` de la ENIGH 2024 mide horas de cuidados no remunerados
 
 
 :::
+:::
+
+::: {.section-divider}
 :::
 
 ::: {.footer}

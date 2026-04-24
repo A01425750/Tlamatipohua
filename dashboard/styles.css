@@ -902,3 +902,23 @@ input[type="range"]::-webkit-slider-thumb:hover {
   .topbar { padding: 0 20px; }
   .kpi-grid { grid-template-columns: 1fr 1fr; }
 }
+
+/* ─── OCULTAR BOTÓN DE EXPANDIR EN CARDS ─────────────── */
+.card-expand-btn,
+.expand-btn,
+[class*="expand"],
+.observablehq-fullscreen-button,
+figure .expand,
+.quarto-figure .expand,
+button[title="Expand"],
+button[aria-label="Expand"] {
+  display: none !important;
+}
+
+/* Ocultar botón expand de Quarto OJS/Observable */
+.observablehq--expanded-button,
+.quarto-layout-panel button,
+.cell-output-display .expand,
+figure > button {
+  display: none !important;
+}
