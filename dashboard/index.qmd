@@ -954,6 +954,17 @@ fig_radar = px.line_polar(
     color_discrete_map=colores,
     custom_data=['Volumen']  # Guardamos el volumen real para mostrarlo en el tooltip
 )
+tick_vals_real = [10, 100, 1000, 10000, 50000]
+tick_vals_log = [np.log10(v) for v in tick_vals_real]
+fig_radar.update_layout(
+    polar=dict(
+        radialaxis=dict(
+            visible=True,
+            tickvals=tick_vals_log,
+            ticktext=["10", "100", "1k", "10k", "50k"],
+            gridcolor="#E2EAFF",
+            range=[0, np.log10(resumen[sectores].max().max() + 10000)]
+        )))
 
 # Añadimos relleno y configuramos el tooltip
 fig_radar.update_traces(
@@ -1027,9 +1038,6 @@ fig_rha = px.line(
     color_discrete_map=colores_rha
 )
 
-# Añadimos los marcadores y ajustamos el grosor de línea
-
-
 # Añadir el Umbral Crítico directamente como una línea horizontal
 fig_rha.add_hline(
     y=55,
@@ -1039,10 +1047,6 @@ fig_rha.add_hline(
     annotation_text="Umbral 55%",
     annotation_position="bottom right"
 )
-
-# 4. CONFIGURACIÓN DE LAYOUT
-fig_rha.update_layout(
-showlegend=False)
 ```
 Fuente: CONAGUA, Estadísticas del Agua en México; elaboración propia con datos EDA
 :::
@@ -1112,17 +1116,22 @@ df_st = df_st.sort_values('Periodo')
 fig_stress = px.line(
     df_st, 
     x='Periodo', 
-    y=col_val, 
-    markers=True
+    y=col_val#, 
+    #markers=True
 )
 
+fig_stress.update_layout(
+    xaxis_title='Año',
+    yaxis_title='% de Estrés Hídrico',
+    template='plotly_white',
+    yaxis=dict(range=[40, 50]) # Ajuste para ver mejor la variación
+)
 # 3. CONFIGURACIÓN DE LAYOUT CONSOLIDADA
 fig_stress.update_traces(
     line=dict(color="#F03BF3", width=4),
-    marker=dict(size=8),
+    #marker=dict(size=8),
     name='Nivel de Estrés (%)',
-    showlegend=False
-)
+    showlegend=False)
 
 ```
 Fuente: INEGI, Indicadores ODS 6.4.2; CONAGUA 2024
