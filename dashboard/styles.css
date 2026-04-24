@@ -157,7 +157,7 @@ body {
   background: linear-gradient(135deg, #001AFF 0%, #0066FF 40%, #00C8B4 100%);
   padding: 80px 32px 90px;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .hero::before {
@@ -292,6 +292,8 @@ body {
   padding: 24px;
   box-shadow: var(--shadow-sm);
   transition: box-shadow .25s, transform .25s;
+  overflow: visible; /* FIX: sin esto, border-radius activa overflow:hidden implícito
+                         que recorta labels de Plotly que salen del margen */
 }
 
 .card:hover {
@@ -481,12 +483,13 @@ input[type="range"]::-webkit-slider-thumb:hover {
   box-shadow: var(--shadow-sm);
   min-height: 420px;
   position: relative;
-  overflow: hidden;
+  overflow: visible; /* FIX: era hidden — cortaba labels de Plotly */
 }
 
 .graph-container svg {
   width: 100%;
   height: 100%;
+  overflow: visible; /* FIX: permite que anotaciones salgan del SVG */
 }
 
 /* ─── SECTION ALTERNATING BG ─────────────────────── */
@@ -662,6 +665,36 @@ input[type="range"]::-webkit-slider-thumb:hover {
 .observablehq--inspect { display: none !important; }
 .quarto-layout-panel { padding: 0 !important; }
 
+/* ─── PLOTLY OVERFLOW FIXES ──────────────────────── */
+/* Plotly genera un <div class="plotly-graph-div"> dentro del output de Python.
+   Si cualquier ancestro tiene overflow:hidden (por border-radius o explícito),
+   las labels fuera del área de trazado se recortan. Estas reglas lo evitan. */
+
+.plotly-graph-div {
+  overflow: visible !important;
+}
+
+/* El contenedor que Quarto genera para outputs de código Python */
+.cell-output-display,
+.cell-output,
+div[id^="fig-"] {
+  overflow: visible !important;
+}
+
+/* Quarto Dashboard inyecta .card con overflow implícito via border-radius */
+.quarto-dashboard .card,
+.quarto-dashboard .card-body,
+.dashboard-card,
+.bslib-card,
+.bslib-card .card-body {
+  overflow: visible !important;
+}
+
+/* SVG raíz de cada figura Plotly */
+.js-plotly-plot .plotly svg {
+  overflow: visible !important;
+}
+
 /* ─── DIVIDER ────────────────────────────────────── */
 .section-divider {
   height: 2px;
@@ -677,6 +710,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
 .card-spacious {
   margin-top: 20px;
   padding: 28px;
+  overflow: visible; /* FIX: hereda overflow del .card base */
 }
 
 .card-title--large {
@@ -897,4 +931,25 @@ input[type="range"]::-webkit-slider-thumb:hover {
   .hero-stats { gap: 24px; }
   .topbar { padding: 0 20px; }
   .kpi-grid { grid-template-columns: 1fr 1fr; }
+}
+
+.chart-card {
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: var(--sombra);
+  padding: 1.2rem 1.6rem 2rem 1.6rem;
+  overflow: visible; /* 🔥 FIX CLAVE */
+  margin-bottom: 0.8rem;
+  min-height: 420px; /* 🔥 FIX CLAVE */
+}
+
+.chart-inner {
+  min-height: 380px;
+}
+
+.plotly-graph-div,
+.js-plotly-plot,
+.plotly,
+.plot-container {
+  overflow: visible !important;
 }
