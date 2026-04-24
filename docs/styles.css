@@ -246,7 +246,7 @@ body {
 
 /* ─── SECTIONS ───────────────────────────────────── */
 .section {
-  padding: 56px 32px;
+  padding: 0;
 }
 
 .section-header {
